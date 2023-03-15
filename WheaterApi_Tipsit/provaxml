@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <location>
+    <name>Treviso</name>
+    <region>Veneto</region>
+    <country>Italy</country>
+    <lat>45.67</lat>
+    <lon>12.25</lon>
+    <tz_id>Europe/Rome</tz_id>
+    <localtime_epoch>1678888571</localtime_epoch>
+    <localtime>2023-03-15 14:56</localtime>
+  </location>
+  <current>
+    <last_updated_epoch>1678887900</last_updated_epoch>
+    <last_updated>2023-03-15 14:45</last_updated>
+    <temp_c>15</temp_c>
+    <temp_f>59</temp_f>
+    <is_day>1</is_day>
+    <condition>
+      <text>Partly cloudy</text>
+      <icon>//cdn.weatherapi.com/weather/64x64/day/116.png</icon>
+      <code>1003</code>
+    </condition>
+    <wind_mph>5.6</wind_mph>
+    <wind_kph>9</wind_kph>
+    <wind_degree>170</wind_degree>
+    <wind_dir>S</wind_dir>
+    <pressure_mb>1011</pressure_mb>
+    <pressure_in>29.85</pressure_in>
+    <precip_mm>0</precip_mm>
+    <precip_in>0</precip_in>
+    <humidity>44</humidity>
+    <cloud>25</cloud>
+    <feelslike_c>14.5</feelslike_c>
+    <feelslike_f>58.1</feelslike_f>
+    <vis_km>10</vis_km>
+    <vis_miles>6</vis_miles>
+    <uv>4</uv>
+    <gust_mph>7.8</gust_mph>
+    <gust_kph>12.6</gust_kph>
+    <air_quality>
+      <co>233.6999969482422</co>
+      <no2>1.2999999523162842</no2>
+      <o3>100.0999984741211</o3>
+      <so2>0.30000001192092896</so2>
+      <pm2_5>0.8999999761581421</pm2_5>
+      <pm10>1.2999999523162842</pm10>
+      <us-epa-index>1</us-epa-index>
+      <gb-defra-index>1</gb-defra-index>
+    </air_quality>
+  </current>
+</root>
