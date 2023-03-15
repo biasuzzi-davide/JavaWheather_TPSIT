@@ -30,12 +30,7 @@
 	    public void Richiesta(String Url) {
 	    	try {
 	            // Crea l'URL dell'API e apre una connessione HTTP
-<<<<<<< HEAD
 	            URL url = new URL(Url);
-=======
-	            URL url = new URL("http://api.weatherapi.com/v1/current.xml?key=4dcd56b9af624eaaa11132617231503&q=Nervesa&aqi=no\r\n"
-	            		+ "");
->>>>>>> master
 	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	            conn.setRequestMethod("GET");
 
