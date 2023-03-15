@@ -23,8 +23,8 @@
             <xs:sequence>
               <xs:element name="last_updated_epoch" type="xs:unsignedInt" />
               <xs:element name="last_updated" type="xs:string" />
-              <xs:element name="temp_c" type="xs:unsignedByte" />
-              <xs:element name="temp_f" type="xs:unsignedByte" />
+              <xs:element name="temp_c" type="xs:decimal" />
+              <xs:element name="temp_f" type="xs:decimal" />
               <xs:element name="is_day" type="xs:unsignedByte" />
               <xs:element name="condition">
                 <xs:complexType>
@@ -36,8 +36,8 @@
                 </xs:complexType>
               </xs:element>
               <xs:element name="wind_mph" type="xs:decimal" />
-              <xs:element name="wind_kph" type="xs:unsignedByte" />
-              <xs:element name="wind_degree" type="xs:unsignedByte" />
+              <xs:element name="wind_kph" type="xs:decimal" />
+              <xs:element name="wind_degree" type="xs:unsignedShort" />
               <xs:element name="wind_dir" type="xs:string" />
               <xs:element name="pressure_mb" type="xs:unsignedShort" />
               <xs:element name="pressure_in" type="xs:decimal" />
@@ -51,14 +51,14 @@
               <xs:element name="vis_miles" type="xs:unsignedByte" />
               <xs:element name="uv" type="xs:unsignedByte" />
               <xs:element name="gust_mph" type="xs:decimal" />
-              <xs:element name="gust_kph" type="xs:decimal" />
+              <xs:element name="gust_kph" type="xs:unsignedByte" />
               <xs:element name="air_quality">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="co" type="xs:decimal" />
                     <xs:element name="no2" type="xs:decimal" />
                     <xs:element name="o3" type="xs:decimal" />
-                    <xs:element name="so2" type="xs:decimal" />
+                    <xs:element name="so2" type="xs:unsignedByte" />
                     <xs:element name="pm2_5" type="xs:decimal" />
                     <xs:element name="pm10" type="xs:decimal" />
                     <xs:element name="us-epa-index" type="xs:unsignedByte" />

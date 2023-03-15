@@ -5,11 +5,32 @@
 
 	public class Prova {
 
-	    public static void main(String[] args) {
-	        try {
+	    public Prova() {
+	        
+	    }
+	    
+	    public static String replaceSpaces(String input) {
+	        StringBuilder output = new StringBuilder();
+	        for (int i = 0; i < input.length(); i++) {
+	            char c = input.charAt(i);
+	            if (c == ' ') {
+	                output.append("%20");
+	            } else {
+	                output.append(c);
+	            }
+	        }
+	        return output.toString();
+	    }
+
+	    
+	    public String Url(String Citta) {
+	    	return "http://api.weatherapi.com/v1/current.xml?key=4dcd56b9af624eaaa11132617231503&q="+replaceSpaces(Citta)+"&aqi=yes\r\n";
+	    }
+	    
+	    public void Richiesta(String Url) {
+	    	try {
 	            // Crea l'URL dell'API e apre una connessione HTTP
-	            URL url = new URL("http://api.weatherapi.com/v1/current.xml?key=4dcd56b9af624eaaa11132617231503&q=Rome&aqi=no\r\n"
-	            		+ "");
+	            URL url = new URL(Url);
 	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	            conn.setRequestMethod("GET");
 
