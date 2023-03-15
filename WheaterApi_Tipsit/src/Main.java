@@ -13,6 +13,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		JAXBContext context = JAXBContext.newInstance(Root.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
+        Prova prova=new Prova();
+        prova.main(args);
         Root tempo = (Root) unmarshaller.unmarshal(new File("src/ProvaXml.xml"));
         
         System.out.println("Prova: "+tempo.getCurrent().getTempC());
