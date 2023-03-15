@@ -8,7 +8,7 @@
 	    public static void main(String[] args) {
 	        try {
 	            // Crea l'URL dell'API e apre una connessione HTTP
-	            URL url = new URL("http://api.weatherapi.com/v1/current.xml?key=4dcd56b9af624eaaa11132617231503&q=Rome&aqi=no\r\n"
+	            URL url = new URL("http://api.weatherapi.com/v1/current.xml?key=4dcd56b9af624eaaa11132617231503&q=Nervesa&aqi=no\r\n"
 	            		+ "");
 	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	            conn.setRequestMethod("GET");
