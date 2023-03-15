@@ -6,5 +6,20 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="Library/codemodel.jar"/>
+	<classpathentry kind="lib" path="Library/dtd-parser.jar"/>
+	<classpathentry kind="lib" path="Library/FastInfoset.jar"/>
+	<classpathentry kind="lib" path="Library/istack-commons-runtime.jar"/>
+	<classpathentry kind="lib" path="Library/istack-commons-tools.jar"/>
+	<classpathentry kind="lib" path="Library/javax.activation-api.jar"/>
+	<classpathentry kind="lib" path="Library/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="Library/jaxb-jxc.jar"/>
+	<classpathentry kind="lib" path="Library/jaxb-runtime.jar"/>
+	<classpathentry kind="lib" path="Library/jaxb-xjc.jar"/>
+	<classpathentry kind="lib" path="Library/relaxng-datatype.jar"/>
+	<classpathentry kind="lib" path="Library/rngom.jar"/>
+	<classpathentry kind="lib" path="Library/stax-ex.jar"/>
+	<classpathentry kind="lib" path="Library/txw2.jar"/>
+	<classpathentry kind="lib" path="Library/xsom.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
