@@ -19,7 +19,6 @@ public class Main {
         Unmarshaller unmarshaller = context.createUnmarshaller();
         RichiestaAlServer Server=new RichiestaAlServer();
         String tmp="";
-        String citta="";
         Scanner scCitta = new Scanner(System.in);
         while(!tmp.equals("0")) {
         	System.out.println("Inserisci Città");

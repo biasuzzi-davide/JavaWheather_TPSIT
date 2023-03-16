@@ -42,7 +42,7 @@
 
 	            // Stampa il documento XML ricevuto dalla risposta HTTP
 	            //System.out.println(response.toString());
-	            new XmlFromStringExample(response.toString());
+	            new XmlFromString(response.toString());
 	        } catch (Exception e) {
 	            System.err.println("Errore durante la richiesta XML: " + e.getMessage());
 	        }

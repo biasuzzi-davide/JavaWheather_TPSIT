@@ -10,10 +10,10 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class XmlFromStringExample {
+public class XmlFromString {
 	private String xmlString = "";
 	
-	 public XmlFromStringExample(String stringa) throws ParserConfigurationException, SAXException, IOException, TransformerException {
+	 public XmlFromString(String stringa) throws ParserConfigurationException, SAXException, IOException, TransformerException {
 	    xmlString=stringa;  
 	    // Crea un'istanza del parser DOM
 	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
