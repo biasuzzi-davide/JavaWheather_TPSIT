@@ -26,7 +26,7 @@ public class XmlFromStringExample {
 	    Document document = builder.parse(inputSource);
 	
 	    // Scrivi il contenuto del documento in un file
-	    File file = new File("src/ProvaXml.xml");
+	    File file = new File("src/Forecast/Forecast.xml");
 	    javax.xml.transform.TransformerFactory transformerFactory = javax.xml.transform.TransformerFactory.newInstance();
 	    javax.xml.transform.Transformer transformer = transformerFactory.newTransformer();
 	    javax.xml.transform.dom.DOMSource source = new javax.xml.transform.dom.DOMSource(document);

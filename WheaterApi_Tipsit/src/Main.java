@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+
+import Forecast.Root;
+
 import javax.xml.bind.JAXBException;
 
 //Chiave API
@@ -14,7 +17,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		JAXBContext context = JAXBContext.newInstance(Root.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        Prova prova=new Prova();
+        RichiestaAlServer Server=new RichiestaAlServer();
         String tmp="";
         String citta="";
         Scanner scCitta = new Scanner(System.in);
@@ -22,14 +25,15 @@ public class Main {
         	System.out.println("Inserisci Città");
         	tmp = scCitta.nextLine();
         	if(!tmp.equals("0")) {
-        		prova.Richiesta(prova.Url(tmp));
-	        	Root tempo=(Root) unmarshaller.unmarshal(new File("src/ProvaXml.xml"));
-	        	System.out.println("Nome Località: "+tempo.getLocation().getName());
-	        	System.out.println("Paese: "+tempo.getLocation().getCountry());
-	        	System.out.println("Data: "+tempo.getLocation().getLocaltime());
-	        	System.out.println("Temperatura: "+tempo.getCurrent().getTempC());
-	        	System.out.println("Condizioni meteo: "+tempo.getCurrent().getCondition().getText());
-	        	System.out.println("Velocità Vento: "+tempo.getCurrent().getWindKph());
+        		Server.Richiesta(Server.UrlForecast(tmp));
+	        	Root Previsioni=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+	        	System.out.println("Nome Località: "+Previsioni.getLocation().getName());
+	        	System.out.println("Paese: "+Previsioni.getLocation().getCountry());
+	        	System.out.println("Data: "+Previsioni.getLocation().getLocaltime());
+	        	System.out.println("Temperatura: "+Previsioni.getCurrent().getTempC());
+	        	System.out.println("Condizioni meteo: "+Previsioni.getCurrent().getCondition().getText());
+	        	System.out.println("Velocità Vento: "+Previsioni.getCurrent().getWindKph());
+	        	System.out.println("Temperatura di domani alle 16: "+Previsioni.getForecast().getForecastday().get(1).getDate()+" Temp: "+Previsioni.getForecast().getForecastday().get(1).getHour().get(16).getTempC());
         	}
         }
 	}

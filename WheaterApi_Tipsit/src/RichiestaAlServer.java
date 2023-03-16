@@ -3,11 +3,9 @@
 	import java.io.BufferedReader;
 	import java.io.InputStreamReader;
 
-	public class Prova {
+	public class RichiestaAlServer {
 
-	    public Prova() {
-	        
-	    }
+	    public RichiestaAlServer() {}
 	    
 	    public static String replaceSpaces(String input) {
 	        StringBuilder output = new StringBuilder();
@@ -21,10 +19,9 @@
 	        }
 	        return output.toString();
 	    }
-
 	    
-	    public String Url(String Citta) {
-	    	return "http://api.weatherapi.com/v1/current.xml?key=4dcd56b9af624eaaa11132617231503&q="+replaceSpaces(Citta)+"&aqi=yes\r\n";
+	    public String UrlForecast(String Citta) {
+	    	return "http://api.weatherapi.com/v1/forecast.xml?key=4dcd56b9af624eaaa11132617231503&q="+replaceSpaces(Citta)+"&days=10&aqi=yes&alerts=yes";
 	    }
 	    
 	    public void Richiesta(String Url) {
