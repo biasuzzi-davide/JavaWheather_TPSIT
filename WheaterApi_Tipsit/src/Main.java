@@ -19,11 +19,18 @@ public class Main {
 			System.out.println("Inserisci città (0 per ultimare): ");
 			tmp = TMP.nextLine();
 			if(!tmp.equals("0")) {
-				System.out.println(prova.Oggi(tmp)+"\n\n");
-				for(int i=0;i<prova.Futuro(tmp, 6, false).size();i++) {
-					System.out.println(prova.Futuro(tmp, 6, false).get(i));
+				System.out.println(prova.Today(tmp)+"\n\n");
+				for(int i=0;i<prova.Future(tmp, 6, false).size();i++) {
+					System.out.println(prova.Future(tmp, 6, false).get(i));
 				}
-				System.out.println("\n\n"+prova.Statistica(tmp, 6, false)+"\n\n");
+				System.out.println("\n\n"+prova.Statistic(tmp, 6, false)+"\n\n");
+				
+				System.out.println(prova.AirToday(tmp)+"\n\n");
+				for(int i=0;i<prova.AirFuture(tmp, 6, false).size();i++) {
+					System.out.println(prova.AirFuture(tmp, 6, false).get(i));
+				}
+				System.out.println("\n\n"+prova.AirStatistic(tmp, 6, false)+"\n\n");
+				
 				System.out.println("\n\n\n\n");
 			}
 		}
