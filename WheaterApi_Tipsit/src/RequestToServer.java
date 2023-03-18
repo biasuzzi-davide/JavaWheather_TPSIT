@@ -3,9 +3,9 @@
 	import java.io.BufferedReader;
 	import java.io.InputStreamReader;
 
-	public class RichiestaAlServer {
+	public class RequestToServer {
 
-	    public RichiestaAlServer() {}
+	    public RequestToServer() {}
 	    
 	    public static String replaceSpaces(String input) {
 	        StringBuilder output = new StringBuilder();
@@ -20,18 +20,18 @@
 	        return output.toString();
 	    }
 	    
-	    public String UrlForecast(String Citta) {
-	    	return "http://api.weatherapi.com/v1/forecast.xml?key=4dcd56b9af624eaaa11132617231503&q="+replaceSpaces(Citta)+"&days=10&aqi=yes&alerts=yes";
+	    public String UrlForecast(String city) {
+	    	return "http://api.weatherapi.com/v1/forecast.xml?key=4dcd56b9af624eaaa11132617231503&q="+replaceSpaces(city)+"&days=10&aqi=yes&alerts=yes";
 	    }
 	    
-	    public void Richiesta(String Url) {
+	    public void Request(String Url) {
 	    	try {
-	            // Crea l'URL dell'API e apre una connessione HTTP
+	            // Create the URL of API and open one connection HTTP
 	            URL url = new URL(Url);
 	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	            conn.setRequestMethod("GET");
 
-	            // Legge il contenuto della risposta HTTP
+	            // read the content of the answer HTTP
 	            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	            String inputLine;
 	            StringBuilder response = new StringBuilder();
@@ -40,11 +40,11 @@
 	            }
 	            in.close();
 
-	            // Stampa il documento XML ricevuto dalla risposta HTTP
+	            // Print the document XML received of the answer HTTP
 	            //System.out.println(response.toString());
 	            new XmlFromString(response.toString());
 	        } catch (Exception e) {
-	            System.err.println("Errore durante la richiesta XML: " + e.getMessage());
+	            System.err.println("Error during request to XML: " + e.getMessage());
 	        }
 	    }
 }

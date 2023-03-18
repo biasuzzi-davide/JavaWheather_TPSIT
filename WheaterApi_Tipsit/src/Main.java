@@ -13,27 +13,28 @@ public class Main {
 		// TODO Auto-generated method stub
 		Scanner TMP = new Scanner(System.in);
 		String tmp = "";
-		Metodi_Previsioni prova = new Metodi_Previsioni();
+		Method_Forecast prove = new Method_Forecast();
 		
 		while(!tmp.equals("0")){
-			System.out.println("Inserisci città (0 per ultimare): ");
+			System.out.println("Insert City (0 for Exit): ");
 			tmp = TMP.nextLine();
 			if(!tmp.equals("0")) {
-				System.out.println(prova.Today(tmp)+"\n\n");
-				for(int i=0;i<prova.Future(tmp, 6, false).size();i++) {
-					System.out.println(prova.Future(tmp, 6, false).get(i));
+				System.out.println(prove.Today(tmp)+"\n\n");
+				for(int i=0;i<prove.Future(tmp, 6, false).size();i++) {
+					System.out.println(prove.Future(tmp, 6, false).get(i));
 				}
-				System.out.println("\n\n"+prova.Statistic(tmp, 6, false)+"\n\n");
+				System.out.println("\n\n"+prove.Statistic(tmp, 6, false)+"\n\n");
 				
-				System.out.println(prova.AirToday(tmp)+"\n\n");
-				for(int i=0;i<prova.AirFuture(tmp, 6, false).size();i++) {
-					System.out.println(prova.AirFuture(tmp, 6, false).get(i));
+				System.out.println(prove.AirToday(tmp)+"\n\n");
+				for(int i=0;i<prove.AirFuture(tmp, 6, false).size();i++) {
+					System.out.println(prove.AirFuture(tmp, 6, false).get(i));
 				}
-				System.out.println("\n\n"+prova.AirStatistic(tmp, 6, false)+"\n\n");
+				System.out.println("\n\n"+prove.AirStatistic(tmp, 6, false)+"\n\n");
 				
 				System.out.println("\n\n\n\n");
 			}
 		}
+		TMP.close();
 	}
 
 }

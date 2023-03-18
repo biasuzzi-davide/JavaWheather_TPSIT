@@ -13,19 +13,19 @@ import org.xml.sax.SAXException;
 public class XmlFromString {
 	private String xmlString = "";
 	
-	 public XmlFromString(String stringa) throws ParserConfigurationException, SAXException, IOException, TransformerException {
-	    xmlString=stringa;  
-	    // Crea un'istanza del parser DOM
+	 public XmlFromString(String string) throws ParserConfigurationException, SAXException, IOException, TransformerException {
+	    xmlString=string;  
+	    // Create instance of parser DOM
 	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	    DocumentBuilder builder = factory.newDocumentBuilder();
 	
-	    // Crea un'istanza di InputSource
+	    // Create instance of InputSource
 	    InputSource inputSource = new InputSource(new StringReader(xmlString));
 	
-	    // Parsa la stringa XML in un oggetto Document
+	    // Parse the String XML in a object in a file
 	    Document document = builder.parse(inputSource);
 	
-	    // Scrivi il contenuto del documento in un file
+	    // Write the content of the document in a file
 	    File file = new File("src/Forecast/Forecast.xml");
 	    javax.xml.transform.TransformerFactory transformerFactory = javax.xml.transform.TransformerFactory.newInstance();
 	    javax.xml.transform.Transformer transformer = transformerFactory.newTransformer();
