@@ -10,7 +10,7 @@ public class Method_Forecast {
 	
 	public Method_Forecast() {}
 	
-	public String Today(String city) throws JAXBException {
+	public String Today(String city, Boolean AmericanUnit) throws JAXBException {
 		JAXBContext context = JAXBContext.newInstance(Root.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
 	    RequestToServer Server=new RequestToServer();
@@ -23,18 +23,35 @@ public class Method_Forecast {
 	    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
 	    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
 	    Final+="Date: "+forecast.getLocation().getLocaltime()+"\n";
-	    Final+="Temperature: "+Math.round(forecast.getCurrent().getTempC()*100.00)/100.00+"\n";
+	    if(AmericanUnit) {
+	    	Final+="Temperature: "+Math.round(forecast.getCurrent().getTempF().doubleValue()*100.00)/100.00+"\n";
+	    }else {
+	    	Final+="Temperature: "+Math.round(forecast.getCurrent().getTempC()*100.00)/100.00+"\n";
+	    }
 	    Final+="Weather Forecast: "+forecast.getCurrent().getCondition().getText()+"\n";
-	    Final+="Wind Speed: "+Math.round(forecast.getCurrent().getWindKph()*100.00)/100.00+"\n";
+	    if(AmericanUnit) {
+	    	Final+="Wind Speed: "+Math.round(forecast.getCurrent().getWindMph().doubleValue()*100.00)/100.00+"\n";
+	    }else {
+	    	Final+="Wind Speed: "+Math.round(forecast.getCurrent().getWindKph()*100.00)/100.00+"\n";
+	    }
 	    Final+="Wind Direction: "+forecast.getCurrent().getWindDir()+"\n";
-	    Final+="Precipitation Millimeters: "+Math.round(forecast.getCurrent().getPrecipMm()*100.00)/100.00+"\n";
+	    if(AmericanUnit) {
+	    	Final+="Precipitation Millimeters: "+Math.round(forecast.getCurrent().getPrecipIn()*100.00)/100.00+"\n";
+	    }else {
+	    	Final+="Precipitation Millimeters: "+Math.round(forecast.getCurrent().getPrecipMm()*100.00)/100.00+"\n";
+	    }
 	    Final+="Humidity: "+Math.round(forecast.getCurrent().getHumidity()*100.00)/100.00;
-	    
+	    Final+="Cloud: "+Math.round(forecast.getCurrent().getCloud()*100.00)/100.00;
+	    if(AmericanUnit) {
+	    	Final+="Feels Like Temperature: "+Math.round(forecast.getCurrent().getFeelslikeF()*100.00)/100.00+"\n";
+	    }else {
+	    	Final+="Feels Like Temperature: "+Math.round(forecast.getCurrent().getFeelslikeC().doubleValue()*100.00)/100.00+"\n";
+	    }
 	    
 	    return Final;
 	}
 	
-	public ArrayList<String> Future(String city,int howMuchDay, boolean today) throws JAXBException {
+	public ArrayList<String> Future(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
 		JAXBContext context = JAXBContext.newInstance(Root.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
 	    RequestToServer Server=new RequestToServer();
@@ -56,13 +73,23 @@ public class Method_Forecast {
 	    	i<forecast.getForecast().getForecastday().size() && i<howMuchDay;
 	    	i++) {
 	    	Tmp+="Date: "+forecast.getForecast().getForecastday().get(i).getDate()+"\n";
-	    	Tmp+="Maximum Temeratures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxtempC().doubleValue()*100.00)/100.00+"\n";
-	    	Tmp+="Minimum Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMintempC().doubleValue()*100.00)/100.00+"\n";
-	    	Tmp+="Average Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempC().doubleValue()*100.00)/100.00+"\n";
-	    	Tmp+="Maximum Wind Speed: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindKph().doubleValue()*100.00)/100.00+"\n";
-	    	Tmp+="Precipitation Millimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipMm().doubleValue()*100.00)/100.00+"\n";
-	    	Tmp+="Snow Centimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm()*100.00)/100.00+"\n";
-	    	Tmp+="Visibility Kilometers: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue()*100.00)/100.00+"\n";
+	    	if(AmericanUnit) {
+	    		Tmp+="Maximum Temeratures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxtempF().doubleValue()*100.00)/100.00+"\n";
+	    		Tmp+="Minimum Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMintempF().doubleValue()*100.00)/100.00+"\n";
+	    		Tmp+="Average Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempF().doubleValue()*100.00)/100.00+"\n";
+	    		Tmp+="Maximum Wind Speed: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindMph().doubleValue()*100.00)/100.00+"\n";
+	    		Tmp+="Precipitation Inch: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipIn().doubleValue()*100.00)/100.00+"\n";
+		    	Tmp+="Snow Centimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm()*100.00)/100.00+"\n";
+		    	Tmp+="Visibility Miles: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisMiles()*100.00)/100.00+"\n";
+		    }else {
+		    	Tmp+="Maximum Temeratures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxtempC().doubleValue()*100.00)/100.00+"\n";
+		    	Tmp+="Minimum Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMintempC().doubleValue()*100.00)/100.00+"\n";
+		    	Tmp+="Average Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempC().doubleValue()*100.00)/100.00+"\n";
+		    	Tmp+="Maximum Wind Speed: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindKph().doubleValue()*100.00)/100.00+"\n";
+		    	Tmp+="Precipitation Millimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipMm().doubleValue()*100.00)/100.00+"\n";
+		    	Tmp+="Snow Centimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm()*100.00)/100.00+"\n";
+		    	Tmp+="Visibility Kilometers: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue()*100.00)/100.00+"\n";
+		    }
 	    	Tmp+="Average Humidity: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue()*100.00)/100.00+"\n";
 	    	Tmp+="Percentage Chance Of Rain: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"\n";
 	    	Tmp+="Percentage Chance Of Snow: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfSnow()*100.00)/100.00+"\n";
@@ -76,7 +103,7 @@ public class Method_Forecast {
 	    return Final;
 	}
 
-	public String Statistic(String city,int howMuchDay, boolean today) throws JAXBException {
+	public String Statistic(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
 		JAXBContext context = JAXBContext.newInstance(Root.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
 	    RequestToServer Server=new RequestToServer();
@@ -87,8 +114,8 @@ public class Method_Forecast {
 		double AvgTemp = 0.0;
 		double MaxSpeWin = 0.0;
 		double PreMil = 0.0;
-		double SnoCen = 0.0;
-		double VisKil = 0.0;
+		double Sno = 0.0;
+		double Vis = 0.0;
 		double AvgHum = 0.0;
 		double PerChaRai = 0.0;
 		double PerChaSno = 0.0;
@@ -98,31 +125,56 @@ public class Method_Forecast {
 		for(i =(today ? 0 : 1);
     	i<forecast.getForecast().getForecastday().size() && i<howMuchDay;
     	i++) {
-			MaxTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMaxtempC().doubleValue();
-			MinTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMintempC().doubleValue();
-			AvgTemp+=forecast.getForecast().getForecastday().get(i).getDay().getAvgtempC().doubleValue();
-			MaxSpeWin+=forecast.getForecast().getForecastday().get(i).getDay().getMaxwindKph().doubleValue();
-			PreMil+=forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipMm().doubleValue();
-			SnoCen+=forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm();
-			VisKil+=forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue();
+			if(AmericanUnit) {
+				MaxTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMaxtempF().doubleValue();
+				MinTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMintempF().doubleValue();
+				AvgTemp+=forecast.getForecast().getForecastday().get(i).getDay().getAvgtempF().doubleValue();
+				MaxSpeWin+=forecast.getForecast().getForecastday().get(i).getDay().getMaxwindMph().doubleValue();
+				PreMil+=forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipIn().doubleValue();
+				Sno+=forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm();
+				Vis+=forecast.getForecast().getForecastday().get(i).getDay().getAvgvisMiles();
+		    }else {
+		    	MaxTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMaxtempC().doubleValue();
+				MinTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMintempC().doubleValue();
+				AvgTemp+=forecast.getForecast().getForecastday().get(i).getDay().getAvgtempC().doubleValue();
+				MaxSpeWin+=forecast.getForecast().getForecastday().get(i).getDay().getMaxwindKph().doubleValue();
+				PreMil+=forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipMm().doubleValue();
+				Sno+=forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm();
+				Vis+=forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue();
+		    }
 			AvgHum+=forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue();
 			PerChaRai+=forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain();
 			PerChaSno+=forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfSnow();
 		}
 		
 		
-		return "Statistics of "+howMuchDay+" days: \n"
-				+"Average Maximum Temperatures: "+Math.round(MaxTemp/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Minimum Temperatures: "+Math.round(MinTemp/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Temperatures: "+Math.round(AvgTemp/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Maximum Wind Speed: "+Math.round(MaxSpeWin/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Precipitation Millimeters: "+Math.round(PreMil/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Snow Centimers: "+Math.round(SnoCen/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Visibility Kilometers: "+Math.round(VisKil/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Average Humidity: "+Math.round(AvgHum/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Percentage Chance Of Rain: "+Math.round(PerChaRai/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Percentage Chance Of Snow: "+Math.round(PerChaSno/(i-(today ? 0 : 1))*100.00)/100.00
-				;
+		if(AmericanUnit) {
+			return "Statistics of "+howMuchDay+" days: \n"
+					+"Average Maximum Temperatures: "+Math.round(MaxTemp/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Minimum Temperatures: "+Math.round(MinTemp/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Temperatures: "+Math.round(AvgTemp/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Maximum Wind Speed: "+Math.round(MaxSpeWin/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Precipitation Inch: "+Math.round(PreMil/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Snow Centimers: "+Math.round(Sno/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Visibility Miles: "+Math.round(Vis/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Average Humidity: "+Math.round(AvgHum/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Percentage Chance Of Rain: "+Math.round(PerChaRai/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Percentage Chance Of Snow: "+Math.round(PerChaSno/(i-(today ? 0 : 1))*100.00)/100.00
+					;
+		}else {
+			return "Statistics of "+howMuchDay+" days: \n"
+					+"Average Maximum Temperatures: "+Math.round(MaxTemp/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Minimum Temperatures: "+Math.round(MinTemp/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Temperatures: "+Math.round(AvgTemp/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Maximum Wind Speed: "+Math.round(MaxSpeWin/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Precipitation Millimeters: "+Math.round(PreMil/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Snow Centimers: "+Math.round(Sno/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Visibility Kilometers: "+Math.round(Vis/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Average Humidity: "+Math.round(AvgHum/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Percentage Chance Of Rain: "+Math.round(PerChaRai/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+					+"Average Percentage Chance Of Snow: "+Math.round(PerChaSno/(i-(today ? 0 : 1))*100.00)/100.00
+					;
+		}
 	}
 	
 	public String AirToday(String city) throws JAXBException {
@@ -170,7 +222,7 @@ public class Method_Forecast {
 	  
 	    
 	    for(int i =(today ? 0 : 1);
-	    	i<=4 && i<howMuchDay;
+	    	i<=3 && i<howMuchDay;
 	    	i++) {
 	    	Tmp+="Date: "+forecast.getForecast().getForecastday().get(i).getDate()+"\n";
 	    	Tmp+="Co: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"\n";
@@ -208,7 +260,7 @@ public class Method_Forecast {
 		
 		
 		for(i =(today ? 0 : 1);
-    	i<=4 && i<howMuchDay;
+    	i<=3 && i<howMuchDay;
     	i++) {
 			Co+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue();
 			No2+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue();
