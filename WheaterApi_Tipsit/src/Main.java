@@ -19,9 +19,9 @@ public class Main {
 			System.out.println("Insert City (0 for Exit): ");
 			tmp = TMP.nextLine();
 			if(!tmp.equals("0")) {
-				System.out.println(prove.Today(tmp, true)+"\n\n");
-				for(int i=0;i<prove.Future(tmp, 6, false, true).size();i++) {
-					System.out.println(prove.Future(tmp, 6, false, true).get(i));
+				System.out.println(prove.Today(tmp, false)+"\n\n");
+				for(int i=0;i<prove.Future(tmp, 6, false, false).size();i++) {
+					System.out.println(prove.Future(tmp, 6, false, false).get(i));
 				}
 				System.out.println("\n\n"+prove.Statistic(tmp, 6, false, true)+"\n\n");
 				

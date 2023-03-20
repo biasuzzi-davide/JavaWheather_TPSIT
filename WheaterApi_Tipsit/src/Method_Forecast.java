@@ -40,8 +40,8 @@ public class Method_Forecast {
 	    }else {
 	    	Final+="Precipitation Millimeters: "+Math.round(forecast.getCurrent().getPrecipMm()*100.00)/100.00+"\n";
 	    }
-	    Final+="Humidity: "+Math.round(forecast.getCurrent().getHumidity()*100.00)/100.00;
-	    Final+="Cloud: "+Math.round(forecast.getCurrent().getCloud()*100.00)/100.00;
+	    Final+="Humidity: "+Math.round(forecast.getCurrent().getHumidity()*100.00)/100.00+"\n";
+	    Final+="Cloud: "+Math.round(forecast.getCurrent().getCloud()*100.00)/100.00+"\n";
 	    if(AmericanUnit) {
 	    	Final+="Feels Like Temperature: "+Math.round(forecast.getCurrent().getFeelslikeF()*100.00)/100.00+"\n";
 	    }else {
