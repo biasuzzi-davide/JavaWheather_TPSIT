@@ -41,7 +41,10 @@ public class Main {
 			    RequestToServer Server=new RequestToServer();
 				Server.Request(Server.UrlForecast("Treviso"));
 				Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
-			    
+				
+				System.out.println(prove.DayandHour(tmp, false, "2023-03-30 15:05"));
+				
+				System.out.println(prove.Day(tmp, false, "2023-03-30 16:05\""));
 				
 				System.out.println("Day of the week: "+prove.findDayOfWeek(forecast.getLocation().getLocaltime().toString(),true));
 				
