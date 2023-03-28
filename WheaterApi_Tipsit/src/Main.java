@@ -21,34 +21,71 @@ public class Main {
 		Method_Forecast prove = new Method_Forecast();
 		
 		while(!tmp.equals("0")){
+			JAXBContext context = JAXBContext.newInstance(Root.class);
+		    Unmarshaller unmarshaller = context.createUnmarshaller();
+		    RequestToServer Server=new RequestToServer();
+			Server.Request(Server.UrlForecast("Treviso"));
+			Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
 			System.out.println("Insert City (0 for Exit): ");
 			tmp = TMP.nextLine();
 			if(!tmp.equals("0")) {
-				System.out.println(prove.Today(tmp, false)+"\n\n");
-				for(int i=0;i<prove.Future(tmp, 6, false, false).size();i++) {
-					System.out.println(prove.Future(tmp, 6, false, false).get(i));
+				int tmp2=1;
+				System.out.println("Scegli:\n"
+						+ "1-Today\n"
+						+ "2-Future\n"
+						+ "3-DayandHour\n"
+						+ "4-Day\n"
+						+ "5-Statistic\n"
+						+ "6-AirToday\n"
+						+ "7-AirFuture\n"
+						+ "8-AirDayandHour\n"
+						+ "9-AirDay\n"
+						+ "10-AirStatistic\n"
+						+ "11-FindDayOfWeek\n");
+				tmp2 = TMP.nextInt();
+				System.out.println("\n\n");
+				
+				switch(tmp2) {
+				case 1:
+					System.out.println(prove.Today(tmp, false));
+					break;
+				case 2:
+					for(int i=0;i<prove.Future(tmp, 6, false, false).size();i++) {
+						System.out.println(prove.Future(tmp, 6, false, false).get(i));
+					}
+					break;
+				case 3:
+					System.out.println(prove.DayandHour(tmp, false, "2023-03-30 15:05"));
+					break;
+				case 4:
+					System.out.println(prove.Day(tmp, false, "2023-03-30 16:05"));
+					break;
+				case 5:
+					System.out.println("\n\n"+prove.Statistic(tmp, 6, false, true));
+					break;
+				case 6:
+					System.out.println(prove.AirToday(tmp));
+					break;
+				case 7:
+					for(int i=0;i<prove.AirFuture(tmp, 6, false).size();i++) {
+						System.out.println(prove.AirFuture(tmp, 6, false).get(i));
+					}
+					break;
+				case 8:
+					System.out.println(prove.AirDayandHour(tmp, false, "2023-03-30 15:05"));
+					break;
+				case 9:
+					System.out.println(prove.AirDay(tmp, false, "2023-03-30 16:05"));
+					break;
+				case 10:
+					System.out.println("\n\n"+prove.AirStatistic(tmp, 6, false));
+					break;
+				case 11:
+					System.out.println("Day of the week: "+prove.FindDayOfWeek(forecast.getLocation().getLocaltime().toString(),true));
+					break;
 				}
-				System.out.println("\n\n"+prove.Statistic(tmp, 6, false, true)+"\n\n");
-				
-				System.out.println(prove.AirToday(tmp)+"\n\n");
-				for(int i=0;i<prove.AirFuture(tmp, 6, false).size();i++) {
-					System.out.println(prove.AirFuture(tmp, 6, false).get(i));
-				}
-				System.out.println("\n\n"+prove.AirStatistic(tmp, 6, false)+"\n\n");
-				
-				JAXBContext context = JAXBContext.newInstance(Root.class);
-			    Unmarshaller unmarshaller = context.createUnmarshaller();
-			    RequestToServer Server=new RequestToServer();
-				Server.Request(Server.UrlForecast("Treviso"));
-				Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
-				
-				System.out.println(prove.DayandHour(tmp, false, "2023-03-30 15:05"));
-				
-				System.out.println(prove.Day(tmp, false, "2023-03-30 16:05\""));
-				
-				System.out.println("Day of the week: "+prove.findDayOfWeek(forecast.getLocation().getLocaltime().toString(),true));
-				
-				System.out.println("\n\n\n\n");
+				System.out.println("\n\n");
+				tmp = TMP.nextLine();
 			}
 		}
 		TMP.close();

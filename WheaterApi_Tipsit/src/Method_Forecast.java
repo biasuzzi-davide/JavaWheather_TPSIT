@@ -108,7 +108,135 @@ public class Method_Forecast {
 	    
 	    return Final;
 	}
+	
+	public String DayandHour(String city, Boolean AmericanUnit,String date) throws JAXBException {
+		JAXBContext context = JAXBContext.newInstance(Root.class);
+	    Unmarshaller unmarshaller = context.createUnmarshaller();
+	    RequestToServer Server=new RequestToServer();
+		String Final="";
+		Server.Request(Server.UrlForecast(city));
+		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+	    String[] piecesDate = date.split(" ");
+		boolean find1=false;
+		boolean find2=false;
+	    int i=0;
+	    for(i = 0;
+	    	i<forecast.getForecast().getForecastday().size();
+	    	i++) 
+		{
+			String[] piecesForecast = forecast.getForecast().getForecastday().get(i).getDate().toString().split(" ");
+			if(piecesDate[0].equals(piecesForecast[0]))
+			{
+				find1=true;
+				break;
+			}
+		}
+	    int j=0;
+	    if(find1) {
+		    for(j = 0;
+		    	j<forecast.getForecast().getForecastday().get(i).getHour().size();
+		    	j++) 
+			{
+				String[] piecesForecast = forecast.getForecast().getForecastday().get(i).getHour().get(j).getTime().split(" ");
+				String[] pieceForecast = piecesForecast[1].split(":");
+				String[] pieceDate = piecesDate[1].split(":");
+				if(pieceDate[0].equals(pieceForecast[0]))
+				{
+					find2=true;
+					break;
+				}
+			}
+	    }
+	    if(!find1 || !find2) {
+	    	return "Day or Hour not valid, Retry.";
+	    }
+	    
+	    Final+="City: "+forecast.getLocation().getName()+"\n";
+	    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
+	    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
+	    Final+="Date: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getTime()+"\n";
+	    if(AmericanUnit) {
+	    	Final+="Temperature: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getTempF().doubleValue()*100.00)/100.00+"\n";
+	    }else {
+	    	Final+="Temperature: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getTempC()+"\n";
+	    }
+	    Final+="Weather Forecast: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getCondition().getText()+"\n";
+	    if(AmericanUnit) {
+	    	Final+="Wind Speed: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getWindMph().doubleValue()*100.00)/100.00+"\n";
+	    }else {
+	    	Final+="Wind Speed: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getWindKph()+"\n";
+	    }
+	    Final+="Wind Direction: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getWindDir()+"\n";
+	    if(AmericanUnit) {
+	    	Final+="Precipitation Millimeters: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getPrecipIn()+"\n";
+	    }else {
+	    	Final+="Precipitation Millimeters: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getPrecipMm()+"\n";
+	    }
+	    Final+="Humidity: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getHumidity()*100.00)/100.00+"\n";
+	    Final+="Cloud: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getCloud()*100.00)/100.00+"\n";
+	    if(AmericanUnit) {
+	    	Final+="Feels Like Temperature: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getFeelslikeF()+"\n";
+	    }else {
+	    	Final+="Feels Like Temperature: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getFeelslikeC().doubleValue()*100.00)/100.00+"\n";
+	    }
+	    
+	    return Final;
+	}
 
+	public String Day(String city, Boolean AmericanUnit,String date) throws JAXBException {
+		JAXBContext context = JAXBContext.newInstance(Root.class);
+	    Unmarshaller unmarshaller = context.createUnmarshaller();
+	    RequestToServer Server=new RequestToServer();
+		String Final="";
+		Server.Request(Server.UrlForecast(city));
+		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+	    String[] piecesDate = date.split(" ");
+		boolean find=false;
+	    
+	    int i=0;
+	    for(i = 0;
+	    	i<forecast.getForecast().getForecastday().size();
+	    	i++) 
+		{
+			String[] piecesForecast = forecast.getForecast().getForecastday().get(i).getDate().toString().split(" ");
+			if(piecesDate[0].equals(piecesForecast[0]))
+			{
+				find=true;
+				break;
+			}
+		}
+	    if(!find)
+	    	return "Day not valid, Retry.";
+	    
+	    Final+="City: "+forecast.getLocation().getName()+"\n";
+	    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
+	    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
+	    Final+="Date: "+forecast.getForecast().getForecastday().get(i).getDate()+"\n";
+	    if(AmericanUnit) {
+    		Final+="Maximum Temeratures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxtempF().doubleValue()*100.00)/100.00+"\n";
+    		Final+="Minimum Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMintempF().doubleValue()*100.00)/100.00+"\n";
+    		Final+="Average Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempF().doubleValue()*100.00)/100.00+"\n";
+    		Final+="Maximum Wind Speed: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindMph().doubleValue()*100.00)/100.00+"\n";
+    		Final+="Precipitation Inch: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipIn().doubleValue()*100.00)/100.00+"\n";
+	    	Final+="Snow Centimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm()*100.00)/100.00+"\n";
+	    	Final+="Visibility Miles: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisMiles()*100.00)/100.00+"\n";
+	    }else {
+	    	Final+="Maximum Temeratures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxtempC().doubleValue()*100.00)/100.00+"\n";
+	    	Final+="Minimum Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMintempC().doubleValue()*100.00)/100.00+"\n";
+	    	Final+="Average Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempC().doubleValue()*100.00)/100.00+"\n";
+	    	Final+="Maximum Wind Speed: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindKph().doubleValue()*100.00)/100.00+"\n";
+	    	Final+="Precipitation Millimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipMm().doubleValue()*100.00)/100.00+"\n";
+	    	Final+="Snow Centimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm()*100.00)/100.00+"\n";
+	    	Final+="Visibility Kilometers: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue()*100.00)/100.00+"\n";
+	    }
+    	Final+="Average Humidity: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue()*100.00)/100.00+"\n";
+    	Final+="Percentage Chance Of Rain: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"\n";
+    	Final+="Percentage Chance Of Snow: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfSnow()*100.00)/100.00+"\n";
+    	Final+="Wheater Forecast: "+forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText();
+	    
+	    return Final;
+	}
+	
 	public String Statistic(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
 		JAXBContext context = JAXBContext.newInstance(Root.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -291,7 +419,7 @@ public class Method_Forecast {
 				;
 	}
 	
-	public String DayandHour(String city, Boolean AmericanUnit,String date) throws JAXBException {
+	public String AirDayandHour(String city, Boolean AmericanUnit,String date) throws JAXBException {
 		JAXBContext context = JAXBContext.newInstance(Root.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
 	    RequestToServer Server=new RequestToServer();
@@ -337,35 +465,19 @@ public class Method_Forecast {
 	    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
 	    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
 	    Final+="Date: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getTime()+"\n";
-	    if(AmericanUnit) {
-	    	Final+="Temperature: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getTempF().doubleValue()*100.00)/100.00+"\n";
-	    }else {
-	    	Final+="Temperature: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getTempC()+"\n";
-	    }
-	    Final+="Weather Forecast: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getCondition().getText()+"\n";
-	    if(AmericanUnit) {
-	    	Final+="Wind Speed: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getWindMph().doubleValue()*100.00)/100.00+"\n";
-	    }else {
-	    	Final+="Wind Speed: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getWindKph()+"\n";
-	    }
-	    Final+="Wind Direction: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getWindDir()+"\n";
-	    if(AmericanUnit) {
-	    	Final+="Precipitation Millimeters: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getPrecipIn()+"\n";
-	    }else {
-	    	Final+="Precipitation Millimeters: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getPrecipMm()+"\n";
-	    }
-	    Final+="Humidity: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getHumidity()*100.00)/100.00+"\n";
-	    Final+="Cloud: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getCloud()*100.00)/100.00+"\n";
-	    if(AmericanUnit) {
-	    	Final+="Feels Like Temperature: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getFeelslikeF()+"\n";
-	    }else {
-	    	Final+="Feels Like Temperature: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getFeelslikeC().doubleValue()*100.00)/100.00+"\n";
-	    }
+	    Final+="Co: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getCo().doubleValue()*100.00)/100.00+"\n";
+	    Final+="No2: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getNo2().doubleValue()*100.00)/100.00+"\n";
+	    Final+="O3: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getO3().doubleValue()*100.00)/100.00+"\n";
+	    Final+="Pm10: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm10().doubleValue()*100.00)/100.00+"\n";
+	    Final+="Pm25: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm25().doubleValue()*100.00)/100.00+"\n";
+	    Final+="So2: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getSo2().doubleValue()*100.00)/100.00+"\n";
+	    Final+="Gb Defra Index: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getGbDefraIndex()+"\n";
+	    Final+="Us Epa Index: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getUsEpaIndex()+"\n";
 	    
 	    return Final;
 	}
 
-	public String Day(String city, Boolean AmericanUnit,String date) throws JAXBException {
+	public String AirDay(String city, Boolean AmericanUnit,String date) throws JAXBException {
 		JAXBContext context = JAXBContext.newInstance(Root.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
 	    RequestToServer Server=new RequestToServer();
@@ -393,33 +505,20 @@ public class Method_Forecast {
 	    Final+="City: "+forecast.getLocation().getName()+"\n";
 	    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
 	    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
-	    Final+="Date: "+forecast.getLocation().getLocaltime()+"\n";
-	    if(AmericanUnit) {
-    		Final+="Maximum Temeratures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxtempF().doubleValue()*100.00)/100.00+"\n";
-    		Final+="Minimum Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMintempF().doubleValue()*100.00)/100.00+"\n";
-    		Final+="Average Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempF().doubleValue()*100.00)/100.00+"\n";
-    		Final+="Maximum Wind Speed: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindMph().doubleValue()*100.00)/100.00+"\n";
-    		Final+="Precipitation Inch: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipIn().doubleValue()*100.00)/100.00+"\n";
-	    	Final+="Snow Centimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm()*100.00)/100.00+"\n";
-	    	Final+="Visibility Miles: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisMiles()*100.00)/100.00+"\n";
-	    }else {
-	    	Final+="Maximum Temeratures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxtempC().doubleValue()*100.00)/100.00+"\n";
-	    	Final+="Minimum Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMintempC().doubleValue()*100.00)/100.00+"\n";
-	    	Final+="Average Temperatures: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempC().doubleValue()*100.00)/100.00+"\n";
-	    	Final+="Maximum Wind Speed: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindKph().doubleValue()*100.00)/100.00+"\n";
-	    	Final+="Precipitation Millimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipMm().doubleValue()*100.00)/100.00+"\n";
-	    	Final+="Snow Centimeters: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm()*100.00)/100.00+"\n";
-	    	Final+="Visibility Kilometers: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue()*100.00)/100.00+"\n";
-	    }
-    	Final+="Average Humidity: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue()*100.00)/100.00+"\n";
-    	Final+="Percentage Chance Of Rain: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"\n";
-    	Final+="Percentage Chance Of Snow: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfSnow()*100.00)/100.00+"\n";
-    	Final+="Wheater Forecast: "+forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText();
+	    Final+="Date: "+forecast.getForecast().getForecastday().get(i).getDate()+"\n";
+	    Final+="Co: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"\n";
+	    Final+="No2: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"\n";
+	    Final+="O3: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"\n";
+	    Final+="Pm10: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"\n";
+	    Final+="Pm25: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"\n";
+	    Final+="So2: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"\n";
+	    Final+="Gb Defra Index: "+forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getGbDefraIndex()+"\n";
+	    Final+="Us Epa Index: "+forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getUsEpaIndex()+"\n";
 	    
 	    return Final;
-	}
+	}	
 	
-	public String findDayOfWeek(String date,boolean localtime) {
+	public String FindDayOfWeek(String date,boolean localtime) {
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    LocalDate localDate;
 	    if(localtime) {
