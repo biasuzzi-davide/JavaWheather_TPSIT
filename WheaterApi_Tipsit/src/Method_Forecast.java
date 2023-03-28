@@ -356,7 +356,7 @@ public class Method_Forecast {
 	  
 	    
 	    for(int i =(today ? 0 : 1);
-	    	i<=3 && i<howMuchDay;
+	    	i<=2 && i<howMuchDay;
 	    	i++) {
 	    	Tmp+="Date: "+forecast.getForecast().getForecastday().get(i).getDate()+"\n";
 	    	Tmp+="Co: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"\n";
@@ -375,51 +375,8 @@ public class Method_Forecast {
 	    
 	    return Final;
 	}
-	
-	public String AirStatistic(String city,int howMuchDay, boolean today) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
-		double Co = 0.0;
-		double No2 = 0.0;
-		double O3 = 0.0;
-		double Pm10 = 0.0;
-		double Pm25 = 0.0;
-		double So2 = 0.0;
-		double GbDefraIndex = 0.0;
-		double UsEpaIndex = 0.0;
-		int i;
 		
-		
-		for(i =(today ? 0 : 1);
-    	i<=3 && i<howMuchDay;
-    	i++) {
-			Co+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue();
-			No2+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue();
-			O3+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue();
-			Pm10+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue();
-			Pm25+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue();
-			So2+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue();
-			GbDefraIndex+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getGbDefraIndex();
-			UsEpaIndex+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getUsEpaIndex();
-		}
-		
-		
-		return "Air Statistics of "+howMuchDay+" days: \n"
-				+"Average Co: "+Math.round(Co/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average No2: "+Math.round(No2/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average O3: "+Math.round(O3/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Pm10: "+Math.round(Pm10/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average Pm25: "+Math.round(Pm25/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average So2: "+Math.round(So2/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
-				+"Average GbDefraIndex: "+GbDefraIndex/(i-(today ? 0 : 1))+"\n"
-				+"Average UsEpaIndex: "+UsEpaIndex/(i-(today ? 0 : 1))
-				;
-	}
-	
-	public String AirDayandHour(String city, Boolean AmericanUnit,String date) throws JAXBException {
+	public String AirDayandHour(String city,String date) throws JAXBException {
 		JAXBContext context = JAXBContext.newInstance(Root.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
 	    RequestToServer Server=new RequestToServer();
@@ -460,24 +417,27 @@ public class Method_Forecast {
 	    if(!find1 || !find2) {
 	    	return "Day or Hour not valid, Retry.";
 	    }
-	    
-	    Final+="City: "+forecast.getLocation().getName()+"\n";
-	    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
-	    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
-	    Final+="Date: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getTime()+"\n";
-	    Final+="Co: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getCo().doubleValue()*100.00)/100.00+"\n";
-	    Final+="No2: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getNo2().doubleValue()*100.00)/100.00+"\n";
-	    Final+="O3: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getO3().doubleValue()*100.00)/100.00+"\n";
-	    Final+="Pm10: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm10().doubleValue()*100.00)/100.00+"\n";
-	    Final+="Pm25: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm25().doubleValue()*100.00)/100.00+"\n";
-	    Final+="So2: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getSo2().doubleValue()*100.00)/100.00+"\n";
-	    Final+="Gb Defra Index: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getGbDefraIndex()+"\n";
-	    Final+="Us Epa Index: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getUsEpaIndex()+"\n";
+	    if(i>2) {
+		    Final+="City: "+forecast.getLocation().getName()+"\n";
+		    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
+		    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
+		    Final+="Date: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getTime()+"\n";
+		    Final+="Co: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getCo().doubleValue()*100.00)/100.00+"\n";
+		    Final+="No2: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getNo2().doubleValue()*100.00)/100.00+"\n";
+		    Final+="O3: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getO3().doubleValue()*100.00)/100.00+"\n";
+		    Final+="Pm10: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm10().doubleValue()*100.00)/100.00+"\n";
+		    Final+="Pm25: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm25().doubleValue()*100.00)/100.00+"\n";
+		    Final+="So2: "+Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getSo2().doubleValue()*100.00)/100.00+"\n";
+		    Final+="Gb Defra Index: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getGbDefraIndex()+"\n";
+		    Final+="Us Epa Index: "+forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getUsEpaIndex()+"\n";
+	    }else {
+	    	Final="we don't have air quality data on this date";
+	    }
 	    
 	    return Final;
 	}
 
-	public String AirDay(String city, Boolean AmericanUnit,String date) throws JAXBException {
+	public String AirDay(String city,String date) throws JAXBException {
 		JAXBContext context = JAXBContext.newInstance(Root.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
 	    RequestToServer Server=new RequestToServer();
@@ -501,23 +461,68 @@ public class Method_Forecast {
 		}
 	    if(!find)
 	    	return "Day not valid, Retry.";
-	    
-	    Final+="City: "+forecast.getLocation().getName()+"\n";
-	    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
-	    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
-	    Final+="Date: "+forecast.getForecast().getForecastday().get(i).getDate()+"\n";
-	    Final+="Co: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"\n";
-	    Final+="No2: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"\n";
-	    Final+="O3: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"\n";
-	    Final+="Pm10: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"\n";
-	    Final+="Pm25: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"\n";
-	    Final+="So2: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"\n";
-	    Final+="Gb Defra Index: "+forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getGbDefraIndex()+"\n";
-	    Final+="Us Epa Index: "+forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getUsEpaIndex()+"\n";
-	    
+	    if(i>2) {
+		    Final+="City: "+forecast.getLocation().getName()+"\n";
+		    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
+		    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
+		    Final+="Date: "+forecast.getForecast().getForecastday().get(i).getDate()+"\n";
+		    Final+="Co: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"\n";
+		    Final+="No2: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"\n";
+		    Final+="O3: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"\n";
+		    Final+="Pm10: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"\n";
+		    Final+="Pm25: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"\n";
+		    Final+="So2: "+Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"\n";
+		    Final+="Gb Defra Index: "+forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getGbDefraIndex()+"\n";
+		    Final+="Us Epa Index: "+forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getUsEpaIndex()+"\n";
+	    }else {
+	    	Final="we don't have air quality data on this date";
+	    }
 	    return Final;
 	}	
 	
+	public String AirStatistic(String city,int howMuchDay, boolean today) throws JAXBException {
+		JAXBContext context = JAXBContext.newInstance(Root.class);
+	    Unmarshaller unmarshaller = context.createUnmarshaller();
+	    RequestToServer Server=new RequestToServer();
+		Server.Request(Server.UrlForecast(city));
+		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+		double Co = 0.0;
+		double No2 = 0.0;
+		double O3 = 0.0;
+		double Pm10 = 0.0;
+		double Pm25 = 0.0;
+		double So2 = 0.0;
+		double GbDefraIndex = 0.0;
+		double UsEpaIndex = 0.0;
+		int i;
+		
+		
+		for(i =(today ? 0 : 1);
+    	i<=2 && i<howMuchDay;
+    	i++) {
+			Co+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue();
+			No2+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue();
+			O3+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue();
+			Pm10+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue();
+			Pm25+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue();
+			So2+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue();
+			GbDefraIndex+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getGbDefraIndex();
+			UsEpaIndex+=forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getUsEpaIndex();
+		}
+		
+		
+		return "Air Statistics of "+howMuchDay+" days: \n"
+				+"Average Co: "+Math.round(Co/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+				+"Average No2: "+Math.round(No2/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+				+"Average O3: "+Math.round(O3/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+				+"Average Pm10: "+Math.round(Pm10/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+				+"Average Pm25: "+Math.round(Pm25/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+				+"Average So2: "+Math.round(So2/(i-(today ? 0 : 1))*100.00)/100.00+"\n"
+				+"Average GbDefraIndex: "+GbDefraIndex/(i-(today ? 0 : 1))+"\n"
+				+"Average UsEpaIndex: "+UsEpaIndex/(i-(today ? 0 : 1))
+				;
+	}
+
 	public String FindDayOfWeek(String date,boolean localtime) {
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    LocalDate localDate;

@@ -21,7 +21,7 @@
 	    }
 	    
 	    public String UrlForecast(String city) {
-	    	return "http://api.weatherapi.com/v1/forecast.xml?key=4dcd56b9af624eaaa11132617231503&q="+replaceSpaces(city)+"&days=10&aqi=yes&alerts=yes";
+	    	return "http://api.weatherapi.com/v1/forecast.xml?key=4dcd56b9af624eaaa11132617231503&q="+replaceSpaces(city)+"&days=5&aqi=yes&alerts=yes";
 	    }
 	    
 	    public void Request(String Url) {
