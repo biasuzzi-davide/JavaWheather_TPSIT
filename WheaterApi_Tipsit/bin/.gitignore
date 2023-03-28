@@ -1,1 +1,9 @@
+/.classpath
+/.metadata/
+/.project
+/.settings/
 /Forecast/
+/Main.class
+/Method_Forecast.class
+/RequestToServer.class
+/XmlFromString.class
