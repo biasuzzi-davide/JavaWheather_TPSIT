@@ -1,10 +1,16 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-
 import Forecast.Root;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.time.DayOfWeek;
+
 
 public class Method_Forecast {
 	
@@ -283,6 +289,19 @@ public class Method_Forecast {
 				+"Average GbDefraIndex: "+GbDefraIndex/(i-(today ? 0 : 1))+"\n"
 				+"Average UsEpaIndex: "+UsEpaIndex/(i-(today ? 0 : 1))
 				;
+	}
+	
+	public String findDayOfWeek(String date,boolean localtime) {
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	    LocalDate localDate;
+	    if(localtime) {
+	    	String[] pieces = date.split(" ");
+	    	localDate = LocalDate.parse(pieces[0], formatter);
+	    }else {
+	    	localDate = LocalDate.parse(date, formatter);
+	    }
+	    DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+	    return dayOfWeek.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
 	}
 	
 }

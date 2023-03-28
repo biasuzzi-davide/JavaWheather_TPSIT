@@ -1,15 +1,20 @@
+import java.io.File;
 import java.util.Scanner;
-
+import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import Forecast.Root;
 
-//Chiave API
+import java.text.ParseException;
+
+//API Key
 //4dcd56b9af624eaaa11132617231503
-//Link Api
+//Api Link
 //https://www.weatherapi.com/api-explorer.aspx
  
 public class Main {
 
-	public static void main(String[] args) throws JAXBException{
+	public static void main(String[] args) throws JAXBException, ParseException{
 		// TODO Auto-generated method stub
 		Scanner TMP = new Scanner(System.in);
 		String tmp = "";
@@ -30,6 +35,15 @@ public class Main {
 					System.out.println(prove.AirFuture(tmp, 6, false).get(i));
 				}
 				System.out.println("\n\n"+prove.AirStatistic(tmp, 6, false)+"\n\n");
+				
+				JAXBContext context = JAXBContext.newInstance(Root.class);
+			    Unmarshaller unmarshaller = context.createUnmarshaller();
+			    RequestToServer Server=new RequestToServer();
+				Server.Request(Server.UrlForecast("Treviso"));
+				Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+			    
+				
+				System.out.println("Day of the week: "+prove.findDayOfWeek(forecast.getLocation().getLocaltime().toString(),true));
 				
 				System.out.println("\n\n\n\n");
 			}
