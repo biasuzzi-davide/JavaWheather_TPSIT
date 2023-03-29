@@ -449,7 +449,7 @@ public class Method_Forecast {
 	    
 	    int i=0;
 	    for(i = 0;
-	    	i<forecast.getForecast().getForecastday().size();
+	    	i<forecast.getForecast().getForecastday().size() && i<=2;
 	    	i++) 
 		{
 			String[] piecesForecast = forecast.getForecast().getForecastday().get(i).getDate().toString().split(" ");
@@ -461,7 +461,7 @@ public class Method_Forecast {
 		}
 	    if(!find)
 	    	return "Day not valid, Retry.";
-	    if(i>2) {
+	    if(i<=2) {
 		    Final+="City: "+forecast.getLocation().getName()+"\n";
 		    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
 		    Final+="Country: "+forecast.getLocation().getCountry()+"\n";
