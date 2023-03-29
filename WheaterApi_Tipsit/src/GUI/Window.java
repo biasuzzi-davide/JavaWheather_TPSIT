@@ -13,6 +13,10 @@ import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Cursor;
 
 public class Window extends JFrame implements ActionListener, WindowListener{
 
@@ -70,15 +74,13 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 
         JPanel panel = new HomePane();
         frame.getContentPane().add(panel, BorderLayout.CENTER);
-
+        
         JMenuBar menuBar = new JMenuBar();
+        menuBar.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         frame.setJMenuBar(menuBar);
-
-        JButton btnNewButton = new JButton("Home");
+        
+        JButton btnNewButton = new JButton("New button");
         menuBar.add(btnNewButton);
-
-        JMenu mnNewMenu = new JMenu("Menu");
-        menuBar.add(mnNewMenu);
     }
 
 	@Override
@@ -129,4 +131,21 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 		
 	}
 
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 }

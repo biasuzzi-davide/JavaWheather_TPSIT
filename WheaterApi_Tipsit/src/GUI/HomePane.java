@@ -17,7 +17,7 @@ public class HomePane extends JPanel {
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[26.00][][][60:60:60][][][][][60:60:60][][][][][60:60:60][][][][][60:60:60][][][][][][60:60:60][]", "[][][][]"));
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("Lunedi");
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewLabel, "cell 3 1,alignx center,aligny center");
@@ -43,14 +43,14 @@ public class HomePane extends JPanel {
 		add(lblNewLabel_4, "cell 24 1,alignx center,aligny center");
 		
 
-		ImageIcon imageIcon = new ImageIcon("/Users/david/Desktop/Weather/JavaWheather_TPSIT/WheaterApi_Tipsit/src/pngtree-sun-icon-isolated-on-background-png-image_1790445.jpg");
+		ImageIcon imageIcon = new ImageIcon("src/pngtree-sun-icon-isolated-on-background-png-image_1790445.jpg");
 		Image image = imageIcon.getImage();
 		Image newimg = image.getScaledInstance(60, 60, java.awt.Image.SCALE_SMOOTH);
 		imageIcon = new ImageIcon(newimg);
 		 
 		JLabel iconLabel = new JLabel(imageIcon);
-		iconLabel.setMinimumSize(new Dimension(200, 200));
-		iconLabel.setMaximumSize(new Dimension(200, 200));
+//		iconLabel.setMinimumSize(new Dimension(200, 200));
+//		iconLabel.setMaximumSize(new Dimension(200, 200));
 		add(iconLabel, "cell 3 3");
 	}
 
