@@ -17,10 +17,13 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
+import java.awt.Label;
+import java.awt.Dimension;
 
 public class Window extends JFrame implements ActionListener, WindowListener{
 
     private JFrame frame;
+    private JTextField txtInsertCity;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -79,8 +82,19 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         menuBar.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         frame.setJMenuBar(menuBar);
         
-        JButton btnNewButton = new JButton("New button");
+        Label label = new Label("Nervesa della Battaglia");
+        menuBar.add(label);
+        
+        JButton btnNewButton = new JButton("Home");
         menuBar.add(btnNewButton);
+        
+        txtInsertCity = new JTextField();
+        txtInsertCity.setToolTipText("Insert City");
+        txtInsertCity.setSize(new Dimension(7, 40));
+        txtInsertCity.setPreferredSize(new Dimension(40, 20));
+        txtInsertCity.setMaximumSize(new Dimension(7, 20));
+        menuBar.add(txtInsertCity);
+        txtInsertCity.setColumns(10);
     }
 
 	@Override

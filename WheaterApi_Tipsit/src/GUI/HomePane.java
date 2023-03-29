@@ -14,8 +14,8 @@ public class HomePane extends JPanel {
 	 * Create the panel.
 	 */
 	public HomePane() {
-		this.setSize(1000, 600);
-		setLayout(new MigLayout("", "[26.00][][][60:60:60][][][][][60:60:60][][][][][60:60:60][][][][][60:60:60][][][][][][60:60:60][]", "[][][][]"));
+		this.setSize(9000, 500);
+		setLayout(new MigLayout("", "[26.00][][][60:60:60][][][][][60:60:60][][][][][60:60:60][][][][][60:60:60][][][][][][60:60:60][]", "[][][][][][]"));
 		
 		JLabel lblNewLabel = new JLabel("Lunedi");
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -52,6 +52,14 @@ public class HomePane extends JPanel {
 //		iconLabel.setMinimumSize(new Dimension(200, 200));
 //		iconLabel.setMaximumSize(new Dimension(200, 200));
 		add(iconLabel, "cell 3 3");
+		
+		JLabel lblNewLabel_6 = new JLabel("Sunny");
+		add(lblNewLabel_6, "cell 3 4,alignx center,aligny center");
+		
+		JLabel lblNewLabel_5 = new JLabel("18 C");
+		lblNewLabel_5.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		add(lblNewLabel_5, "cell 3 5,alignx center,aligny center");
 	}
 
 }
