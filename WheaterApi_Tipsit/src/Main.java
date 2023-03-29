@@ -1,10 +1,5 @@
-import java.io.File;
 import java.util.Scanner;
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import Forecast.Root;
-
 import java.text.ParseException;
 
 //API Key
@@ -17,38 +12,133 @@ public class Main {
 	public static void main(String[] args) throws JAXBException, ParseException{
 		// TODO Auto-generated method stub
 		Scanner TMP = new Scanner(System.in);
-		String tmp = "";
+		String city = "";
 		Method_Forecast prove = new Method_Forecast();
 		
-		while(!tmp.equals("0")){
+		while(!city.equals("0")){
 			System.out.println("Insert City (0 for Exit): ");
-			tmp = TMP.nextLine();
-			if(!tmp.equals("0")) {
-				System.out.println(prove.Today(tmp, false)+"\n\n");
-				for(int i=0;i<prove.Future(tmp, 6, false, false).size();i++) {
-					System.out.println(prove.Future(tmp, 6, false, false).get(i));
+			city = TMP.nextLine();
+			if(!city.equals("0")) {
+				int tmp2=1;
+				System.out.println("Choices:\n"
+						+ "1-Today\n"
+						+ "2-Future\n"
+						+ "3-DayandHour\n"
+						+ "4-Day\n"
+						+ "5-Statistic\n"
+						+ "6-AirToday\n"
+						+ "7-AirFuture\n"
+						+ "8-AirDayandHour\n"
+						+ "9-AirDay\n"
+						+ "10-AirStatistic\n"
+						+ "11-FindDayOfWeek\n");
+				tmp2 = TMP.nextInt();
+				System.out.println("\n\n");
+				Boolean americanUnit=true; //1,2,3,4,5,8,9
+				int howMuchDay=0; // 2,5,7
+				boolean today=true; // 2,5,7
+				String date=""; // 3,4,8,9,11
+				boolean localtime=true; //11
+				
+				switch(tmp2) {
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+					System.out.println("Do you want American Unit? 1-Yes 2-No\n");
+					int tmp3 = TMP.nextInt();
+					if(tmp3==1) {
+						americanUnit=true;
+					}else {
+						americanUnit=false;
+					}
+					break;
 				}
-				System.out.println("\n\n"+prove.Statistic(tmp, 6, false, true)+"\n\n");
 				
-				System.out.println(prove.AirToday(tmp)+"\n\n");
-				for(int i=0;i<prove.AirFuture(tmp, 6, false).size();i++) {
-					System.out.println(prove.AirFuture(tmp, 6, false).get(i));
+				switch(tmp2) {
+				case 2:
+				case 5:
+				case 7:
+				case 10:
+					System.out.println("How much day of forecast do you wanna see?");
+					howMuchDay = TMP.nextInt(); 
+					System.out.println("Do you wanna consider also today? 1-yes 2-no");
+					int tmp3 = TMP.nextInt();
+					if(tmp3==1) {
+						today=true;
+					}else {
+						today=false;
+					}
+					break;
 				}
-				System.out.println("\n\n"+prove.AirStatistic(tmp, 6, false)+"\n\n");
 				
-				JAXBContext context = JAXBContext.newInstance(Root.class);
-			    Unmarshaller unmarshaller = context.createUnmarshaller();
-			    RequestToServer Server=new RequestToServer();
-				Server.Request(Server.UrlForecast("Treviso"));
-				Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+				switch(tmp2) {
+				case 3:
+				case 4:
+				case 8:
+				case 9:
+				case 11:
+					TMP.nextLine();
+					System.out.println("write a day in format yyyy-mm-dd HH:MM");
+					String tmp3 = TMP.nextLine();
+					date=tmp3;
+					break;
+				}
 				
-				System.out.println(prove.DayandHour(tmp, false, "2023-03-30 15:05"));
+				switch(tmp2) {
+				case 11:
+					System.out.println("is in the format localtime? 1-yes 2-no");
+					int tmp3 = TMP.nextInt();
+					if(tmp3==1) {
+						localtime=true;
+					}else {
+						localtime=false;
+					}
+					break;
+				}
 				
-				System.out.println(prove.Day(tmp, false, "2023-03-30 16:05\""));
-				
-				System.out.println("Day of the week: "+prove.findDayOfWeek(forecast.getLocation().getLocaltime().toString(),true));
-				
-				System.out.println("\n\n\n\n");
+				switch(tmp2) {
+				case 1:
+					System.out.println(prove.Today(city, americanUnit));
+					break;
+				case 2:
+					for(int i=0;i<prove.Future(city, howMuchDay, today, americanUnit).size();i++) {
+						System.out.println(prove.Future(city, howMuchDay, today, americanUnit).get(i));
+					}
+					break;
+				case 3:
+					System.out.println(prove.DayandHour(city, americanUnit, date));
+					break;
+				case 4:
+					System.out.println(prove.Day(city, americanUnit, date));
+					break;
+				case 5:
+					System.out.println(prove.Statistic(city, howMuchDay, today, americanUnit));
+					break;
+				case 6:
+					System.out.println(prove.AirToday(city));
+					break;
+				case 7:
+					for(int i=0;i<prove.AirFuture(city, howMuchDay, today).size();i++) {
+						System.out.println(prove.AirFuture(city, howMuchDay, today).get(i));
+					}
+					break;
+				case 8:
+					System.out.println(prove.AirDayandHour(city, date));
+					break;
+				case 9:
+					System.out.println(prove.AirDay(city, date));
+					break;
+				case 10:
+					System.out.println(prove.AirStatistic(city, howMuchDay, today));
+					break;
+				case 11:
+					System.out.println("Day of the week: "+prove.FindDayOfWeek(date,localtime));
+					break;
+				}
+				System.out.println("\n\n");
+				city = TMP.nextLine();
 			}
 		}
 		TMP.close();
