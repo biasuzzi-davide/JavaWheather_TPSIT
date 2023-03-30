@@ -1,7 +1,11 @@
+package Forecast;
+
 	import java.net.HttpURLConnection;
 	import java.net.URL;
+
 	import java.io.BufferedReader;
 	import java.io.InputStreamReader;
+	
 
 	public class RequestToServer {
 
@@ -41,7 +45,7 @@
 	            in.close();
 
 	            // Print the document XML received of the answer HTTP
-	            //System.out.println(response.toString());
+	            //System.out.println(response.toString())
 	            new XmlFromString(response.toString());
 	        } catch (Exception e) {
 	            System.err.println("Error during request to XML: " + e.getMessage());

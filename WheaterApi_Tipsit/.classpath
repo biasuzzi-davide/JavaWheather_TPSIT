@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-16">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-16">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="Library/codemodel.jar"/>
-	<classpathentry kind="lib" path="Library/dtd-parser.jar"/>
-	<classpathentry kind="lib" path="Library/FastInfoset.jar"/>
-	<classpathentry kind="lib" path="Library/istack-commons-runtime.jar"/>
-	<classpathentry kind="lib" path="Library/istack-commons-tools.jar"/>
-	<classpathentry kind="lib" path="Library/javax.activation-api.jar"/>
-	<classpathentry kind="lib" path="Library/jaxb-api.jar"/>
-	<classpathentry kind="lib" path="Library/jaxb-jxc.jar"/>
-	<classpathentry kind="lib" path="Library/jaxb-runtime.jar"/>
-	<classpathentry kind="lib" path="Library/jaxb-xjc.jar"/>
-	<classpathentry kind="lib" path="Library/relaxng-datatype.jar"/>
-	<classpathentry kind="lib" path="Library/rngom.jar"/>
-	<classpathentry kind="lib" path="Library/stax-ex.jar"/>
-	<classpathentry kind="lib" path="Library/txw2.jar"/>
-	<classpathentry kind="lib" path="Library/xsom.jar"/>
-	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
-	<classpathentry kind="lib" path="C:/Users/Davide Biasuzzi/Desktop/JavaWheather_TPSIT/WheaterApi_Tipsit/lib/flatlaf-3.0.jar"/>
-	<classpathentry kind="lib" path="lib/flatlaf-3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/codemodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/dtd-parser.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/FastInfoset.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/istack-commons-runtime.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/istack-commons-tools.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/javax.activation-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/jaxb-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/jaxb-jxc.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/jaxb-runtime.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/jaxb-xjc.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/relaxng-datatype.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/rngom.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/stax-ex.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/txw2.jar"/>
+	<classpathentry exported="true" kind="lib" path="Library/xsom.jar"/>
+	<classpathentry exported="true" kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/flatlaf-3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

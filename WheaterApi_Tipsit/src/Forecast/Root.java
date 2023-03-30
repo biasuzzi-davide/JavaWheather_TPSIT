@@ -8,9 +8,14 @@
 
 package Forecast;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -312,6 +317,34 @@ public class Root {
     @XmlElement(required = true)
     protected Object alerts;
 
+    private static Root istance = null;
+    public static Root getIstance() throws JAXBException
+    {
+    	System.out.println("\n\n\nGET ISTANCE\n\n\n");
+    	if(istance==null)
+    		istance=Root.refresh();
+    	return istance;
+    }
+    
+    public static Root refresh(String city) throws JAXBException
+    {
+    	JAXBContext context = JAXBContext.newInstance(Root.class);
+	    Unmarshaller unmarshaller = context.createUnmarshaller();
+	    RequestToServer Server=new RequestToServer();
+		Server.Request(Server.UrlForecast(city));
+		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+		return forecast;
+    }
+    
+    public static Root refresh() throws JAXBException
+    {
+    	JAXBContext context = JAXBContext.newInstance(Root.class);
+	    Unmarshaller unmarshaller = context.createUnmarshaller();
+		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+		return forecast;
+    }
+    
+    
     /**
      * Recupera il valore della proprietà location.
      * 

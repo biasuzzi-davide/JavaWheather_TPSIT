@@ -1,10 +1,6 @@
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
-
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import Forecast.Root;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,13 +13,8 @@ public class Method_Forecast {
 	public Method_Forecast() {}
 	
 	public String Today(String city, Boolean AmericanUnit) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
+		Root forecast = Root.getIstance();
 		String Final="";
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
-		
 		
 	    Final+="City: "+forecast.getLocation().getName()+"\n";
 	    Final+="Region: "+forecast.getLocation().getRegion()+"\n";
@@ -58,12 +49,8 @@ public class Method_Forecast {
 	}
 	
 	public ArrayList<String> Future(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
-		String Tmp="";
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+		Root forecast = Root.getIstance();
+		String Tmp="";		
 		ArrayList<String> Final = new ArrayList<String>();
 		
 		
@@ -110,12 +97,8 @@ public class Method_Forecast {
 	}
 	
 	public String DayandHour(String city, Boolean AmericanUnit,String date) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
+		Root forecast = Root.getIstance();
 		String Final="";
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
 	    String[] piecesDate = date.split(" ");
 		boolean find1=false;
 		boolean find2=false;
@@ -184,12 +167,8 @@ public class Method_Forecast {
 	}
 
 	public String Day(String city, Boolean AmericanUnit,String date) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
+		Root forecast = Root.getIstance();
 		String Final="";
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
 	    String[] piecesDate = date.split(" ");
 		boolean find=false;
 	    
@@ -238,11 +217,7 @@ public class Method_Forecast {
 	}
 	
 	public String Statistic(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+		Root forecast = Root.getIstance();
 		double MaxTemp = 0.0;
 		double MinTemp = 0.0;
 		double AvgTemp = 0.0;
@@ -312,12 +287,8 @@ public class Method_Forecast {
 	}
 	
 	public String AirToday(String city) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
+		Root forecast = Root.getIstance();
 		String Final="";
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
 		
 		
 		Final+="City: "+forecast.getLocation().getName()+"\n";
@@ -338,12 +309,8 @@ public class Method_Forecast {
 	}
 	
 	public ArrayList<String> AirFuture(String city,int howMuchDay, boolean today) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
+		Root forecast = Root.getIstance();
 		String Tmp="";
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
 		ArrayList<String> Final = new ArrayList<String>();
 		
 		
@@ -377,12 +344,8 @@ public class Method_Forecast {
 	}
 		
 	public String AirDayandHour(String city,String date) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
+		Root forecast = Root.getIstance();
 		String Final="";
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
 	    String[] piecesDate = date.split(" ");
 		boolean find1=false;
 		boolean find2=false;
@@ -438,12 +401,8 @@ public class Method_Forecast {
 	}
 
 	public String AirDay(String city,String date) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
+		Root forecast = Root.getIstance();
 		String Final="";
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
 	    String[] piecesDate = date.split(" ");
 		boolean find=false;
 	    
@@ -481,11 +440,7 @@ public class Method_Forecast {
 	}	
 	
 	public String AirStatistic(String city,int howMuchDay, boolean today) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+		Root forecast = Root.getIstance();
 		double Co = 0.0;
 		double No2 = 0.0;
 		double O3 = 0.0;

@@ -1,24 +1,33 @@
 import java.util.Scanner;
 import javax.xml.bind.JAXBException;
+
+import Forecast.Root;
+
 import java.text.ParseException;
 
 //API Key
 //4dcd56b9af624eaaa11132617231503
 //Api Link
 //https://www.weatherapi.com/api-explorer.aspx
- 
+
 public class Main {
 
 	public static void main(String[] args) throws JAXBException, ParseException{
 		// TODO Auto-generated method stub
 		Scanner TMP = new Scanner(System.in);
-		String city = "";
+		String city = Root.refresh().getLocation().getName();
+		String last = city;
 		Method_Forecast prove = new Method_Forecast();
 		
 		while(!city.equals("0")){
 			System.out.println("Insert City (0 for Exit): ");
 			city = TMP.nextLine();
 			if(!city.equals("0")) {
+				if(!city.equals(last))
+				{
+					last=city;
+					Root.refresh(city);
+				}
 				int tmp2=1;
 				System.out.println("Choices:\n"
 						+ "1-Today\n"
