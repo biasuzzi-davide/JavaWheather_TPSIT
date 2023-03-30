@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.xml.bind.JAXBException;
 
@@ -18,6 +19,7 @@ public class Main {
 		String city = Root.refresh().getLocation().getName();
 		String last = city;
 		Method_Forecast prove = new Method_Forecast();
+		ArrayList<String> tmp = new ArrayList<String>();
 		
 		while(!city.equals("0")){
 			System.out.println("Insert City (0 for Exit): ");
@@ -112,8 +114,9 @@ public class Main {
 					System.out.println(prove.Today(city, americanUnit));
 					break;
 				case 2:
-					for(int i=0;i<prove.Future(city, howMuchDay, today, americanUnit).size();i++) {
-						System.out.println(prove.Future(city, howMuchDay, today, americanUnit).get(i));
+					tmp = prove.Future(city, howMuchDay, today, americanUnit);
+					for(int i=0;i<tmp.size();i++) {
+						System.out.println(tmp.get(i));
 					}
 					break;
 				case 3:
@@ -129,8 +132,9 @@ public class Main {
 					System.out.println(prove.AirToday(city));
 					break;
 				case 7:
-					for(int i=0;i<prove.AirFuture(city, howMuchDay, today).size();i++) {
-						System.out.println(prove.AirFuture(city, howMuchDay, today).get(i));
+					tmp = prove.AirFuture(city, howMuchDay, today);
+					for(int i=0;i<tmp.size();i++) {
+						System.out.println(tmp.get(i));
 					}
 					break;
 				case 8:
