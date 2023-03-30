@@ -1,12 +1,23 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.border.AbstractBorder;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -19,6 +30,14 @@ import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import java.awt.Label;
 import java.awt.Dimension;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.SoftBevelBorder;
+
+import com.formdev.flatlaf.FlatDarkLaf;
+
+import javax.swing.border.BevelBorder;
+import javax.swing.border.MatteBorder;
+import java.awt.Color;
 
 public class Window extends JFrame implements ActionListener, WindowListener{
 
@@ -43,10 +62,11 @@ public class Window extends JFrame implements ActionListener, WindowListener{
     }
 
     private void initialize() {
+    	FlatDarkLaf.setup();
     	try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    UIManager.setLookAndFeel("flatlaf-3.0");
                     break;
                 }
             }
@@ -70,31 +90,56 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         }
         
         frame = new JFrame();
+        frame.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
         frame.setBounds(200, 200, 1000, 600);
         frame.setResizable(false);
         frame.setTitle("JavaWheather");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
 
         JPanel panel = new HomePane();
-        frame.getContentPane().add(panel, BorderLayout.CENTER);
+        panel.setBounds(0, 0, 986, 539);
+        frame.getContentPane().add(panel);
         
         JMenuBar menuBar = new JMenuBar();
         menuBar.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         frame.setJMenuBar(menuBar);
         
-        Label label = new Label("Nervesa della Battaglia");
-        menuBar.add(label);
-        
         JButton btnNewButton = new JButton("Home");
         menuBar.add(btnNewButton);
         
-        txtInsertCity = new JTextField();
-        txtInsertCity.setToolTipText("Insert City");
-        txtInsertCity.setSize(new Dimension(7, 40));
-        txtInsertCity.setPreferredSize(new Dimension(40, 20));
-        txtInsertCity.setMaximumSize(new Dimension(7, 20));
-        menuBar.add(txtInsertCity);
-        txtInsertCity.setColumns(10);
+        Component horizontalStrut = Box.createHorizontalStrut(20);
+        horizontalStrut.setMaximumSize(new Dimension(30, 32767));
+        horizontalStrut.setPreferredSize(new Dimension(30, 0));
+        horizontalStrut.setMinimumSize(new Dimension(30, 0));
+        menuBar.add(horizontalStrut);
+
+        
+        
+        
+        ImageIcon imageIcon = new ImageIcon("src/images/2search.png");
+		Image image = imageIcon.getImage();
+		Image newimg = image.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH);
+		imageIcon = new ImageIcon(newimg);
+		
+		txtInsertCity = new JTextField();
+		txtInsertCity.setOpaque(true);
+		txtInsertCity.setText("City");
+		txtInsertCity.setMinimumSize(new Dimension(120, 22));
+		txtInsertCity.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInsertCity.setToolTipText("Insert City");
+		txtInsertCity.setSize(new Dimension(7, 40));
+		txtInsertCity.setPreferredSize(new Dimension(40, 20));
+		txtInsertCity.setMaximumSize(new Dimension(120, 22));
+		menuBar.add(txtInsertCity);
+		txtInsertCity.setColumns(20);
+		
+		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
+		horizontalStrut_1.setMaximumSize(new Dimension(10, 32767));
+		menuBar.add(horizontalStrut_1);
+		JButton btnNewButton_1 = new JButton("Search");
+		menuBar.add(btnNewButton_1);
+//		btnNewButton_1.setPreferredSize(new Dimension(imageIcon.getIconWidth(), imageIcon.getIconHeight()));
     }
 
 	@Override

@@ -14,7 +14,7 @@ public class HomePane extends JPanel {
 	 * Create the panel.
 	 */
 	public HomePane() {
-		this.setSize(9000, 500);
+		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[26.00][][][60:60:60][][][][][60:60:60][][][][][60:60:60][][][][][60:60:60][][][][][][60:60:60][]", "[][][][][][]"));
 		
 		JLabel lblNewLabel = new JLabel("Lunedi");
@@ -43,7 +43,7 @@ public class HomePane extends JPanel {
 		add(lblNewLabel_4, "cell 24 1,alignx center,aligny center");
 		
 
-		ImageIcon imageIcon = new ImageIcon("src/pngtree-sun-icon-isolated-on-background-png-image_1790445.jpg");
+		ImageIcon imageIcon = new ImageIcon("src/images/sole.png");
 		Image image = imageIcon.getImage();
 		Image newimg = image.getScaledInstance(60, 60, java.awt.Image.SCALE_SMOOTH);
 		imageIcon = new ImageIcon(newimg);
