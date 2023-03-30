@@ -93,7 +93,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         frame.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
         frame.setBounds(200, 200, 1000, 600);
         frame.setResizable(false);
-        frame.setTitle("JavaWheather");
+        frame.setTitle("JavaWheather | Biasuzzi & Parovel");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
@@ -105,8 +105,20 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         menuBar.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         frame.setJMenuBar(menuBar);
         
+        JMenu mnNewMenu = new JMenu("Menu");
+        mnNewMenu.setHorizontalAlignment(SwingConstants.CENTER);
+        mnNewMenu.setHorizontalTextPosition(SwingConstants.CENTER);
+        menuBar.add(mnNewMenu);
+        
         JButton btnNewButton = new JButton("Home");
-        menuBar.add(btnNewButton);
+        btnNewButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        btnNewButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnNewButton.setSize(new Dimension(80, 22));
+        btnNewButton.setPreferredSize(new Dimension(80, 22));
+        mnNewMenu.add(btnNewButton);
+        
+        JButton btnNewButton_2 = new JButton("Exit");
+        mnNewMenu.add(btnNewButton_2);
         
         Component horizontalStrut = Box.createHorizontalStrut(20);
         horizontalStrut.setMaximumSize(new Dimension(30, 32767));
