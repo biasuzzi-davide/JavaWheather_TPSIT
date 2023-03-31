@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.Icon;
 import java.awt.Font;
+import javax.swing.JTextPane;
 public class HomePane extends JPanel {
 
 	/**
@@ -17,7 +18,7 @@ public class HomePane extends JPanel {
 	 */
 	public HomePane() {
 		this.setSize(1000, 600);
-		setLayout(new MigLayout("", "[15:15:15][100:100:100][100:100:100][100:100:100][100:100:100][100:100:100][100:100:100][100:100:100][100:100:100][100:100:100][25:25:25]", "[25][30][20][50][20][25][]"));
+		setLayout(new MigLayout("", "[15:15:15][100:100:100,grow][100:100:100,grow][100:100:100,grow][100:100:100][100:100:100][100:100:100][100:100:100,grow][100:100:100][100:100:100,grow][25:25:25]", "[25][30][20][50][20][25][][][grow]"));
 		
 		JLabel label_day1 = new JLabel("Lunedi");
 		label_day1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -116,6 +117,31 @@ public class HomePane extends JPanel {
 		lblTemp_day5.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day5.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day5, "cell 9 6,growx");
+		
+		JTextPane mainText1 = new JTextPane();
+		mainText1.setEditable(false);
+		mainText1.setText("fojwrbwrjgb\r\nwbiewbfjew\r\nfbewfewfwe\r\nfewfewfeww");
+		add(mainText1, "cell 1 8,alignx center,growy");
+		
+		JTextPane mainText2 = new JTextPane();
+		mainText2.setEditable(false);
+		mainText2.setText("fojwrbwrjgb\r\nwbiewbfjew\r\nfbewfewfwe\r\nfewfewfeww\r\n");
+		add(mainText2, "cell 3 8,alignx center,aligny top");
+		
+		JTextPane mainText3 = new JTextPane();
+		mainText3.setText("fojwrbwrjgb\r\nwbiewbfjew\r\nfbewfewfwe\r\nfewfewfeww\r\n");
+		mainText3.setEditable(false);
+		add(mainText3, "cell 5 8,alignx center,aligny top");
+		
+		JTextPane mainText4 = new JTextPane();
+		mainText4.setText("fojwrbwrjgb\r\nwbiewbfjew\r\nfbewfewfwe\r\nfewfewfeww\r\n");
+		mainText4.setEditable(false);
+		add(mainText4, "cell 7 8,alignx center,aligny top");
+		
+		JTextPane mainText5 = new JTextPane();
+		mainText5.setText("fojwrbwrjgb\r\nwbiewbfjew\r\nfbewfewfwe\r\nfewfewfeww\r\n");
+		mainText5.setEditable(false);
+		add(mainText5, "cell 9 8,alignx center,aligny top");
 	}
 
 }
