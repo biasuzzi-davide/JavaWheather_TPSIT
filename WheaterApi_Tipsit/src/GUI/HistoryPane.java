@@ -11,6 +11,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import java.awt.Font;
 import javax.swing.JTextPane;
+import javax.swing.JButton;
 public class HistoryPane extends JPanel {
 
 	/**
@@ -18,31 +19,34 @@ public class HistoryPane extends JPanel {
 	 */
 	public HistoryPane() {
 		this.setSize(1000, 600);
-		setLayout(new MigLayout("", "[15:15:15][100:100:100,grow][100:100:100,grow][100:100:100,grow][100:100:100][100:100:100][100:100:100][100:100:100,grow][100:100:100][100:100:100,grow][25:25:25]", "[25][30][20][50][20][25][][][grow]"));
+		setLayout(new MigLayout("", "[15:15:15][116,grow][80][116,grow][80][116,grow][80][116,grow][80][116,grow][25:25:25]", "[25][30][40][50][20][25][][][100][120][]"));
 		
-		JLabel lblMercoledi = new JLabel("Mercoledi");
-		lblMercoledi.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblMercoledi.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblMercoledi.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblMercoledi, "cell 1 1,alignx center,aligny center");
+		JLabel placeLabel = new JLabel("Treviso, Veneto, Italy");
+		add(placeLabel, "cell 5 0");
 		
-		JLabel lblGiovedi = new JLabel("Giovedi");
-		lblGiovedi.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblGiovedi.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblGiovedi.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblGiovedi, "cell 3 1,alignx center,aligny center");
+		JLabel label_day1 = new JLabel("Lunedi");
+		label_day1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		label_day1.setHorizontalTextPosition(SwingConstants.CENTER);
+		label_day1.setHorizontalAlignment(SwingConstants.CENTER);
+		add(label_day1, "cell 1 1,alignx center,aligny center");
 		
-		JLabel lblVenerdi = new JLabel("Venerdi");
-		lblVenerdi.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblVenerdi.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVenerdi.setHorizontalTextPosition(SwingConstants.CENTER);
-		add(lblVenerdi, "cell 5 1,alignx center,aligny center");
+		JLabel label_day2 = new JLabel("Martedi");
+		label_day2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		label_day2.setHorizontalTextPosition(SwingConstants.CENTER);
+		label_day2.setHorizontalAlignment(SwingConstants.CENTER);
+		add(label_day2, "cell 3 1,alignx center,aligny center");
 		
-		JLabel lblSabato = new JLabel("Sabato");
-		lblSabato.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblSabato.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblSabato.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblSabato, "cell 7 1,alignx center,aligny center");
+		JLabel label_day3 = new JLabel("Mercoledì");
+		label_day3.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		label_day3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_day3.setHorizontalTextPosition(SwingConstants.CENTER);
+		add(label_day3, "cell 5 1,alignx center,aligny center");
+		
+		JLabel label_day4 = new JLabel("Giovedì");
+		label_day4.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		label_day4.setHorizontalTextPosition(SwingConstants.CENTER);
+		label_day4.setHorizontalAlignment(SwingConstants.CENTER);
+		add(label_day4, "cell 7 1,alignx center,aligny center");
 		
 
 		ImageIcon imageIcon = new ImageIcon("src/images/sole.png");
@@ -50,11 +54,26 @@ public class HistoryPane extends JPanel {
 		Image newimg = image.getScaledInstance(60, 60, java.awt.Image.SCALE_SMOOTH);
 		imageIcon = new ImageIcon(newimg);
 		
-		JLabel lblDomenica = new JLabel("Domenica");
-		lblDomenica.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblDomenica.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDomenica.setHorizontalTextPosition(SwingConstants.CENTER);
-		add(lblDomenica, "cell 9 1,alignx center,aligny center");
+		JLabel label_day5 = new JLabel("Venerdi");
+		label_day5.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		label_day5.setHorizontalAlignment(SwingConstants.CENTER);
+		label_day5.setHorizontalTextPosition(SwingConstants.CENTER);
+		add(label_day5, "cell 9 1,alignx center,aligny center");
+		
+		JLabel day1day = new JLabel("19th March");
+		add(day1day, "cell 1 2,alignx center,aligny top");
+		
+		JLabel day2day = new JLabel("19th March");
+		add(day2day, "cell 3 2,alignx center,aligny top");
+		
+		JLabel day3day = new JLabel("19th March");
+		add(day3day, "cell 5 2,alignx center,aligny top");
+		
+		JLabel day4day = new JLabel("19th March");
+		add(day4day, "cell 7 2,alignx center,aligny top");
+		
+		JLabel day5day = new JLabel("19th March");
+		add(day5day, "cell 9 2,alignx center,aligny top");
 		 
 		JLabel iconLabel_day1 = new JLabel(imageIcon);
 //		iconLabel.setMinimumSize(new Dimension(200, 200));
@@ -120,28 +139,68 @@ public class HistoryPane extends JPanel {
 		
 		JTextPane mainText1 = new JTextPane();
 		mainText1.setEditable(false);
-		mainText1.setText("blallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal\r\nblallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal");
-		add(mainText1, "cell 1 8,alignx center,growy");
+		mainText1.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
+		add(mainText1, "cell 1 8,alignx center,aligny top");
 		
 		JTextPane mainText2 = new JTextPane();
 		mainText2.setEditable(false);
-		mainText2.setText("blallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal\r\nblallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal");
+		mainText2.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
 		add(mainText2, "cell 3 8,alignx center,aligny top");
 		
 		JTextPane mainText3 = new JTextPane();
-		mainText3.setText("blallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal\r\nblallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal");
+		mainText3.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
 		mainText3.setEditable(false);
 		add(mainText3, "cell 5 8,alignx center,aligny top");
 		
 		JTextPane mainText4 = new JTextPane();
-		mainText4.setText("blallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal\r\nblallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal");
+		mainText4.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
 		mainText4.setEditable(false);
 		add(mainText4, "cell 7 8,alignx center,aligny top");
 		
 		JTextPane mainText5 = new JTextPane();
-		mainText5.setText("blallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal\r\nblallalalala\r\nbllalalalala\r\nblallalalala\r\nbllalalalaal");
+		mainText5.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
 		mainText5.setEditable(false);
 		add(mainText5, "cell 9 8,alignx center,aligny top");
+		
+		JTextPane airQuality1 = new JTextPane();
+		airQuality1.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality1.setEditable(false);
+		add(airQuality1, "cell 1 9,alignx center,aligny top");
+		
+		JTextPane airQuality2 = new JTextPane();
+		airQuality2.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality2.setEditable(false);
+		add(airQuality2, "cell 3 9,alignx center,aligny top");
+		
+		JTextPane airQuality3 = new JTextPane();
+		airQuality3.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality3.setEditable(false);
+		add(airQuality3, "cell 5 9,alignx center,aligny top");
+		
+		JTextPane airQuality4 = new JTextPane();
+		airQuality4.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality4.setEditable(false);
+		add(airQuality4, "cell 7 9,alignx center,aligny top");
+		
+		JTextPane airQuality5 = new JTextPane();
+		airQuality5.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality5.setEditable(false);
+		add(airQuality5, "cell 9 9,alignx center,aligny top");
+		
+		JButton seeMore1 = new JButton("See More");
+		add(seeMore1, "cell 1 10,alignx center,aligny center");
+		
+		JButton seeMore2 = new JButton("See More");
+		add(seeMore2, "cell 3 10,alignx center,aligny center");
+		
+		JButton seeMore3 = new JButton("See More");
+		add(seeMore3, "cell 5 10,alignx center,aligny center");
+		
+		JButton seeMore4 = new JButton("See More");
+		add(seeMore4, "cell 7 10,alignx center,aligny center");
+		
+		JButton seeMore5 = new JButton("See More");
+		add(seeMore5, "cell 9 10,alignx center,aligny center");
 	}
 
 }

@@ -71,13 +71,13 @@ public class Window extends JFrame implements ActionListener, WindowListener{
     private void initialize() {
     	FlatDarkLaf.setup();
     	panels=new ArrayList<JPanel>();
-    	panels.add(new HomePane());
+    	panels.add(new HistoryPane());
     	panels.add(new CreditsPane());
     	panels.add(new HistoryPane());
     	
         
         frame = new JFrame();
-        frame.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+        frame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         frame.setBounds(200, 200, 1000, 600);
         frame.setResizable(false);
         frame.setTitle("JavaWheather | Biasuzzi & Parovel");
