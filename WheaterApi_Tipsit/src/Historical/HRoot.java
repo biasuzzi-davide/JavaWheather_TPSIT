@@ -2,11 +2,11 @@
 // Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.3.1 
 // Vedere <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2023.03.16 alle 11:47:03 AM CET 
+// Generato il: 2023.03.31 alle 09:21:33 AM CEST 
 //
 
 
-package Forecast;
+package Historical;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -53,75 +53,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
- *         &lt;element name="current"&gt;
- *           &lt;complexType&gt;
- *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                 &lt;sequence&gt;
- *                   &lt;element name="last_updated_epoch" type="{http://www.w3.org/2001/XMLSchema}unsignedInt"/&gt;
- *                   &lt;element name="last_updated" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *                   &lt;element name="temp_c" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="temp_f" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                   &lt;element name="is_day" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="condition"&gt;
- *                     &lt;complexType&gt;
- *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                           &lt;sequence&gt;
- *                             &lt;element name="text" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *                             &lt;element name="icon" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *                             &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
- *                           &lt;/sequence&gt;
- *                         &lt;/restriction&gt;
- *                       &lt;/complexContent&gt;
- *                     &lt;/complexType&gt;
- *                   &lt;/element&gt;
- *                   &lt;element name="wind_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                   &lt;element name="wind_kph" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="wind_dir" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *                   &lt;element name="pressure_mb" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
- *                   &lt;element name="pressure_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                   &lt;element name="precip_mm" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="precip_in" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="humidity" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="cloud" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="feelslike_c" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                   &lt;element name="feelslike_f" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="vis_km" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="vis_miles" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                   &lt;element name="gust_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                   &lt;element name="gust_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                   &lt;element name="air_quality"&gt;
- *                     &lt;complexType&gt;
- *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                           &lt;sequence&gt;
- *                             &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                             &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                             &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                             &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                             &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                             &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                             &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                             &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                           &lt;/sequence&gt;
- *                         &lt;/restriction&gt;
- *                       &lt;/complexContent&gt;
- *                     &lt;/complexType&gt;
- *                   &lt;/element&gt;
- *                 &lt;/sequence&gt;
- *               &lt;/restriction&gt;
- *             &lt;/complexContent&gt;
- *           &lt;/complexType&gt;
- *         &lt;/element&gt;
  *         &lt;element name="forecast"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *                 &lt;sequence&gt;
- *                   &lt;element name="forecastday" maxOccurs="unbounded"&gt;
+ *                   &lt;element name="forecastday"&gt;
  *                     &lt;complexType&gt;
  *                       &lt;complexContent&gt;
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -143,14 +80,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                       &lt;element name="maxwind_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
  *                                       &lt;element name="totalprecip_mm" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
  *                                       &lt;element name="totalprecip_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                       &lt;element name="totalsnow_cm" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
  *                                       &lt;element name="avgvis_km" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
  *                                       &lt;element name="avgvis_miles" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
  *                                       &lt;element name="avghumidity" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                       &lt;element name="daily_will_it_rain" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                       &lt;element name="daily_chance_of_rain" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                       &lt;element name="daily_will_it_snow" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                       &lt;element name="daily_chance_of_snow" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
  *                                       &lt;element name="condition"&gt;
  *                                         &lt;complexType&gt;
  *                                           &lt;complexContent&gt;
@@ -165,24 +97,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                         &lt;/complexType&gt;
  *                                       &lt;/element&gt;
  *                                       &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                       &lt;element name="air_quality"&gt;
- *                                         &lt;complexType&gt;
- *                                           &lt;complexContent&gt;
- *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                                               &lt;sequence minOccurs="0"&gt;
- *                                                 &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                                 &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                               &lt;/sequence&gt;
- *                                             &lt;/restriction&gt;
- *                                           &lt;/complexContent&gt;
- *                                         &lt;/complexType&gt;
- *                                       &lt;/element&gt;
  *                                     &lt;/sequence&gt;
  *                                   &lt;/restriction&gt;
  *                                 &lt;/complexContent&gt;
@@ -199,8 +113,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                       &lt;element name="moonset" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *                                       &lt;element name="moon_phase" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *                                       &lt;element name="moon_illumination" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                       &lt;element name="is_moon_up" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                       &lt;element name="is_sun_up" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
  *                                     &lt;/sequence&gt;
  *                                   &lt;/restriction&gt;
  *                                 &lt;/complexContent&gt;
@@ -231,7 +143,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                       &lt;/element&gt;
  *                                       &lt;element name="wind_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
  *                                       &lt;element name="wind_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                       &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
+ *                                       &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
  *                                       &lt;element name="wind_dir" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *                                       &lt;element name="pressure_mb" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
  *                                       &lt;element name="pressure_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
@@ -256,24 +168,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                       &lt;element name="gust_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
  *                                       &lt;element name="gust_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
  *                                       &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                       &lt;element name="air_quality"&gt;
- *                                         &lt;complexType&gt;
- *                                           &lt;complexContent&gt;
- *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                                               &lt;sequence minOccurs="0"&gt;
- *                                                 &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
- *                                                 &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                                 &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
- *                                               &lt;/sequence&gt;
- *                                             &lt;/restriction&gt;
- *                                           &lt;/complexContent&gt;
- *                                         &lt;/complexType&gt;
- *                                       &lt;/element&gt;
  *                                     &lt;/sequence&gt;
  *                                   &lt;/restriction&gt;
  *                                 &lt;/complexContent&gt;
@@ -289,7 +183,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
- *         &lt;element name="alerts" type="{http://www.w3.org/2001/XMLSchema}anyType"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -301,58 +194,52 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "location",
-    "current",
-    "forecast",
-    "alerts"
+    "forecast"
 })
 @XmlRootElement(name = "root")
-public class Root {
+public class HRoot {
 
     @XmlElement(required = true)
-    protected Root.Location location;
+    protected HRoot.Location location;
     @XmlElement(required = true)
-    protected Root.Current current;
-    @XmlElement(required = true)
-    protected Root.Forecast forecast;
-    @XmlElement(required = true)
-    protected Object alerts;
+    protected HRoot.Forecast forecast;
 
-    private static Root istance = null;
-    public static Root getIstance() throws JAXBException
+    
+    private static HRoot istance = null;
+    public static HRoot getIstance() throws JAXBException
     {
     	if(istance==null)
-    		istance=Root.refresh();
+    		istance=HRoot.refresh();
     	return istance;
     }
     
-    public static Root refresh(String city) throws JAXBException
+    public static HRoot refresh(String city,String date) throws JAXBException
     {
-    	JAXBContext context = JAXBContext.newInstance(Root.class);
+    	JAXBContext context = JAXBContext.newInstance(HRoot.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
-	    RequestToServer Server=new RequestToServer();
-		Server.Request(Server.UrlForecast(city));
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+	    HRequestToServer Server=new HRequestToServer();
+		Server.HRequest(Server.HUrlForecast(city,date));
+		HRoot forecast=(HRoot) unmarshaller.unmarshal(new File("src/Historical/Historical.xml"));
 		return forecast;
     }
     
-    public static Root refresh() throws JAXBException
+    public static HRoot refresh() throws JAXBException
     {
-    	JAXBContext context = JAXBContext.newInstance(Root.class);
+    	JAXBContext context = JAXBContext.newInstance(HRoot.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
-		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
+		HRoot forecast=(HRoot) unmarshaller.unmarshal(new File("src/Historical/Historical.xml"));
 		return forecast;
     }
-    
     
     /**
      * Recupera il valore della proprietà location.
      * 
      * @return
      *     possible object is
-     *     {@link Root.Location }
+     *     {@link HRoot.Location }
      *     
      */
-    public Root.Location getLocation() {
+    public HRoot.Location getLocation() {
         return location;
     }
 
@@ -361,35 +248,11 @@ public class Root {
      * 
      * @param value
      *     allowed object is
-     *     {@link Root.Location }
+     *     {@link HRoot.Location }
      *     
      */
-    public void setLocation(Root.Location value) {
+    public void setLocation(HRoot.Location value) {
         this.location = value;
-    }
-
-    /**
-     * Recupera il valore della proprietà current.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Root.Current }
-     *     
-     */
-    public Root.Current getCurrent() {
-        return current;
-    }
-
-    /**
-     * Imposta il valore della proprietà current.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Root.Current }
-     *     
-     */
-    public void setCurrent(Root.Current value) {
-        this.current = value;
     }
 
     /**
@@ -397,10 +260,10 @@ public class Root {
      * 
      * @return
      *     possible object is
-     *     {@link Root.Forecast }
+     *     {@link HRoot.Forecast }
      *     
      */
-    public Root.Forecast getForecast() {
+    public HRoot.Forecast getForecast() {
         return forecast;
     }
 
@@ -409,37 +272,13 @@ public class Root {
      * 
      * @param value
      *     allowed object is
-     *     {@link Root.Forecast }
+     *     {@link HRoot.Forecast }
      *     
      */
-    public void setForecast(Root.Forecast value) {
+    public void setForecast(HRoot.Forecast value) {
         this.forecast = value;
     }
 
-    /**
-     * Recupera il valore della proprietà alerts.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getAlerts() {
-        return alerts;
-    }
-
-    /**
-     * Imposta il valore della proprietà alerts.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setAlerts(Object value) {
-        this.alerts = value;
-    }
-
 
     /**
      * <p>Classe Java per anonymous complex type.
@@ -451,974 +290,7 @@ public class Root {
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
      *       &lt;sequence&gt;
-     *         &lt;element name="last_updated_epoch" type="{http://www.w3.org/2001/XMLSchema}unsignedInt"/&gt;
-     *         &lt;element name="last_updated" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-     *         &lt;element name="temp_c" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="temp_f" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *         &lt;element name="is_day" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="condition"&gt;
-     *           &lt;complexType&gt;
-     *             &lt;complexContent&gt;
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                 &lt;sequence&gt;
-     *                   &lt;element name="text" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-     *                   &lt;element name="icon" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-     *                   &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
-     *                 &lt;/sequence&gt;
-     *               &lt;/restriction&gt;
-     *             &lt;/complexContent&gt;
-     *           &lt;/complexType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="wind_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *         &lt;element name="wind_kph" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="wind_dir" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-     *         &lt;element name="pressure_mb" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
-     *         &lt;element name="pressure_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *         &lt;element name="precip_mm" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="precip_in" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="humidity" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="cloud" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="feelslike_c" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *         &lt;element name="feelslike_f" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="vis_km" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="vis_miles" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *         &lt;element name="gust_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *         &lt;element name="gust_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *         &lt;element name="air_quality"&gt;
-     *           &lt;complexType&gt;
-     *             &lt;complexContent&gt;
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                 &lt;sequence&gt;
-     *                   &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                   &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                   &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                   &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                   &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                   &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                   &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                   &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                 &lt;/sequence&gt;
-     *               &lt;/restriction&gt;
-     *             &lt;/complexContent&gt;
-     *           &lt;/complexType&gt;
-     *         &lt;/element&gt;
-     *       &lt;/sequence&gt;
-     *     &lt;/restriction&gt;
-     *   &lt;/complexContent&gt;
-     * &lt;/complexType&gt;
-     * </pre>
-     * 
-     * 
-     */
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "lastUpdatedEpoch",
-        "lastUpdated",
-        "tempC",
-        "tempF",
-        "isDay",
-        "condition",
-        "windMph",
-        "windKph",
-        "windDegree",
-        "windDir",
-        "pressureMb",
-        "pressureIn",
-        "precipMm",
-        "precipIn",
-        "humidity",
-        "cloud",
-        "feelslikeC",
-        "feelslikeF",
-        "visKm",
-        "visMiles",
-        "uv",
-        "gustMph",
-        "gustKph",
-        "airQuality"
-    })
-    public static class Current {
-
-        @XmlElement(name = "last_updated_epoch")
-        @XmlSchemaType(name = "unsignedInt")
-        protected long lastUpdatedEpoch;
-        @XmlElement(name = "last_updated", required = true)
-        protected String lastUpdated;
-        @XmlElement(name = "temp_c")
-        @XmlSchemaType(name = "unsignedByte")
-        protected short tempC;
-        @XmlElement(name = "temp_f", required = true)
-        protected BigDecimal tempF;
-        @XmlElement(name = "is_day")
-        @XmlSchemaType(name = "unsignedByte")
-        protected short isDay;
-        @XmlElement(required = true)
-        protected Root.Current.Condition condition;
-        @XmlElement(name = "wind_mph", required = true)
-        protected BigDecimal windMph;
-        @XmlElement(name = "wind_kph")
-        @XmlSchemaType(name = "unsignedByte")
-        protected short windKph;
-        @XmlElement(name = "wind_degree")
-        @XmlSchemaType(name = "unsignedByte")
-        protected short windDegree;
-        @XmlElement(name = "wind_dir", required = true)
-        protected String windDir;
-        @XmlElement(name = "pressure_mb")
-        @XmlSchemaType(name = "unsignedShort")
-        protected int pressureMb;
-        @XmlElement(name = "pressure_in", required = true)
-        protected BigDecimal pressureIn;
-        @XmlElement(name = "precip_mm")
-        @XmlSchemaType(name = "unsignedByte")
-        protected short precipMm;
-        @XmlElement(name = "precip_in")
-        @XmlSchemaType(name = "unsignedByte")
-        protected short precipIn;
-        @XmlSchemaType(name = "unsignedByte")
-        protected short humidity;
-        @XmlSchemaType(name = "unsignedByte")
-        protected short cloud;
-        @XmlElement(name = "feelslike_c", required = true)
-        protected BigDecimal feelslikeC;
-        @XmlElement(name = "feelslike_f")
-        @XmlSchemaType(name = "unsignedByte")
-        protected short feelslikeF;
-        @XmlElement(name = "vis_km")
-        @XmlSchemaType(name = "unsignedByte")
-        protected short visKm;
-        @XmlElement(name = "vis_miles")
-        @XmlSchemaType(name = "unsignedByte")
-        protected short visMiles;
-        @XmlSchemaType(name = "unsignedByte")
-        protected short uv;
-        @XmlElement(name = "gust_mph", required = true)
-        protected BigDecimal gustMph;
-        @XmlElement(name = "gust_kph", required = true)
-        protected BigDecimal gustKph;
-        @XmlElement(name = "air_quality", required = true)
-        protected Root.Current.AirQuality airQuality;
-
-        /**
-         * Recupera il valore della proprietà lastUpdatedEpoch.
-         * 
-         */
-        public long getLastUpdatedEpoch() {
-            return lastUpdatedEpoch;
-        }
-
-        /**
-         * Imposta il valore della proprietà lastUpdatedEpoch.
-         * 
-         */
-        public void setLastUpdatedEpoch(long value) {
-            this.lastUpdatedEpoch = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà lastUpdated.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getLastUpdated() {
-            return lastUpdated;
-        }
-
-        /**
-         * Imposta il valore della proprietà lastUpdated.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setLastUpdated(String value) {
-            this.lastUpdated = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà tempC.
-         * 
-         */
-        public short getTempC() {
-            return tempC;
-        }
-
-        /**
-         * Imposta il valore della proprietà tempC.
-         * 
-         */
-        public void setTempC(short value) {
-            this.tempC = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà tempF.
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public BigDecimal getTempF() {
-            return tempF;
-        }
-
-        /**
-         * Imposta il valore della proprietà tempF.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public void setTempF(BigDecimal value) {
-            this.tempF = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà isDay.
-         * 
-         */
-        public short getIsDay() {
-            return isDay;
-        }
-
-        /**
-         * Imposta il valore della proprietà isDay.
-         * 
-         */
-        public void setIsDay(short value) {
-            this.isDay = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà condition.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Root.Current.Condition }
-         *     
-         */
-        public Root.Current.Condition getCondition() {
-            return condition;
-        }
-
-        /**
-         * Imposta il valore della proprietà condition.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Root.Current.Condition }
-         *     
-         */
-        public void setCondition(Root.Current.Condition value) {
-            this.condition = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà windMph.
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public BigDecimal getWindMph() {
-            return windMph;
-        }
-
-        /**
-         * Imposta il valore della proprietà windMph.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public void setWindMph(BigDecimal value) {
-            this.windMph = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà windKph.
-         * 
-         */
-        public short getWindKph() {
-            return windKph;
-        }
-
-        /**
-         * Imposta il valore della proprietà windKph.
-         * 
-         */
-        public void setWindKph(short value) {
-            this.windKph = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà windDegree.
-         * 
-         */
-        public short getWindDegree() {
-            return windDegree;
-        }
-
-        /**
-         * Imposta il valore della proprietà windDegree.
-         * 
-         */
-        public void setWindDegree(short value) {
-            this.windDegree = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà windDir.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getWindDir() {
-            return windDir;
-        }
-
-        /**
-         * Imposta il valore della proprietà windDir.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setWindDir(String value) {
-            this.windDir = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà pressureMb.
-         * 
-         */
-        public int getPressureMb() {
-            return pressureMb;
-        }
-
-        /**
-         * Imposta il valore della proprietà pressureMb.
-         * 
-         */
-        public void setPressureMb(int value) {
-            this.pressureMb = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà pressureIn.
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public BigDecimal getPressureIn() {
-            return pressureIn;
-        }
-
-        /**
-         * Imposta il valore della proprietà pressureIn.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public void setPressureIn(BigDecimal value) {
-            this.pressureIn = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà precipMm.
-         * 
-         */
-        public short getPrecipMm() {
-            return precipMm;
-        }
-
-        /**
-         * Imposta il valore della proprietà precipMm.
-         * 
-         */
-        public void setPrecipMm(short value) {
-            this.precipMm = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà precipIn.
-         * 
-         */
-        public short getPrecipIn() {
-            return precipIn;
-        }
-
-        /**
-         * Imposta il valore della proprietà precipIn.
-         * 
-         */
-        public void setPrecipIn(short value) {
-            this.precipIn = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà humidity.
-         * 
-         */
-        public short getHumidity() {
-            return humidity;
-        }
-
-        /**
-         * Imposta il valore della proprietà humidity.
-         * 
-         */
-        public void setHumidity(short value) {
-            this.humidity = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà cloud.
-         * 
-         */
-        public short getCloud() {
-            return cloud;
-        }
-
-        /**
-         * Imposta il valore della proprietà cloud.
-         * 
-         */
-        public void setCloud(short value) {
-            this.cloud = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà feelslikeC.
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public BigDecimal getFeelslikeC() {
-            return feelslikeC;
-        }
-
-        /**
-         * Imposta il valore della proprietà feelslikeC.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public void setFeelslikeC(BigDecimal value) {
-            this.feelslikeC = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà feelslikeF.
-         * 
-         */
-        public short getFeelslikeF() {
-            return feelslikeF;
-        }
-
-        /**
-         * Imposta il valore della proprietà feelslikeF.
-         * 
-         */
-        public void setFeelslikeF(short value) {
-            this.feelslikeF = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà visKm.
-         * 
-         */
-        public short getVisKm() {
-            return visKm;
-        }
-
-        /**
-         * Imposta il valore della proprietà visKm.
-         * 
-         */
-        public void setVisKm(short value) {
-            this.visKm = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà visMiles.
-         * 
-         */
-        public short getVisMiles() {
-            return visMiles;
-        }
-
-        /**
-         * Imposta il valore della proprietà visMiles.
-         * 
-         */
-        public void setVisMiles(short value) {
-            this.visMiles = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà uv.
-         * 
-         */
-        public short getUv() {
-            return uv;
-        }
-
-        /**
-         * Imposta il valore della proprietà uv.
-         * 
-         */
-        public void setUv(short value) {
-            this.uv = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà gustMph.
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public BigDecimal getGustMph() {
-            return gustMph;
-        }
-
-        /**
-         * Imposta il valore della proprietà gustMph.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public void setGustMph(BigDecimal value) {
-            this.gustMph = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà gustKph.
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public BigDecimal getGustKph() {
-            return gustKph;
-        }
-
-        /**
-         * Imposta il valore della proprietà gustKph.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigDecimal }
-         *     
-         */
-        public void setGustKph(BigDecimal value) {
-            this.gustKph = value;
-        }
-
-        /**
-         * Recupera il valore della proprietà airQuality.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Root.Current.AirQuality }
-         *     
-         */
-        public Root.Current.AirQuality getAirQuality() {
-            return airQuality;
-        }
-
-        /**
-         * Imposta il valore della proprietà airQuality.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Root.Current.AirQuality }
-         *     
-         */
-        public void setAirQuality(Root.Current.AirQuality value) {
-            this.airQuality = value;
-        }
-
-
-        /**
-         * <p>Classe Java per anonymous complex type.
-         * 
-         * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;sequence&gt;
-         *         &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *         &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *         &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *         &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *         &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *         &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *         &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *         &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *       &lt;/sequence&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "co",
-            "no2",
-            "o3",
-            "so2",
-            "pm25",
-            "pm10",
-            "usEpaIndex",
-            "gbDefraIndex"
-        })
-        public static class AirQuality {
-
-            @XmlElement(required = true)
-            protected BigDecimal co;
-            @XmlElement(required = true)
-            protected BigDecimal no2;
-            @XmlElement(required = true)
-            protected BigDecimal o3;
-            @XmlElement(required = true)
-            protected BigDecimal so2;
-            @XmlElement(name = "pm2_5", required = true)
-            protected BigDecimal pm25;
-            @XmlElement(required = true)
-            protected BigDecimal pm10;
-            @XmlElement(name = "us-epa-index")
-            @XmlSchemaType(name = "unsignedByte")
-            protected short usEpaIndex;
-            @XmlElement(name = "gb-defra-index")
-            @XmlSchemaType(name = "unsignedByte")
-            protected short gbDefraIndex;
-
-            /**
-             * Recupera il valore della proprietà co.
-             * 
-             * @return
-             *     possible object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public BigDecimal getCo() {
-                return co;
-            }
-
-            /**
-             * Imposta il valore della proprietà co.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public void setCo(BigDecimal value) {
-                this.co = value;
-            }
-
-            /**
-             * Recupera il valore della proprietà no2.
-             * 
-             * @return
-             *     possible object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public BigDecimal getNo2() {
-                return no2;
-            }
-
-            /**
-             * Imposta il valore della proprietà no2.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public void setNo2(BigDecimal value) {
-                this.no2 = value;
-            }
-
-            /**
-             * Recupera il valore della proprietà o3.
-             * 
-             * @return
-             *     possible object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public BigDecimal getO3() {
-                return o3;
-            }
-
-            /**
-             * Imposta il valore della proprietà o3.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public void setO3(BigDecimal value) {
-                this.o3 = value;
-            }
-
-            /**
-             * Recupera il valore della proprietà so2.
-             * 
-             * @return
-             *     possible object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public BigDecimal getSo2() {
-                return so2;
-            }
-
-            /**
-             * Imposta il valore della proprietà so2.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public void setSo2(BigDecimal value) {
-                this.so2 = value;
-            }
-
-            /**
-             * Recupera il valore della proprietà pm25.
-             * 
-             * @return
-             *     possible object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public BigDecimal getPm25() {
-                return pm25;
-            }
-
-            /**
-             * Imposta il valore della proprietà pm25.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public void setPm25(BigDecimal value) {
-                this.pm25 = value;
-            }
-
-            /**
-             * Recupera il valore della proprietà pm10.
-             * 
-             * @return
-             *     possible object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public BigDecimal getPm10() {
-                return pm10;
-            }
-
-            /**
-             * Imposta il valore della proprietà pm10.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link BigDecimal }
-             *     
-             */
-            public void setPm10(BigDecimal value) {
-                this.pm10 = value;
-            }
-
-            /**
-             * Recupera il valore della proprietà usEpaIndex.
-             * 
-             */
-            public short getUsEpaIndex() {
-                return usEpaIndex;
-            }
-
-            /**
-             * Imposta il valore della proprietà usEpaIndex.
-             * 
-             */
-            public void setUsEpaIndex(short value) {
-                this.usEpaIndex = value;
-            }
-
-            /**
-             * Recupera il valore della proprietà gbDefraIndex.
-             * 
-             */
-            public short getGbDefraIndex() {
-                return gbDefraIndex;
-            }
-
-            /**
-             * Imposta il valore della proprietà gbDefraIndex.
-             * 
-             */
-            public void setGbDefraIndex(short value) {
-                this.gbDefraIndex = value;
-            }
-
-        }
-
-
-        /**
-         * <p>Classe Java per anonymous complex type.
-         * 
-         * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;sequence&gt;
-         *         &lt;element name="text" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-         *         &lt;element name="icon" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-         *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
-         *       &lt;/sequence&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "text",
-            "icon",
-            "code"
-        })
-        public static class Condition {
-
-            @XmlElement(required = true)
-            protected String text;
-            @XmlElement(required = true)
-            protected String icon;
-            @XmlSchemaType(name = "unsignedShort")
-            protected int code;
-
-            /**
-             * Recupera il valore della proprietà text.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getText() {
-                return text;
-            }
-
-            /**
-             * Imposta il valore della proprietà text.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setText(String value) {
-                this.text = value;
-            }
-
-            /**
-             * Recupera il valore della proprietà icon.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getIcon() {
-                return icon;
-            }
-
-            /**
-             * Imposta il valore della proprietà icon.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setIcon(String value) {
-                this.icon = value;
-            }
-
-            /**
-             * Recupera il valore della proprietà code.
-             * 
-             */
-            public int getCode() {
-                return code;
-            }
-
-            /**
-             * Imposta il valore della proprietà code.
-             * 
-             */
-            public void setCode(int value) {
-                this.code = value;
-            }
-
-        }
-
-    }
-
-
-    /**
-     * <p>Classe Java per anonymous complex type.
-     * 
-     * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
-     * 
-     * <pre>
-     * &lt;complexType&gt;
-     *   &lt;complexContent&gt;
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *       &lt;sequence&gt;
-     *         &lt;element name="forecastday" maxOccurs="unbounded"&gt;
+     *         &lt;element name="forecastday"&gt;
      *           &lt;complexType&gt;
      *             &lt;complexContent&gt;
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -1440,14 +312,9 @@ public class Root {
      *                             &lt;element name="maxwind_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
      *                             &lt;element name="totalprecip_mm" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
      *                             &lt;element name="totalprecip_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                             &lt;element name="totalsnow_cm" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
      *                             &lt;element name="avgvis_km" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
      *                             &lt;element name="avgvis_miles" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
      *                             &lt;element name="avghumidity" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                             &lt;element name="daily_will_it_rain" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                             &lt;element name="daily_chance_of_rain" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                             &lt;element name="daily_will_it_snow" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                             &lt;element name="daily_chance_of_snow" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
      *                             &lt;element name="condition"&gt;
      *                               &lt;complexType&gt;
      *                                 &lt;complexContent&gt;
@@ -1462,24 +329,6 @@ public class Root {
      *                               &lt;/complexType&gt;
      *                             &lt;/element&gt;
      *                             &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                             &lt;element name="air_quality"&gt;
-     *                               &lt;complexType&gt;
-     *                                 &lt;complexContent&gt;
-     *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                                     &lt;sequence minOccurs="0"&gt;
-     *                                       &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                                       &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                                     &lt;/sequence&gt;
-     *                                   &lt;/restriction&gt;
-     *                                 &lt;/complexContent&gt;
-     *                               &lt;/complexType&gt;
-     *                             &lt;/element&gt;
      *                           &lt;/sequence&gt;
      *                         &lt;/restriction&gt;
      *                       &lt;/complexContent&gt;
@@ -1496,8 +345,6 @@ public class Root {
      *                             &lt;element name="moonset" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
      *                             &lt;element name="moon_phase" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
      *                             &lt;element name="moon_illumination" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                             &lt;element name="is_moon_up" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                             &lt;element name="is_sun_up" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
      *                           &lt;/sequence&gt;
      *                         &lt;/restriction&gt;
      *                       &lt;/complexContent&gt;
@@ -1528,7 +375,7 @@ public class Root {
      *                             &lt;/element&gt;
      *                             &lt;element name="wind_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
      *                             &lt;element name="wind_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                             &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
+     *                             &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
      *                             &lt;element name="wind_dir" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
      *                             &lt;element name="pressure_mb" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
      *                             &lt;element name="pressure_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
@@ -1553,24 +400,6 @@ public class Root {
      *                             &lt;element name="gust_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
      *                             &lt;element name="gust_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
      *                             &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                             &lt;element name="air_quality"&gt;
-     *                               &lt;complexType&gt;
-     *                                 &lt;complexContent&gt;
-     *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                                     &lt;sequence minOccurs="0"&gt;
-     *                                       &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-     *                                       &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                                       &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-     *                                     &lt;/sequence&gt;
-     *                                   &lt;/restriction&gt;
-     *                                 &lt;/complexContent&gt;
-     *                               &lt;/complexType&gt;
-     *                             &lt;/element&gt;
      *                           &lt;/sequence&gt;
      *                         &lt;/restriction&gt;
      *                       &lt;/complexContent&gt;
@@ -1596,35 +425,30 @@ public class Root {
     public static class Forecast {
 
         @XmlElement(required = true)
-        protected List<Root.Forecast.Forecastday> forecastday;
+        protected HRoot.Forecast.Forecastday forecastday;
 
         /**
-         * Gets the value of the forecastday property.
+         * Recupera il valore della proprietà forecastday.
          * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the forecastday property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getForecastday().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link Root.Forecast.Forecastday }
-         * 
-         * 
+         * @return
+         *     possible object is
+         *     {@link HRoot.Forecast.Forecastday }
+         *     
          */
-        public List<Root.Forecast.Forecastday> getForecastday() {
-            if (forecastday == null) {
-                forecastday = new ArrayList<Root.Forecast.Forecastday>();
-            }
-            return this.forecastday;
+        public HRoot.Forecast.Forecastday getForecastday() {
+            return forecastday;
+        }
+
+        /**
+         * Imposta il valore della proprietà forecastday.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link HRoot.Forecast.Forecastday }
+         *     
+         */
+        public void setForecastday(HRoot.Forecast.Forecastday value) {
+            this.forecastday = value;
         }
 
 
@@ -1655,14 +479,9 @@ public class Root {
          *                   &lt;element name="maxwind_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
          *                   &lt;element name="totalprecip_mm" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
          *                   &lt;element name="totalprecip_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                   &lt;element name="totalsnow_cm" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
          *                   &lt;element name="avgvis_km" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
          *                   &lt;element name="avgvis_miles" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
          *                   &lt;element name="avghumidity" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                   &lt;element name="daily_will_it_rain" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                   &lt;element name="daily_chance_of_rain" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                   &lt;element name="daily_will_it_snow" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                   &lt;element name="daily_chance_of_snow" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
          *                   &lt;element name="condition"&gt;
          *                     &lt;complexType&gt;
          *                       &lt;complexContent&gt;
@@ -1677,24 +496,6 @@ public class Root {
          *                     &lt;/complexType&gt;
          *                   &lt;/element&gt;
          *                   &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                   &lt;element name="air_quality"&gt;
-         *                     &lt;complexType&gt;
-         *                       &lt;complexContent&gt;
-         *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *                           &lt;sequence minOccurs="0"&gt;
-         *                             &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                             &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                           &lt;/sequence&gt;
-         *                         &lt;/restriction&gt;
-         *                       &lt;/complexContent&gt;
-         *                     &lt;/complexType&gt;
-         *                   &lt;/element&gt;
          *                 &lt;/sequence&gt;
          *               &lt;/restriction&gt;
          *             &lt;/complexContent&gt;
@@ -1711,8 +512,6 @@ public class Root {
          *                   &lt;element name="moonset" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
          *                   &lt;element name="moon_phase" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
          *                   &lt;element name="moon_illumination" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                   &lt;element name="is_moon_up" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                   &lt;element name="is_sun_up" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
          *                 &lt;/sequence&gt;
          *               &lt;/restriction&gt;
          *             &lt;/complexContent&gt;
@@ -1743,7 +542,7 @@ public class Root {
          *                   &lt;/element&gt;
          *                   &lt;element name="wind_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
          *                   &lt;element name="wind_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                   &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
+         *                   &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
          *                   &lt;element name="wind_dir" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
          *                   &lt;element name="pressure_mb" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
          *                   &lt;element name="pressure_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
@@ -1768,24 +567,6 @@ public class Root {
          *                   &lt;element name="gust_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
          *                   &lt;element name="gust_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
          *                   &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                   &lt;element name="air_quality"&gt;
-         *                     &lt;complexType&gt;
-         *                       &lt;complexContent&gt;
-         *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *                           &lt;sequence minOccurs="0"&gt;
-         *                             &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-         *                             &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                             &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-         *                           &lt;/sequence&gt;
-         *                         &lt;/restriction&gt;
-         *                       &lt;/complexContent&gt;
-         *                     &lt;/complexType&gt;
-         *                   &lt;/element&gt;
          *                 &lt;/sequence&gt;
          *               &lt;/restriction&gt;
          *             &lt;/complexContent&gt;
@@ -1816,11 +597,11 @@ public class Root {
             @XmlSchemaType(name = "unsignedInt")
             protected long dateEpoch;
             @XmlElement(required = true)
-            protected Root.Forecast.Forecastday.Day day;
+            protected HRoot.Forecast.Forecastday.Day day;
             @XmlElement(required = true)
-            protected Root.Forecast.Forecastday.Astro astro;
+            protected HRoot.Forecast.Forecastday.Astro astro;
             @XmlElement(required = true)
-            protected List<Root.Forecast.Forecastday.Hour> hour;
+            protected List<HRoot.Forecast.Forecastday.Hour> hour;
 
             /**
              * Recupera il valore della proprietà date.
@@ -1867,10 +648,10 @@ public class Root {
              * 
              * @return
              *     possible object is
-             *     {@link Root.Forecast.Forecastday.Day }
+             *     {@link HRoot.Forecast.Forecastday.Day }
              *     
              */
-            public Root.Forecast.Forecastday.Day getDay() {
+            public HRoot.Forecast.Forecastday.Day getDay() {
                 return day;
             }
 
@@ -1879,10 +660,10 @@ public class Root {
              * 
              * @param value
              *     allowed object is
-             *     {@link Root.Forecast.Forecastday.Day }
+             *     {@link HRoot.Forecast.Forecastday.Day }
              *     
              */
-            public void setDay(Root.Forecast.Forecastday.Day value) {
+            public void setDay(HRoot.Forecast.Forecastday.Day value) {
                 this.day = value;
             }
 
@@ -1891,10 +672,10 @@ public class Root {
              * 
              * @return
              *     possible object is
-             *     {@link Root.Forecast.Forecastday.Astro }
+             *     {@link HRoot.Forecast.Forecastday.Astro }
              *     
              */
-            public Root.Forecast.Forecastday.Astro getAstro() {
+            public HRoot.Forecast.Forecastday.Astro getAstro() {
                 return astro;
             }
 
@@ -1903,10 +684,10 @@ public class Root {
              * 
              * @param value
              *     allowed object is
-             *     {@link Root.Forecast.Forecastday.Astro }
+             *     {@link HRoot.Forecast.Forecastday.Astro }
              *     
              */
-            public void setAstro(Root.Forecast.Forecastday.Astro value) {
+            public void setAstro(HRoot.Forecast.Forecastday.Astro value) {
                 this.astro = value;
             }
 
@@ -1928,13 +709,13 @@ public class Root {
              * 
              * <p>
              * Objects of the following type(s) are allowed in the list
-             * {@link Root.Forecast.Forecastday.Hour }
+             * {@link HRoot.Forecast.Forecastday.Hour }
              * 
              * 
              */
-            public List<Root.Forecast.Forecastday.Hour> getHour() {
+            public List<HRoot.Forecast.Forecastday.Hour> getHour() {
                 if (hour == null) {
-                    hour = new ArrayList<Root.Forecast.Forecastday.Hour>();
+                    hour = new ArrayList<HRoot.Forecast.Forecastday.Hour>();
                 }
                 return this.hour;
             }
@@ -1956,8 +737,6 @@ public class Root {
              *         &lt;element name="moonset" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
              *         &lt;element name="moon_phase" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
              *         &lt;element name="moon_illumination" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *         &lt;element name="is_moon_up" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *         &lt;element name="is_sun_up" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
              *       &lt;/sequence&gt;
              *     &lt;/restriction&gt;
              *   &lt;/complexContent&gt;
@@ -1973,9 +752,7 @@ public class Root {
                 "moonrise",
                 "moonset",
                 "moonPhase",
-                "moonIllumination",
-                "isMoonUp",
-                "isSunUp"
+                "moonIllumination"
             })
             public static class Astro {
 
@@ -1992,12 +769,6 @@ public class Root {
                 @XmlElement(name = "moon_illumination")
                 @XmlSchemaType(name = "unsignedByte")
                 protected short moonIllumination;
-                @XmlElement(name = "is_moon_up")
-                @XmlSchemaType(name = "unsignedByte")
-                protected short isMoonUp;
-                @XmlElement(name = "is_sun_up")
-                @XmlSchemaType(name = "unsignedByte")
-                protected short isSunUp;
 
                 /**
                  * Recupera il valore della proprietà sunrise.
@@ -2135,38 +906,6 @@ public class Root {
                     this.moonIllumination = value;
                 }
 
-                /**
-                 * Recupera il valore della proprietà isMoonUp.
-                 * 
-                 */
-                public short getIsMoonUp() {
-                    return isMoonUp;
-                }
-
-                /**
-                 * Imposta il valore della proprietà isMoonUp.
-                 * 
-                 */
-                public void setIsMoonUp(short value) {
-                    this.isMoonUp = value;
-                }
-
-                /**
-                 * Recupera il valore della proprietà isSunUp.
-                 * 
-                 */
-                public short getIsSunUp() {
-                    return isSunUp;
-                }
-
-                /**
-                 * Imposta il valore della proprietà isSunUp.
-                 * 
-                 */
-                public void setIsSunUp(short value) {
-                    this.isSunUp = value;
-                }
-
             }
 
 
@@ -2190,14 +929,9 @@ public class Root {
              *         &lt;element name="maxwind_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
              *         &lt;element name="totalprecip_mm" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
              *         &lt;element name="totalprecip_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *         &lt;element name="totalsnow_cm" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
              *         &lt;element name="avgvis_km" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
              *         &lt;element name="avgvis_miles" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
              *         &lt;element name="avghumidity" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *         &lt;element name="daily_will_it_rain" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *         &lt;element name="daily_chance_of_rain" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *         &lt;element name="daily_will_it_snow" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *         &lt;element name="daily_chance_of_snow" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
              *         &lt;element name="condition"&gt;
              *           &lt;complexType&gt;
              *             &lt;complexContent&gt;
@@ -2212,24 +946,6 @@ public class Root {
              *           &lt;/complexType&gt;
              *         &lt;/element&gt;
              *         &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *         &lt;element name="air_quality"&gt;
-             *           &lt;complexType&gt;
-             *             &lt;complexContent&gt;
-             *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-             *                 &lt;sequence minOccurs="0"&gt;
-             *                   &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *                   &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *                 &lt;/sequence&gt;
-             *               &lt;/restriction&gt;
-             *             &lt;/complexContent&gt;
-             *           &lt;/complexType&gt;
-             *         &lt;/element&gt;
              *       &lt;/sequence&gt;
              *     &lt;/restriction&gt;
              *   &lt;/complexContent&gt;
@@ -2250,17 +966,11 @@ public class Root {
                 "maxwindKph",
                 "totalprecipMm",
                 "totalprecipIn",
-                "totalsnowCm",
                 "avgvisKm",
                 "avgvisMiles",
                 "avghumidity",
-                "dailyWillItRain",
-                "dailyChanceOfRain",
-                "dailyWillItSnow",
-                "dailyChanceOfSnow",
                 "condition",
-                "uv",
-                "airQuality"
+                "uv"
             })
             public static class Day {
 
@@ -2284,9 +994,6 @@ public class Root {
                 protected BigDecimal totalprecipMm;
                 @XmlElement(name = "totalprecip_in", required = true)
                 protected BigDecimal totalprecipIn;
-                @XmlElement(name = "totalsnow_cm")
-                @XmlSchemaType(name = "unsignedByte")
-                protected short totalsnowCm;
                 @XmlElement(name = "avgvis_km", required = true)
                 protected BigDecimal avgvisKm;
                 @XmlElement(name = "avgvis_miles")
@@ -2294,24 +1001,10 @@ public class Root {
                 protected short avgvisMiles;
                 @XmlSchemaType(name = "unsignedByte")
                 protected short avghumidity;
-                @XmlElement(name = "daily_will_it_rain")
-                @XmlSchemaType(name = "unsignedByte")
-                protected short dailyWillItRain;
-                @XmlElement(name = "daily_chance_of_rain")
-                @XmlSchemaType(name = "unsignedByte")
-                protected short dailyChanceOfRain;
-                @XmlElement(name = "daily_will_it_snow")
-                @XmlSchemaType(name = "unsignedByte")
-                protected short dailyWillItSnow;
-                @XmlElement(name = "daily_chance_of_snow")
-                @XmlSchemaType(name = "unsignedByte")
-                protected short dailyChanceOfSnow;
                 @XmlElement(required = true)
-                protected Root.Forecast.Forecastday.Day.Condition condition;
+                protected HRoot.Forecast.Forecastday.Day.Condition condition;
                 @XmlSchemaType(name = "unsignedByte")
                 protected short uv;
-                @XmlElement(name = "air_quality", required = true)
-                protected Root.Forecast.Forecastday.Day.AirQuality airQuality;
 
                 /**
                  * Recupera il valore della proprietà maxtempC.
@@ -2554,22 +1247,6 @@ public class Root {
                 }
 
                 /**
-                 * Recupera il valore della proprietà totalsnowCm.
-                 * 
-                 */
-                public short getTotalsnowCm() {
-                    return totalsnowCm;
-                }
-
-                /**
-                 * Imposta il valore della proprietà totalsnowCm.
-                 * 
-                 */
-                public void setTotalsnowCm(short value) {
-                    this.totalsnowCm = value;
-                }
-
-                /**
                  * Recupera il valore della proprietà avgvisKm.
                  * 
                  * @return
@@ -2626,78 +1303,14 @@ public class Root {
                 }
 
                 /**
-                 * Recupera il valore della proprietà dailyWillItRain.
-                 * 
-                 */
-                public short getDailyWillItRain() {
-                    return dailyWillItRain;
-                }
-
-                /**
-                 * Imposta il valore della proprietà dailyWillItRain.
-                 * 
-                 */
-                public void setDailyWillItRain(short value) {
-                    this.dailyWillItRain = value;
-                }
-
-                /**
-                 * Recupera il valore della proprietà dailyChanceOfRain.
-                 * 
-                 */
-                public short getDailyChanceOfRain() {
-                    return dailyChanceOfRain;
-                }
-
-                /**
-                 * Imposta il valore della proprietà dailyChanceOfRain.
-                 * 
-                 */
-                public void setDailyChanceOfRain(short value) {
-                    this.dailyChanceOfRain = value;
-                }
-
-                /**
-                 * Recupera il valore della proprietà dailyWillItSnow.
-                 * 
-                 */
-                public short getDailyWillItSnow() {
-                    return dailyWillItSnow;
-                }
-
-                /**
-                 * Imposta il valore della proprietà dailyWillItSnow.
-                 * 
-                 */
-                public void setDailyWillItSnow(short value) {
-                    this.dailyWillItSnow = value;
-                }
-
-                /**
-                 * Recupera il valore della proprietà dailyChanceOfSnow.
-                 * 
-                 */
-                public short getDailyChanceOfSnow() {
-                    return dailyChanceOfSnow;
-                }
-
-                /**
-                 * Imposta il valore della proprietà dailyChanceOfSnow.
-                 * 
-                 */
-                public void setDailyChanceOfSnow(short value) {
-                    this.dailyChanceOfSnow = value;
-                }
-
-                /**
                  * Recupera il valore della proprietà condition.
                  * 
                  * @return
                  *     possible object is
-                 *     {@link Root.Forecast.Forecastday.Day.Condition }
+                 *     {@link HRoot.Forecast.Forecastday.Day.Condition }
                  *     
                  */
-                public Root.Forecast.Forecastday.Day.Condition getCondition() {
+                public HRoot.Forecast.Forecastday.Day.Condition getCondition() {
                     return condition;
                 }
 
@@ -2706,10 +1319,10 @@ public class Root {
                  * 
                  * @param value
                  *     allowed object is
-                 *     {@link Root.Forecast.Forecastday.Day.Condition }
+                 *     {@link HRoot.Forecast.Forecastday.Day.Condition }
                  *     
                  */
-                public void setCondition(Root.Forecast.Forecastday.Day.Condition value) {
+                public void setCondition(HRoot.Forecast.Forecastday.Day.Condition value) {
                     this.condition = value;
                 }
 
@@ -2727,278 +1340,6 @@ public class Root {
                  */
                 public void setUv(short value) {
                     this.uv = value;
-                }
-
-                /**
-                 * Recupera il valore della proprietà airQuality.
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Root.Forecast.Forecastday.Day.AirQuality }
-                 *     
-                 */
-                public Root.Forecast.Forecastday.Day.AirQuality getAirQuality() {
-                    return airQuality;
-                }
-
-                /**
-                 * Imposta il valore della proprietà airQuality.
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Root.Forecast.Forecastday.Day.AirQuality }
-                 *     
-                 */
-                public void setAirQuality(Root.Forecast.Forecastday.Day.AirQuality value) {
-                    this.airQuality = value;
-                }
-
-
-                /**
-                 * <p>Classe Java per anonymous complex type.
-                 * 
-                 * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
-                 * 
-                 * <pre>
-                 * &lt;complexType&gt;
-                 *   &lt;complexContent&gt;
-                 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-                 *       &lt;sequence minOccurs="0"&gt;
-                 *         &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-                 *         &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-                 *       &lt;/sequence&gt;
-                 *     &lt;/restriction&gt;
-                 *   &lt;/complexContent&gt;
-                 * &lt;/complexType&gt;
-                 * </pre>
-                 * 
-                 * 
-                 */
-                @XmlAccessorType(XmlAccessType.FIELD)
-                @XmlType(name = "", propOrder = {
-                    "co",
-                    "no2",
-                    "o3",
-                    "so2",
-                    "pm25",
-                    "pm10",
-                    "usEpaIndex",
-                    "gbDefraIndex"
-                })
-                public static class AirQuality {
-
-                    protected BigDecimal co;
-                    protected BigDecimal no2;
-                    protected BigDecimal o3;
-                    protected BigDecimal so2;
-                    @XmlElement(name = "pm2_5")
-                    protected BigDecimal pm25;
-                    protected BigDecimal pm10;
-                    @XmlElement(name = "us-epa-index")
-                    @XmlSchemaType(name = "unsignedByte")
-                    protected Short usEpaIndex;
-                    @XmlElement(name = "gb-defra-index")
-                    @XmlSchemaType(name = "unsignedByte")
-                    protected Short gbDefraIndex;
-
-                    /**
-                     * Recupera il valore della proprietà co.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getCo() {
-                        return co;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà co.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setCo(BigDecimal value) {
-                        this.co = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà no2.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getNo2() {
-                        return no2;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà no2.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setNo2(BigDecimal value) {
-                        this.no2 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà o3.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getO3() {
-                        return o3;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà o3.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setO3(BigDecimal value) {
-                        this.o3 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà so2.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getSo2() {
-                        return so2;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà so2.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setSo2(BigDecimal value) {
-                        this.so2 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà pm25.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getPm25() {
-                        return pm25;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà pm25.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setPm25(BigDecimal value) {
-                        this.pm25 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà pm10.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getPm10() {
-                        return pm10;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà pm10.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setPm10(BigDecimal value) {
-                        this.pm10 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà usEpaIndex.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link Short }
-                     *     
-                     */
-                    public Short getUsEpaIndex() {
-                        return usEpaIndex;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà usEpaIndex.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link Short }
-                     *     
-                     */
-                    public void setUsEpaIndex(Short value) {
-                        this.usEpaIndex = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà gbDefraIndex.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link Short }
-                     *     
-                     */
-                    public Short getGbDefraIndex() {
-                        return gbDefraIndex;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà gbDefraIndex.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link Short }
-                     *     
-                     */
-                    public void setGbDefraIndex(Short value) {
-                        this.gbDefraIndex = value;
-                    }
-
                 }
 
 
@@ -3137,7 +1478,7 @@ public class Root {
              *         &lt;/element&gt;
              *         &lt;element name="wind_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
              *         &lt;element name="wind_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *         &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
+             *         &lt;element name="wind_degree" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
              *         &lt;element name="wind_dir" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
              *         &lt;element name="pressure_mb" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/&gt;
              *         &lt;element name="pressure_in" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
@@ -3162,24 +1503,6 @@ public class Root {
              *         &lt;element name="gust_mph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
              *         &lt;element name="gust_kph" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
              *         &lt;element name="uv" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *         &lt;element name="air_quality"&gt;
-             *           &lt;complexType&gt;
-             *             &lt;complexContent&gt;
-             *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-             *                 &lt;sequence minOccurs="0"&gt;
-             *                   &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-             *                   &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *                   &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-             *                 &lt;/sequence&gt;
-             *               &lt;/restriction&gt;
-             *             &lt;/complexContent&gt;
-             *           &lt;/complexType&gt;
-             *         &lt;/element&gt;
              *       &lt;/sequence&gt;
              *     &lt;/restriction&gt;
              *   &lt;/complexContent&gt;
@@ -3222,8 +1545,7 @@ public class Root {
                 "visMiles",
                 "gustMph",
                 "gustKph",
-                "uv",
-                "airQuality"
+                "uv"
             })
             public static class Hour {
 
@@ -3240,14 +1562,14 @@ public class Root {
                 @XmlSchemaType(name = "unsignedByte")
                 protected short isDay;
                 @XmlElement(required = true)
-                protected Root.Forecast.Forecastday.Hour.Condition condition;
+                protected HRoot.Forecast.Forecastday.Hour.Condition condition;
                 @XmlElement(name = "wind_mph", required = true)
                 protected BigDecimal windMph;
                 @XmlElement(name = "wind_kph", required = true)
                 protected BigDecimal windKph;
                 @XmlElement(name = "wind_degree")
-                @XmlSchemaType(name = "unsignedShort")
-                protected int windDegree;
+                @XmlSchemaType(name = "unsignedByte")
+                protected short windDegree;
                 @XmlElement(name = "wind_dir", required = true)
                 protected String windDir;
                 @XmlElement(name = "pressure_mb")
@@ -3303,8 +1625,6 @@ public class Root {
                 protected BigDecimal gustKph;
                 @XmlSchemaType(name = "unsignedByte")
                 protected short uv;
-                @XmlElement(name = "air_quality", required = true)
-                protected Root.Forecast.Forecastday.Hour.AirQuality airQuality;
 
                 /**
                  * Recupera il valore della proprietà timeEpoch.
@@ -3415,10 +1735,10 @@ public class Root {
                  * 
                  * @return
                  *     possible object is
-                 *     {@link Root.Forecast.Forecastday.Hour.Condition }
+                 *     {@link HRoot.Forecast.Forecastday.Hour.Condition }
                  *     
                  */
-                public Root.Forecast.Forecastday.Hour.Condition getCondition() {
+                public HRoot.Forecast.Forecastday.Hour.Condition getCondition() {
                     return condition;
                 }
 
@@ -3427,10 +1747,10 @@ public class Root {
                  * 
                  * @param value
                  *     allowed object is
-                 *     {@link Root.Forecast.Forecastday.Hour.Condition }
+                 *     {@link HRoot.Forecast.Forecastday.Hour.Condition }
                  *     
                  */
-                public void setCondition(Root.Forecast.Forecastday.Hour.Condition value) {
+                public void setCondition(HRoot.Forecast.Forecastday.Hour.Condition value) {
                     this.condition = value;
                 }
 
@@ -3486,7 +1806,7 @@ public class Root {
                  * Recupera il valore della proprietà windDegree.
                  * 
                  */
-                public int getWindDegree() {
+                public short getWindDegree() {
                     return windDegree;
                 }
 
@@ -3494,7 +1814,7 @@ public class Root {
                  * Imposta il valore della proprietà windDegree.
                  * 
                  */
-                public void setWindDegree(int value) {
+                public void setWindDegree(short value) {
                     this.windDegree = value;
                 }
 
@@ -3992,278 +2312,6 @@ public class Root {
                  */
                 public void setUv(short value) {
                     this.uv = value;
-                }
-
-                /**
-                 * Recupera il valore della proprietà airQuality.
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Root.Forecast.Forecastday.Hour.AirQuality }
-                 *     
-                 */
-                public Root.Forecast.Forecastday.Hour.AirQuality getAirQuality() {
-                    return airQuality;
-                }
-
-                /**
-                 * Imposta il valore della proprietà airQuality.
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Root.Forecast.Forecastday.Hour.AirQuality }
-                 *     
-                 */
-                public void setAirQuality(Root.Forecast.Forecastday.Hour.AirQuality value) {
-                    this.airQuality = value;
-                }
-
-
-                /**
-                 * <p>Classe Java per anonymous complex type.
-                 * 
-                 * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
-                 * 
-                 * <pre>
-                 * &lt;complexType&gt;
-                 *   &lt;complexContent&gt;
-                 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-                 *       &lt;sequence minOccurs="0"&gt;
-                 *         &lt;element name="co" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="no2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="o3" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="so2" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="pm2_5" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="pm10" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
-                 *         &lt;element name="us-epa-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-                 *         &lt;element name="gb-defra-index" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/&gt;
-                 *       &lt;/sequence&gt;
-                 *     &lt;/restriction&gt;
-                 *   &lt;/complexContent&gt;
-                 * &lt;/complexType&gt;
-                 * </pre>
-                 * 
-                 * 
-                 */
-                @XmlAccessorType(XmlAccessType.FIELD)
-                @XmlType(name = "", propOrder = {
-                    "co",
-                    "no2",
-                    "o3",
-                    "so2",
-                    "pm25",
-                    "pm10",
-                    "usEpaIndex",
-                    "gbDefraIndex"
-                })
-                public static class AirQuality {
-
-                    protected BigDecimal co;
-                    protected BigDecimal no2;
-                    protected BigDecimal o3;
-                    protected BigDecimal so2;
-                    @XmlElement(name = "pm2_5")
-                    protected BigDecimal pm25;
-                    protected BigDecimal pm10;
-                    @XmlElement(name = "us-epa-index")
-                    @XmlSchemaType(name = "unsignedByte")
-                    protected Short usEpaIndex;
-                    @XmlElement(name = "gb-defra-index")
-                    @XmlSchemaType(name = "unsignedByte")
-                    protected Short gbDefraIndex;
-
-                    /**
-                     * Recupera il valore della proprietà co.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getCo() {
-                        return co;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà co.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setCo(BigDecimal value) {
-                        this.co = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà no2.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getNo2() {
-                        return no2;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà no2.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setNo2(BigDecimal value) {
-                        this.no2 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà o3.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getO3() {
-                        return o3;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà o3.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setO3(BigDecimal value) {
-                        this.o3 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà so2.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getSo2() {
-                        return so2;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà so2.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setSo2(BigDecimal value) {
-                        this.so2 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà pm25.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getPm25() {
-                        return pm25;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà pm25.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setPm25(BigDecimal value) {
-                        this.pm25 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà pm10.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public BigDecimal getPm10() {
-                        return pm10;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà pm10.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigDecimal }
-                     *     
-                     */
-                    public void setPm10(BigDecimal value) {
-                        this.pm10 = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà usEpaIndex.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link Short }
-                     *     
-                     */
-                    public Short getUsEpaIndex() {
-                        return usEpaIndex;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà usEpaIndex.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link Short }
-                     *     
-                     */
-                    public void setUsEpaIndex(Short value) {
-                        this.usEpaIndex = value;
-                    }
-
-                    /**
-                     * Recupera il valore della proprietà gbDefraIndex.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link Short }
-                     *     
-                     */
-                    public Short getGbDefraIndex() {
-                        return gbDefraIndex;
-                    }
-
-                    /**
-                     * Imposta il valore della proprietà gbDefraIndex.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link Short }
-                     *     
-                     */
-                    public void setGbDefraIndex(Short value) {
-                        this.gbDefraIndex = value;
-                    }
-
                 }
 
 

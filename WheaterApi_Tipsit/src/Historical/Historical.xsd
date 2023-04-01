@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="location">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string" />
+              <xs:element name="region" type="xs:string" />
+              <xs:element name="country" type="xs:string" />
+              <xs:element name="lat" type="xs:decimal" />
+              <xs:element name="lon" type="xs:decimal" />
+              <xs:element name="tz_id" type="xs:string" />
+              <xs:element name="localtime_epoch" type="xs:unsignedInt" />
+              <xs:element name="localtime" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="forecast">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="forecastday">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="date" type="xs:date" />
+                    <xs:element name="date_epoch" type="xs:unsignedInt" />
+                    <xs:element name="day">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="maxtemp_c" type="xs:decimal" />
+                          <xs:element name="maxtemp_f" type="xs:decimal" />
+                          <xs:element name="mintemp_c" type="xs:decimal" />
+                          <xs:element name="mintemp_f" type="xs:decimal" />
+                          <xs:element name="avgtemp_c" type="xs:decimal" />
+                          <xs:element name="avgtemp_f" type="xs:decimal" />
+                          <xs:element name="maxwind_mph" type="xs:decimal" />
+                          <xs:element name="maxwind_kph" type="xs:decimal" />
+                          <xs:element name="totalprecip_mm" type="xs:decimal" />
+                          <xs:element name="totalprecip_in" type="xs:decimal" />
+                          <xs:element name="avgvis_km" type="xs:decimal" />
+                          <xs:element name="avgvis_miles" type="xs:unsignedByte" />
+                          <xs:element name="avghumidity" type="xs:unsignedByte" />
+                          <xs:element name="condition">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="text" type="xs:string" />
+                                <xs:element name="icon" type="xs:string" />
+                                <xs:element name="code" type="xs:unsignedShort" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="uv" type="xs:unsignedByte" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="astro">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sunrise" type="xs:string" />
+                          <xs:element name="sunset" type="xs:string" />
+                          <xs:element name="moonrise" type="xs:string" />
+                          <xs:element name="moonset" type="xs:string" />
+                          <xs:element name="moon_phase" type="xs:string" />
+                          <xs:element name="moon_illumination" type="xs:unsignedByte" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" name="hour">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="time_epoch" type="xs:unsignedInt" />
+                          <xs:element name="time" type="xs:string" />
+                          <xs:element name="temp_c" type="xs:decimal" />
+                          <xs:element name="temp_f" type="xs:decimal" />
+                          <xs:element name="is_day" type="xs:unsignedByte" />
+                          <xs:element name="condition">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="text" type="xs:string" />
+                                <xs:element name="icon" type="xs:string" />
+                                <xs:element name="code" type="xs:unsignedShort" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="wind_mph" type="xs:decimal" />
+                          <xs:element name="wind_kph" type="xs:decimal" />
+                          <xs:element name="wind_degree" type="xs:unsignedByte" />
+                          <xs:element name="wind_dir" type="xs:string" />
+                          <xs:element name="pressure_mb" type="xs:unsignedShort" />
+                          <xs:element name="pressure_in" type="xs:decimal" />
+                          <xs:element name="precip_mm" type="xs:decimal" />
+                          <xs:element name="precip_in" type="xs:decimal" />
+                          <xs:element name="humidity" type="xs:unsignedByte" />
+                          <xs:element name="cloud" type="xs:unsignedByte" />
+                          <xs:element name="feelslike_c" type="xs:decimal" />
+                          <xs:element name="feelslike_f" type="xs:decimal" />
+                          <xs:element name="windchill_c" type="xs:decimal" />
+                          <xs:element name="windchill_f" type="xs:decimal" />
+                          <xs:element name="heatindex_c" type="xs:decimal" />
+                          <xs:element name="heatindex_f" type="xs:decimal" />
+                          <xs:element name="dewpoint_c" type="xs:decimal" />
+                          <xs:element name="dewpoint_f" type="xs:decimal" />
+                          <xs:element name="will_it_rain" type="xs:unsignedByte" />
+                          <xs:element name="chance_of_rain" type="xs:unsignedByte" />
+                          <xs:element name="will_it_snow" type="xs:unsignedByte" />
+                          <xs:element name="chance_of_snow" type="xs:unsignedByte" />
+                          <xs:element name="vis_km" type="xs:unsignedByte" />
+                          <xs:element name="vis_miles" type="xs:unsignedByte" />
+                          <xs:element name="gust_mph" type="xs:decimal" />
+                          <xs:element name="gust_kph" type="xs:decimal" />
+                          <xs:element name="uv" type="xs:unsignedByte" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
