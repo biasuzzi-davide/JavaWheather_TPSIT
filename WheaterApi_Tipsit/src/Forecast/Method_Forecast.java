@@ -43,6 +43,7 @@ public class Method_Forecast {
 	    	Final.put("avgHum"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvghumidity()*100.00)/100.00+"");
 	    	Final.put("chaRai"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"");
 	    	Final.put("cond"+i, forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText()+"");
+	    	Final.put("codCond", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getCode()+"");
 	    	if(i<4) {
 	    		Final.put("Co"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
 	    		Final.put("No2"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
@@ -153,6 +154,7 @@ public class Method_Forecast {
 	    	Final.put("temp", forecast.getForecast().getForecastday().get(i).getHour().get(j).getTempC()+"");
 	    }
 	    Final.put("cond", forecast.getForecast().getForecastday().get(i).getHour().get(j).getCondition().getText()+"");
+	    Final.put("codCond", forecast.getForecast().getForecastday().get(i).getHour().get(j).getCondition().getCode()+"");
 	    if(AmericanUnit) {
 	    	Final.put("winSpe", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getWindMph().doubleValue()*100.00)/100.00+"");
 	    }else {
@@ -259,6 +261,7 @@ public class Method_Forecast {
 	    Final.put("chaRai", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"");
 	    Final.put("chaSno", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfSnow()*100.00)/100.00+"");
 	    Final.put("cond", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText());
+	    Final.put("codCond", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getCode()+"");
 	    
 	    return Final;
 	}

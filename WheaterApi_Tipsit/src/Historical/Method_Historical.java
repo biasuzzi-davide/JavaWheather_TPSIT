@@ -56,6 +56,7 @@ public class Method_Historical {
 		    }
 	    	Final.put("avgHum"+i, Math.round(historical.getForecast().getForecastday().getDay().getAvghumidity()*100.00)/100.00+"");
 	    	Final.put("cond"+i, historical.getForecast().getForecastday().getDay().getCondition().getText()+"");
+	    	Final.put("codCond"+i, historical.getForecast().getForecastday().getDay().getCondition().getCode()+"");
 	    	LocalDate dateModify = LocalDate.parse(historical.getForecast().getForecastday().getDate().toString() , DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	        LocalDate dateModified = dateModify.minusDays(1);
 	        dateModified.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -122,6 +123,7 @@ public class Method_Historical {
 	    	Final.put("temp", historical.getForecast().getForecastday().getHour().get(j).getTempC()+"");
 	    }
 	    Final.put("cond", historical.getForecast().getForecastday().getHour().get(j).getCondition().getText()+"");
+	    Final.put("codCond", historical.getForecast().getForecastday().getHour().get(j).getCondition().getCode()+"");
 	    if(AmericanUnit) {
 	    	Final.put("winSpee", Math.round(historical.getForecast().getForecastday().getHour().get(j).getWindMph().doubleValue()*100.00)/100.00+"");
 	    }else {
@@ -194,6 +196,7 @@ public class Method_Historical {
 	    }
 	    Final.put("avgHum", Math.round(historical.getForecast().getForecastday().getDay().getAvghumidity()*100.00)/100.00+"");
 	    Final.put("cond", historical.getForecast().getForecastday().getDay().getCondition().getText());
+	    Final.put("codCond", historical.getForecast().getForecastday().getDay().getCondition().getCode()+"");
 	    
 	    return Final;
 	}
