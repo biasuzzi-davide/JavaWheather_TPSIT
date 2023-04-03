@@ -4,7 +4,13 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import Forecast.Method_Forecast;
+import Historical.Method_Historical;
+
 import java.awt.Label;
+import java.util.HashMap;
+
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -16,7 +22,7 @@ public class HistoryStatsPane extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public HistoryStatsPane() {
+	public HistoryStatsPane(Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) {
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[200][225][80][225][200]", "[25][30][20][25][25][25][25][25][25][25][25][25][25][25][25][25][25][25][25]"));
 		

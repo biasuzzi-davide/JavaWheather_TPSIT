@@ -9,6 +9,7 @@ import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -35,6 +36,9 @@ import javax.swing.border.SoftBevelBorder;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import Forecast.Method_Forecast;
+import Historical.Method_Historical;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
@@ -51,38 +55,46 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 	private ArrayList<JPanel> panels;
 	private JMenu mnNewMenu;
 	private int messageFlag1;
+	Method_Forecast m_forecast; 
+	Method_Historical m_historical; 
+	HashMap<String,String> hm;
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Window window = new Window();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+	
+/* Main per il testing */
+//    public static void main(String[] args) {
+//        EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                try {
+//                    Window window = new Window();
+//                    window.frame.setVisible(true);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//    }
 
-    public Window() {
+    public Window(Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) {
         initialize();
         messageFlag1 = 1;
+        this.m_forecast=m_forecast;
+        this.m_historical=m_historical;
+        this.hm=hm;
     }
 
     public void initialize() {
     	FlatDarkLaf.setup();
     	panels=new ArrayList<JPanel>();
-    	panels.add(new HomePane(this));
+    	panels.add(new HomePane(this,m_forecast,m_historical,hm));
     	panels.add(new CreditsPane());
-    	panels.add(new HistoryPane(this));
-    	panels.add(new SingleDayPane(this));
-    	panels.add(new SingleDayPane(this));
-    	panels.add(new SingleDayPane(this));
-    	panels.add(new SingleDayPane(this));
-    	panels.add(new SingleDayPane(this));
-    	panels.add(new StatsPane());
-    	panels.add(new HistoryStatsPane());
+    	panels.add(new HistoryPane(this,m_forecast,m_historical,hm));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
+    	panels.add(new StatsPane(m_forecast,m_historical,hm));
+    	panels.add(new HistoryStatsPane(m_forecast,m_historical,hm));
     	
         
         frame = new JFrame();

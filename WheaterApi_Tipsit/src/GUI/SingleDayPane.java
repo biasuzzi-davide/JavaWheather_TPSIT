@@ -5,9 +5,14 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+
+import Forecast.Method_Forecast;
+import Historical.Method_Historical;
+
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
@@ -27,7 +32,7 @@ public class SingleDayPane extends JPanel implements ActionListener{
 	/**
 	 * Create the panel.
 	 */
-	public SingleDayPane(Window w) {
+	public SingleDayPane(Window w, Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) {
 		this.w=w;
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[200][200:200:200][195.00][200][200]", "[85][30][20][25][100][25][25][25][25][25][25][25][25][25][25][25][grow]"));
