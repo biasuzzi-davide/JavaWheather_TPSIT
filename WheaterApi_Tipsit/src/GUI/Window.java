@@ -88,11 +88,11 @@ public class Window extends JFrame implements ActionListener, WindowListener{
     	panels.add(new HomePane(this,m_forecast,m_historical,hm));
     	panels.add(new CreditsPane());
     	panels.add(new HistoryPane(this,m_forecast,m_historical,hm));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,0));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,1));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,2));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,3));
+    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,4));
     	panels.add(new StatsPane(m_forecast,m_historical,hm));
     	panels.add(new HistoryStatsPane(m_forecast,m_historical,hm));
     	
@@ -351,12 +351,10 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 	}
 	
 	public void hide() {
-		System.out.println("Dentro");
 		frame.hide();
 	}
 	
 	public void show() {
-		System.out.println("Dentro");
 		frame.show();
 	}
 }
