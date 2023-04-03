@@ -15,7 +15,12 @@ public class Method_Forecast {
 	public Method_Forecast() {}
 	
 	public HashMap<String, String> Future(String city,int howMuchDay, boolean today, boolean AmericanUnit) throws JAXBException {
-		Root forecast = Root.getIstance();		
+		Root forecast;
+		if(!Root.getIstance().getLocation().getName().equals(city)) {
+			forecast = Root.refresh(city);
+		}else {
+			forecast = Root.getIstance();
+		}		
         HashMap<String, String> Final = new HashMap<>();
 
         Final.put("city", forecast.getLocation().getName().toString());
@@ -45,7 +50,12 @@ public class Method_Forecast {
 	}
 	
 	public HashMap<String, String> DayandHour(String city, Boolean AmericanUnit,String date) throws JAXBException {
-		Root forecast = Root.getIstance();
+		Root forecast;
+		if(!Root.getIstance().getLocation().getName().equals(city)) {
+			forecast = Root.refresh(city);
+		}else {
+			forecast = Root.getIstance();
+		}	
         HashMap<String, String> Final = new HashMap<>();
 	    String[] piecesDate = date.split(" ");
 		boolean find1=false;
@@ -164,7 +174,12 @@ public class Method_Forecast {
 	}
 
 	public HashMap<String, String> Day(String city, Boolean AmericanUnit,String date) throws JAXBException {
-		Root forecast = Root.getIstance();
+		Root forecast;
+		if(!Root.getIstance().getLocation().getName().equals(city)) {
+			forecast = Root.refresh(city);
+		}else {
+			forecast = Root.getIstance();
+		}	
 		HashMap<String, String> Final = new HashMap<>();
 	    String[] piecesDate = date.split(" ");
 		boolean find=false;
@@ -247,7 +262,12 @@ public class Method_Forecast {
 	}
 	
 	public HashMap<String, String> Statistic(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
-		Root forecast = Root.getIstance();
+		Root forecast;
+		if(!Root.getIstance().getLocation().getName().equals(city)) {
+			forecast = Root.refresh(city);
+		}else {
+			forecast = Root.getIstance();
+		}	
 		HashMap<String, String> Final = new HashMap<>();
 		double MaxTemp = 0.0;
 		double MinTemp = 0.0;

@@ -1,6 +1,13 @@
-/GUI/
-/images/
+/.classpath
+/.metadata/
+/.project
+/.settings/
 /Forecast/
+/GUI/
 /Historical/
+/Main.class
+/Prova.class
 /generated/
+/images/
+/immagine-fissa-si-muove.jpg
 /MainClass.class
