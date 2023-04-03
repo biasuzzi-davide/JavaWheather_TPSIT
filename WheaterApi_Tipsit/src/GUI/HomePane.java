@@ -127,78 +127,117 @@ public class HomePane extends JPanel {
 		labelWh_day5.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		add(labelWh_day5, "cell 9 5,alignx center,aligny center");
 
-		JLabel lblTemp_day1 = new JLabel(hm.get("avgTemp"+0));
+		JLabel lblTemp_day1 = new JLabel("Temperature: "+hm.get("avgTemp"+0));
 		lblTemp_day1.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day1.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day1, "cell 1 6,alignx center,aligny center");
 
-		JLabel lblTemp_day2 = new JLabel(hm.get("avgTemp"+1));
+		JLabel lblTemp_day2 = new JLabel("Temperature: "+hm.get("avgTemp"+1));
 		lblTemp_day2.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day2.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day2, "cell 3 6,alignx center,aligny center");
 
-		JLabel lblTemp_day3 = new JLabel(hm.get("avgTemp"+2));
+		JLabel lblTemp_day3 = new JLabel("Temperature: "+hm.get("avgTemp"+2));
 		lblTemp_day3.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day3.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day3, "cell 5 6,alignx center,aligny center");
 
-		JLabel lblTemp_day4 = new JLabel(hm.get("avgTemp"+3));
+		JLabel lblTemp_day4 = new JLabel("Temperature: "+hm.get("avgTemp"+3));
 		lblTemp_day4.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day4.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day4, "cell 7 6,growx,aligny center");
 
-		JLabel lblTemp_day5 = new JLabel(hm.get("avgTemp"+4));
+		JLabel lblTemp_day5 = new JLabel("Temperature: "+hm.get("avgTemp"+4));
 		lblTemp_day5.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day5.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day5, "cell 9 6,growx");
 
 		JTextPane mainText1 = new JTextPane();
 		mainText1.setEditable(false);
-		mainText1.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
+		//mainText1.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
+		mainText1.setText("Rain Chanche: "+hm.get("chaRai"+0)+"\r\n"
+					+ "Humidity: "+hm.get("avgHum"+0)+"\r\n"
+					+ "Visibility: "+hm.get("avgVis"+0)+" km\r\n"
+					+ "Max Wind: "+hm.get("maxWind"+0)+" kmh\r\n");
 		add(mainText1, "cell 1 8,alignx center,aligny center");
 
 		JTextPane mainText2 = new JTextPane();
 		mainText2.setEditable(false);
-		mainText2.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
+		mainText2.setText("Rain Chanche: "+hm.get("chaRai"+1)+"\r\n"
+				+ "Humidity: "+hm.get("avgHum"+1)+"\r\n"
+				+ "Visibility: "+hm.get("avgVis"+1)+" km\r\n"
+				+ "Max Wind: "+hm.get("maxWind"+1)+" kmh\r\n");
 		add(mainText2, "cell 3 8,alignx center,aligny center");
 
 		JTextPane mainText3 = new JTextPane();
-		mainText3.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
-		mainText3.setEditable(false);
+		mainText3.setText("Rain Chanche: "+hm.get("chaRai"+2)+"\r\n"
+				+ "Humidity: "+hm.get("avgHum"+2)+"\r\n"
+				+ "Visibility: "+hm.get("avgVis"+2)+" km\r\n"
+				+ "Max Wind: "+hm.get("maxWind"+2)+" kmh\r\n");		mainText3.setEditable(false);
 		add(mainText3, "cell 5 8,alignx center,aligny center");
 
 		JTextPane mainText4 = new JTextPane();
-		mainText4.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
-		mainText4.setEditable(false);
+		mainText4.setText("Rain Chanche: "+hm.get("chaRai"+3)+"\r\n"
+				+ "Humidity: "+hm.get("avgHum"+3)+"\r\n"
+				+ "Visibility: "+hm.get("avgVis"+3)+" km\r\n"
+				+ "Max Wind: "+hm.get("maxWind"+3)+" kmh\r\n");		mainText4.setEditable(false);
 		add(mainText4, "cell 7 8,alignx center,aligny center");
 
 		JTextPane mainText5 = new JTextPane();
-		mainText5.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
-		mainText5.setEditable(false);
+		mainText5.setText("Rain Chanche: "+hm.get("chaRai"+4)+"\r\n"
+				+ "Humidity: "+hm.get("avgHum"+4)+"\r\n"
+				+ "Visibility: "+hm.get("avgVis"+4)+" km\r\n"
+				+ "Max Wind: "+hm.get("maxWind"+4)+" kmh\r\n");		mainText5.setEditable(false);
 		add(mainText5, "cell 9 8,alignx center,aligny center");
 
 		JTextPane airQuality1 = new JTextPane();
-		airQuality1.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		//airQuality1.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality1.setText("Co: "+hm.get("Co"+0)+"\r\n"
+				+ "NO2: "+hm.get("No2"+0)+"\r\n"
+				+ "O3: "+hm.get("O3"+0)+"\r\n"
+				+ "Pm10: "+hm.get("Pm10"+0)+"\r\n"
+				+ "Pm25: "+hm.get("Pm25"+0)+"\r\n"
+				+ "So2: "+hm.get("So2"+0));
 		airQuality1.setEditable(false);
 		add(airQuality1, "cell 1 9,alignx center,aligny top");
 
 		JTextPane airQuality2 = new JTextPane();
-		airQuality2.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality2.setText("Co: "+hm.get("Co"+1)+"\r\n"
+				+ "NO2: "+hm.get("No2"+1)+"\r\n"
+				+ "O3: "+hm.get("O3"+1)+"\r\n"
+				+ "Pm10: "+hm.get("Pm10"+1)+"\r\n"
+				+ "Pm25: "+hm.get("Pm25"+1)+"\r\n"
+				+ "So2: "+hm.get("So2"+1));
 		airQuality2.setEditable(false);
 		add(airQuality2, "cell 3 9,alignx center,aligny top");
 
 		JTextPane airQuality3 = new JTextPane();
-		airQuality3.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality3.setText("Co: "+hm.get("Co"+2)+"\r\n"
+				+ "NO2: "+hm.get("No2"+2)+"\r\n"
+				+ "O3: "+hm.get("O3"+2)+"\r\n"
+				+ "Pm10: "+hm.get("Pm10"+2)+"\r\n"
+				+ "Pm25: "+hm.get("Pm25"+2)+"\r\n"
+				+ "So2: "+hm.get("So2"+2));
 		airQuality3.setEditable(false);
 		add(airQuality3, "cell 5 9,alignx center,aligny top");
 
 		JTextPane airQuality4 = new JTextPane();
-		airQuality4.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality4.setText("Co: "+hm.get("Co"+3)+"\r\n"
+				+ "NO2: "+hm.get("No2"+3)+"\r\n"
+				+ "O3: "+hm.get("O3"+3)+"\r\n"
+				+ "Pm10: "+hm.get("Pm10"+3)+"\r\n"
+				+ "Pm25: "+hm.get("Pm25"+3)+"\r\n"
+				+ "So2: "+hm.get("So2"+3));
 		airQuality4.setEditable(false);
 		add(airQuality4, "cell 7 9,alignx center,aligny top");
 
 		JTextPane airQuality5 = new JTextPane();
-		airQuality5.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality5.setText("Co: "+hm.get("Co"+4)+"\r\n"
+				+ "NO2: "+hm.get("No2"+4)+"\r\n"
+				+ "O3: "+hm.get("O3"+4)+"\r\n"
+				+ "Pm10: "+hm.get("Pm10"+4)+"\r\n"
+				+ "Pm25: "+hm.get("Pm25"+4)+"\r\n"
+				+ "So2: "+hm.get("So2"+4));
 		airQuality5.setEditable(false);
 		add(airQuality5, "cell 9 9,alignx center,aligny top");
 
