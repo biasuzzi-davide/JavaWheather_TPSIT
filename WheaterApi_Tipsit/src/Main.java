@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import javax.xml.bind.JAXBException;
 
 import Forecast.Method_Forecast;
 import Forecast.Root;
+import Historical.HRequestToServer;
 import Historical.Method_Historical;
 
 import java.text.ParseException;
@@ -19,10 +21,11 @@ public class Main {
 		// TODO Auto-generated method stub
 		Scanner TMP = new Scanner(System.in);
 		String city = Root.refresh().getLocation().getName();
+		Root.refresh(Root.refresh().getLocation().getName());
 		String last = city;
-		Method_Forecast prove = new Method_Forecast();
-		Method_Historical prove1 = new Method_Historical();
-		ArrayList<String> tmp = new ArrayList<String>();
+		Method_Forecast forecast = new Method_Forecast();
+		Method_Historical historical = new Method_Historical();
+		HashMap<String, String> ris = new HashMap<>();
 		
 		while(!city.equals("0")){
 			System.out.println("Insert City (0 for Exit): ");
@@ -35,21 +38,15 @@ public class Main {
 				}
 				int tmp2=1;
 				System.out.println("Choices:\n"
-						+ "1-Today\n"
-						+ "2-Future\n"
-						+ "3-DayandHour\n"
-						+ "4-Day\n"
-						+ "5-Statistic\n"
-						+ "6-AirToday\n"
-						+ "7-AirFuture\n"
-						+ "8-AirDayandHour\n"
-						+ "9-AirDay\n"
-						+ "10-AirStatistic\n"
-						+ "11-FindDayOfWeek\n"
-						+ "12-Past\n"
-						+ "13-PastDayandHour\n"
-						+ "14-PastDay\n"
-						+ "15-PastStatistic\n"
+						+ "1-Future\n"
+						+ "2-DayandHour\n"
+						+ "3-Day\n"
+						+ "4-Statistic\n"
+						+ "5-FindDayOfWeek\n"
+						+ "6-Past\n"
+						+ "7-PastDayandHour\n"
+						+ "8-PastDay\n"
+						+ "9-PastStatistic\n"
 						);
 				tmp2 = TMP.nextInt();
 				System.out.println("\n\n");
@@ -64,11 +61,10 @@ public class Main {
 				case 2:
 				case 3:
 				case 4:
-				case 5:
-				case 12:
-				case 13:
-				case 14:
-				case 15:
+				case 6:
+				case 7:
+				case 8:
+				case 9:
 					System.out.println("Do you want American Unit? 1-Yes 2-No\n");
 					int tmp3 = TMP.nextInt();
 					if(tmp3==1) {
@@ -80,12 +76,10 @@ public class Main {
 				}
 				
 				switch(tmp2) {
-				case 2:
-				case 5:
-				case 7:
-				case 10:
-				case 12:
-				case 15:
+				case 1:
+				case 4:
+				case 6:
+				case 9:
 					System.out.println("How much day of forecast do you wanna see?");
 					howMuchDay = TMP.nextInt(); 
 					System.out.println("Do you wanna consider also today? 1-yes 2-no");
@@ -99,13 +93,11 @@ public class Main {
 				}
 				
 				switch(tmp2) {
+				case 2:
 				case 3:
-				case 4:
+				case 5:
+				case 7:
 				case 8:
-				case 9:
-				case 11:
-				case 13:
-				case 14:
 					TMP.nextLine();
 					System.out.println("write a day in format yyyy-mm-dd HH:MM");
 					String tmp3 = TMP.nextLine();
@@ -114,7 +106,7 @@ public class Main {
 				}
 				
 				switch(tmp2) {
-				case 11:
+				case 5:
 					System.out.println("is in the format localtime? 1-yes 2-no");
 					int tmp3 = TMP.nextInt();
 					if(tmp3==1) {
@@ -127,58 +119,147 @@ public class Main {
 				
 				switch(tmp2) {
 				case 1:
-					System.out.println(prove.Today(city, americanUnit));
+					ris=forecast.Future(city, howMuchDay, today, americanUnit); 
+					System.out.println(ris.get("city"));
+					System.out.println(ris.get("region"));
+					System.out.println(ris.get("country"));
+					for(int i=0;i<5;i++) {
+						System.out.println(ris.get("date"+i));
+						System.out.println(ris.get("avgTemp"+i));
+						System.out.println(ris.get("maxWind"+i));
+						System.out.println(ris.get("avgVis"+i));
+						System.out.println(ris.get("avgHum"+i));
+						System.out.println(ris.get("chaRai"+i));
+						System.out.println(ris.get("cond"+i));
+					}
 					break;
 				case 2:
-					tmp = prove.Future(city, howMuchDay, today, americanUnit);
-					for(int i=0;i<tmp.size();i++) {
-						System.out.println(tmp.get(i));
-					}
+					ris=forecast.DayandHour(city, americanUnit, date); 
+					System.out.println(ris.get("city"));
+					System.out.println(ris.get("region"));
+					System.out.println(ris.get("country"));
+					System.out.println(ris.get("date"));
+					System.out.println(ris.get("temp"));
+					System.out.println(ris.get("cond"));
+					System.out.println(ris.get("winSpe"));
+					System.out.println(ris.get("winDir"));
+					System.out.println(ris.get("precip"));
+					System.out.println(ris.get("hum"));
+					System.out.println(ris.get("cloud"));
+					System.out.println(ris.get("feeTemp"));
+					System.out.println(ris.get("Co"));
+					System.out.println(ris.get("No2"));
+					System.out.println(ris.get("O3"));
+					System.out.println(ris.get("Pm10"));
+					System.out.println(ris.get("Pm25"));
+					System.out.println(ris.get("So2"));
 					break;
 				case 3:
-					System.out.println(prove.DayandHour(city, americanUnit, date));
+					ris=forecast.Day(city, americanUnit, date); 
+					System.out.println(ris.get("city"));
+					System.out.println(ris.get("region"));
+					System.out.println(ris.get("country"));
+					System.out.println(ris.get("date"));
+					System.out.println(ris.get("maxTemp"));
+					System.out.println(ris.get("minTemp"));
+					System.out.println(ris.get("avgTemp"));
+					System.out.println(ris.get("maxWin"));
+					System.out.println(ris.get("precip"));
+					System.out.println(ris.get("snow"));
+					System.out.println(ris.get("avgVis"));
+					System.out.println(ris.get("hum"));
+					System.out.println(ris.get("chaRai"));
+					System.out.println(ris.get("chaSno"));
+					System.out.println(ris.get("Co"));
+					System.out.println(ris.get("No2"));
+					System.out.println(ris.get("O3"));
+					System.out.println(ris.get("Pm10"));
+					System.out.println(ris.get("Pm25"));
+					System.out.println(ris.get("So2"));
 					break;
 				case 4:
-					System.out.println(prove.Day(city, americanUnit, date));
+					ris=forecast.Statistic(city, howMuchDay,today, americanUnit); 
+					System.out.println(ris.get("city"));
+					System.out.println(ris.get("region"));
+					System.out.println(ris.get("country"));
+					System.out.println(ris.get("maxTemp"));
+					System.out.println(ris.get("minTemp"));
+					System.out.println(ris.get("avgTemp"));
+					System.out.println(ris.get("maxSpeWin"));
+					System.out.println(ris.get("precip"));
+					System.out.println(ris.get("snow"));
+					System.out.println(ris.get("vis"));
+					System.out.println(ris.get("avgHum"));
+					System.out.println(ris.get("chaRai"));
+					System.out.println(ris.get("chaSno"));
+					System.out.println(ris.get("Co"));
+					System.out.println(ris.get("No2"));
+					System.out.println(ris.get("O3"));
+					System.out.println(ris.get("Pm10"));
+					System.out.println(ris.get("Pm25"));
+					System.out.println(ris.get("So2"));
 					break;
 				case 5:
-					System.out.println(prove.Statistic(city, howMuchDay, today, americanUnit));
+					System.out.println(forecast.FindDayOfWeek(date,true)); 
 					break;
 				case 6:
-					System.out.println(prove.AirToday(city));
+					ris=historical.Past(city, howMuchDay, today, americanUnit); 
+					System.out.println(ris.get("city"));
+					System.out.println(ris.get("region"));
+					System.out.println(ris.get("country"));
+					for(int i=0;i<5;i++) {
+						System.out.println(ris.get("date"+i));
+						System.out.println(ris.get("maxTemp"+i));
+						System.out.println(ris.get("minTemp"+i));
+						System.out.println(ris.get("avgTemp"+i));
+						System.out.println(ris.get("maxWin"+i));
+						System.out.println(ris.get("precip"+i));
+						System.out.println(ris.get("avgVis"+i));
+						System.out.println(ris.get("avgHum"+i));
+						System.out.println(ris.get("cond"+i));
+					}
 					break;
 				case 7:
-					tmp = prove.AirFuture(city, howMuchDay, today);
-					for(int i=0;i<tmp.size();i++) {
-						System.out.println(tmp.get(i));
-					}
+					ris=historical.PastDayandHour(city, americanUnit, date); 
+					System.out.println(ris.get("city"));
+					System.out.println(ris.get("region"));
+					System.out.println(ris.get("country"));
+					System.out.println(ris.get("date"));
+					System.out.println(ris.get("temp"));
+					System.out.println(ris.get("cond"));
+					System.out.println(ris.get("winSpee"));
+					System.out.println(ris.get("winDir"));
+					System.out.println(ris.get("precip"));
+					System.out.println(ris.get("hum"));
+					System.out.println(ris.get("cloud"));
+					System.out.println(ris.get("feeTemp"));
 					break;
 				case 8:
-					System.out.println(prove.AirDayandHour(city, date));
+					ris=historical.PastDay(city, americanUnit, date); 
+					System.out.println(ris.get("city"));
+					System.out.println(ris.get("region"));
+					System.out.println(ris.get("country"));
+					System.out.println(ris.get("date"));
+					System.out.println(ris.get("maxTemp"));
+					System.out.println(ris.get("minTemp"));
+					System.out.println(ris.get("avgTemp"));
+					System.out.println(ris.get("precip"));
+					System.out.println(ris.get("avgVis"));
+					System.out.println(ris.get("avgHum"));
+					System.out.println(ris.get("cond"));
 					break;
 				case 9:
-					System.out.println(prove.AirDay(city, date));
-					break;
-				case 10:
-					System.out.println(prove.AirStatistic(city, howMuchDay, today));
-					break;
-				case 11:
-					System.out.println("Day of the week: "+prove.FindDayOfWeek(date,localtime));
-					break;
-				case 12:
-					tmp = prove1.Past(city, howMuchDay, today, americanUnit);
-					for(int i=0;i<tmp.size();i++) {
-						System.out.println(tmp.get(i));
-					}
-					break;
-				case 13:
-					System.out.println(prove1.PastDayandHour(city, americanUnit, date));
-					break;
-				case 14:
-					System.out.println(prove1.PastDay(city, americanUnit, date));
-					break;
-				case 15:
-					System.out.println(prove1.PastStatistic(city, howMuchDay, today, americanUnit));
+					ris=historical.PastStatistic(city, howMuchDay, today, americanUnit); 
+					System.out.println(ris.get("city"));
+					System.out.println(ris.get("region"));
+					System.out.println(ris.get("country"));
+					System.out.println(ris.get("day"));
+					System.out.println(ris.get("maxTemp"));
+					System.out.println(ris.get("minTemp"));
+					System.out.println(ris.get("avgTemp"));
+					System.out.println(ris.get("precip"));
+					System.out.println(ris.get("avgVis"));
+					System.out.println(ris.get("avgHum"));
 					break;
 				}
 				System.out.println("\n\n");

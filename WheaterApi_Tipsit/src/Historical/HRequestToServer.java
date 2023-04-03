@@ -21,7 +21,7 @@ public class HRequestToServer {
         return output.toString();
     }
     
-    public String HUrlForecast(String city, String date) {
+    public static String HUrlForecast(String city, String date) {
     	return "http://api.weatherapi.com/v1/history.xml?key=4dcd56b9af624eaaa11132617231503&q="+replaceSpaces(city)+"&dt="+date;
     }
     

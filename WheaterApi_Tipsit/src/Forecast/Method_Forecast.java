@@ -14,38 +14,32 @@ public class Method_Forecast {
 	
 	public Method_Forecast() {}
 	
-	public ArrayList<HashMap<String, String>> Future(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
+	public HashMap<String, String> Future(String city,int howMuchDay, boolean today, boolean AmericanUnit) throws JAXBException {
 		Root forecast = Root.getIstance();		
-		ArrayList<HashMap<String, String>> Final = new ArrayList<>();
-        HashMap<String, String> Tmp = new HashMap<>();
+        HashMap<String, String> Final = new HashMap<>();
 
-        Tmp.put("city", forecast.getLocation().getName().toString());
-	    Tmp.put("region", forecast.getLocation().getRegion());
-	    Tmp.put("country", forecast.getLocation().getCountry());
-	    Final.add(Tmp);
-	    Tmp.clear();
-	    
+        Final.put("city", forecast.getLocation().getName().toString());
+	    Final.put("region", forecast.getLocation().getRegion());
+	    Final.put("country", forecast.getLocation().getCountry());
+
 	    for(int i =(today ? 0 : 1);
 	    	i<forecast.getForecast().getForecastday().size() && i<howMuchDay;
 	    	i++) {
-	    	Tmp.put("date", forecast.getForecast().getForecastday().get(i).getDate().toString());
+	    	Final.put("date"+i, forecast.getForecast().getForecastday().get(i).getDate().toString());
 	    	if(AmericanUnit) {
-	    		Tmp.put("avgTemp", (Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempF().doubleValue()*100.00)/100.00)+"");
-	    		Tmp.put("maxWind", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindMph().doubleValue()*100.00)/100.00+"");
-	    		Tmp.put("avgVis", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisMiles()*100.00)/100.00+"");
+	    		Final.put("avgTemp"+i, (Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempF().doubleValue()*100.00)/100.00)+"");
+	    		Final.put("maxWind"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindMph().doubleValue()*100.00)/100.00+"");
+	    		Final.put("avgVis"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisMiles()*100.00)/100.00+"");
 		    }else {
-		    	Tmp.put("avgTemp", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempC().doubleValue()*100.00)/100.00+"");
-		    	Tmp.put("maxWind", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindKph().doubleValue()*100.00)/100.00+"");
-		    	Tmp.put("avgVis", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue()*100.00)/100.00+"");
+		    	Final.put("avgTemp"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgtempC().doubleValue()*100.00)/100.00+"");
+		    	Final.put("maxWind"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getMaxwindKph().doubleValue()*100.00)/100.00+"");
+		    	Final.put("avgVis"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue()*100.00)/100.00+"");
 		    }
-	    	Tmp.put("avgHum", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvghumidity()*100.00)/100.00+"");
-	    	Tmp.put("chaRai", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"");
-	    	Tmp.put("cond", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText()+"");
+	    	Final.put("avgHum"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvghumidity()*100.00)/100.00+"");
+	    	Final.put("chaRai"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"");
+	    	Final.put("cond"+i, forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText()+"");
 	    	
-	    	Final.add(Tmp);
-	    	Tmp.clear();;
 	    }
-	    
 	    
 	    return Final;
 	}
@@ -212,12 +206,12 @@ public class Method_Forecast {
 	    	return Final;
 	    }
 	    if(j<=2) {
-	    	Final.put("maxTemp", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
-	    	Final.put("maxTemp", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
-	    	Final.put("maxTemp", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
-	    	Final.put("maxTemp", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
-	    	Final.put("maxTemp", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
-	    	Final.put("maxTemp", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Co", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
+	    	Final.put("No2", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
+	    	Final.put("O3", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Pm10", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Pm25", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
+	    	Final.put("So2", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
 	    }else {
 	    	Final.put("err", "we don't have air quality data on this date");
 	    	return Final;
@@ -259,7 +253,7 @@ public class Method_Forecast {
 		double MinTemp = 0.0;
 		double AvgTemp = 0.0;
 		double MaxSpeWin = 0.0;
-		double PreMil = 0.0;
+		double Precip = 0.0;
 		double Sno = 0.0;
 		double Vis = 0.0;
 		double AvgHum = 0.0;
@@ -279,7 +273,7 @@ public class Method_Forecast {
 				MinTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMintempF().doubleValue();
 				AvgTemp+=forecast.getForecast().getForecastday().get(i).getDay().getAvgtempF().doubleValue();
 				MaxSpeWin+=forecast.getForecast().getForecastday().get(i).getDay().getMaxwindMph().doubleValue();
-				PreMil+=forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipIn().doubleValue();
+				Precip+=forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipIn().doubleValue();
 				Sno+=forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm();
 				Vis+=forecast.getForecast().getForecastday().get(i).getDay().getAvgvisMiles();
 		    }else {
@@ -287,7 +281,7 @@ public class Method_Forecast {
 				MinTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMintempC().doubleValue();
 				AvgTemp+=forecast.getForecast().getForecastday().get(i).getDay().getAvgtempC().doubleValue();
 				MaxSpeWin+=forecast.getForecast().getForecastday().get(i).getDay().getMaxwindKph().doubleValue();
-				PreMil+=forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipMm().doubleValue();
+				Precip+=forecast.getForecast().getForecastday().get(i).getDay().getTotalprecipMm().doubleValue();
 				Sno+=forecast.getForecast().getForecastday().get(i).getDay().getTotalsnowCm();
 				Vis+=forecast.getForecast().getForecastday().get(i).getDay().getAvgvisKm().doubleValue();
 		    }
@@ -319,45 +313,25 @@ public class Method_Forecast {
 		
 		
 		Final.put("day", howMuchDay+"");
-		Final.put("day", Math.round(Co/(i-(today ? 0 : 1))*100.00)/100.00+"");
-		Final.put("day", Math.round(No2/(i-(today ? 0 : 1))*100.00)/100.00+"");
-		Final.put("day", Math.round(O3/(i-(today ? 0 : 1))*100.00)/100.00+"");
-		Final.put("day", Math.round(Pm10/(i-(today ? 0 : 1))*100.00)/100.00+"");
-		Final.put("day", Math.round(Pm25/(i-(today ? 0 : 1))*100.00)/100.00+"");
-		Final.put("day", Math.round(So2/(i-(today ? 0 : 1))*100.00)/100.00+"");
-		
-		if(AmericanUnit) {
-					
-					Final.put("day", howMuchDay+"");
-					Final.put("maxTemp", Math.round(MaxTemp/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("minTemp", Math.round(MinTemp/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("avgTemp", Math.round(AvgTemp/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("maxSpeWin", Math.round(MaxSpeWin/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("precip", Math.round(PreMil/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("snow", Math.round(Sno/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("vis", Math.round(Vis/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("avgHum", Math.round(AvgHum/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("chaRai", Math.round(PerChaRai/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("chaSnow", Math.round(PerChaSno/(i-(today ? 0 : 1))*100.00)/100.00+"");
-		}else {
-					Final.put("day", howMuchDay+"");
-					Final.put("maxTemp", Math.round(MaxTemp/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("minTemp", Math.round(MinTemp/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("avgTemp", Math.round(AvgTemp/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("maxSpeWin", Math.round(MaxSpeWin/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("precip", Math.round(PreMil/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("snow", Math.round(Sno/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("vis", Math.round(Vis/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("avgHum", Math.round(AvgHum/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("chaRai", +Math.round(PerChaRai/(i-(today ? 0 : 1))*100.00)/100.00+"");
-					Final.put("chaSno", Math.round(PerChaSno/(i-(today ? 0 : 1))*100.00)/100.00+"");
-		}
+		Final.put("Co", Math.round(Co/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("No2", Math.round(No2/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("O3", Math.round(O3/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("Pm10", Math.round(Pm10/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("Pm25", Math.round(Pm25/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("So2", Math.round(So2/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("maxTemp", Math.round(MaxTemp/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("minTemp", Math.round(MinTemp/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("avgTemp", Math.round(AvgTemp/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("maxSpeWin", Math.round(MaxSpeWin/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("precip", Math.round(Precip/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("snow", Math.round(Sno/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("vis", Math.round(Vis/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("avgHum", Math.round(AvgHum/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("chaRai", Math.round(PerChaRai/(i-(today ? 0 : 1))*100.00)/100.00+"");
+		Final.put("chaSno", Math.round(PerChaSno/(i-(today ? 0 : 1))*100.00)/100.00+"");
 		return Final;
 	}
 		
-	
-	
-
 	public String FindDayOfWeek(String date,boolean localtime) {
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    LocalDate localDate;
