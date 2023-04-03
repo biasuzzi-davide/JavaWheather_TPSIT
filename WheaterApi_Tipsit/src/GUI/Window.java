@@ -75,11 +75,11 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 //    }
 
     public Window(Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) {
+    	this.m_forecast=m_forecast;
+    	this.m_historical=m_historical;
+    	this.hm=hm;
         initialize();
         messageFlag1 = 1;
-        this.m_forecast=m_forecast;
-        this.m_historical=m_historical;
-        this.hm=hm;
     }
 
     public void initialize() {
