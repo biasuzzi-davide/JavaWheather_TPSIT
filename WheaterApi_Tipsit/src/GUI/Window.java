@@ -45,11 +45,12 @@ public class Window extends JFrame implements ActionListener, WindowListener{
     private JTextField txtInsertCity;
 	private JButton exitBtn;
 	private JButton btnCredits;
-	private JButton historicalBtn;
+	private JButton btnHistory;
 	private JButton btnStats;
-	private JButton homeBtn;
+	private JButton btnHome;
 	private ArrayList<JPanel> panels;
 	private JMenu mnNewMenu;
+	private int messageFlag1;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -66,14 +67,22 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 
     public Window() {
         initialize();
+        messageFlag1 = 1;
     }
 
     private void initialize() {
     	FlatDarkLaf.setup();
     	panels=new ArrayList<JPanel>();
-    	panels.add(new HistoryPane());
+    	panels.add(new HomePane(this));
     	panels.add(new CreditsPane());
-    	panels.add(new HistoryPane());
+    	panels.add(new HistoryPane(this));
+    	panels.add(new SingleDayPane(this));
+    	panels.add(new SingleDayPane(this));
+    	panels.add(new SingleDayPane(this));
+    	panels.add(new SingleDayPane(this));
+    	panels.add(new SingleDayPane(this));
+    	panels.add(new StatsPane());
+    	panels.add(new HistoryStatsPane());
     	
         
         frame = new JFrame();
@@ -96,18 +105,18 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         mnNewMenu.setHorizontalTextPosition(SwingConstants.CENTER);
         menuBar.add(mnNewMenu);
         
-        homeBtn = new JButton("Home");
-        homeBtn.setToolTipText("Go to the home page");
-        homeBtn.setMaximumSize(new Dimension(80, 22));
-        homeBtn.setMinimumSize(new Dimension(80, 22));
-        homeBtn.setPreferredSize(new Dimension(84, 22));
-        homeBtn.setMargin(new Insets(4, 17, 4, 17));
-        homeBtn.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        homeBtn.setHorizontalTextPosition(SwingConstants.CENTER);
-        homeBtn.setSize(new Dimension(80, 22));
-        homeBtn.setAlignmentX(CENTER_ALIGNMENT);
-        mnNewMenu.add(homeBtn);
-        homeBtn.addActionListener(this);
+        btnHome = new JButton("Home");
+        btnHome.setToolTipText("Go to the home page");
+        btnHome.setMaximumSize(new Dimension(80, 22));
+        btnHome.setMinimumSize(new Dimension(80, 22));
+        btnHome.setPreferredSize(new Dimension(84, 22));
+        btnHome.setMargin(new Insets(4, 17, 4, 17));
+        btnHome.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        btnHome.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnHome.setSize(new Dimension(80, 22));
+        btnHome.setAlignmentX(CENTER_ALIGNMENT);
+        mnNewMenu.add(btnHome);
+        btnHome.addActionListener(this);
         
         Component verticalStrut = Box.createVerticalStrut(20);
         verticalStrut.setPreferredSize(new Dimension(0, 2));
@@ -131,18 +140,18 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         verticalStrut_3.setPreferredSize(new Dimension(0, 2));
         mnNewMenu.add(verticalStrut_3);
         
-        historicalBtn = new JButton("History");
-        historicalBtn.setToolTipText("View weather History");
-        historicalBtn.setPreferredSize(new Dimension(80, 22));
-        historicalBtn.setMinimumSize(new Dimension(80, 22));
-        historicalBtn.setMaximumSize(new Dimension(80, 22));
-        historicalBtn.setSize(new Dimension(80, 22));
-        historicalBtn.setMargin(new Insets(2, 15, 2, 15));
-        historicalBtn.addActionListener(this);
-        historicalBtn.setHorizontalTextPosition(SwingConstants.CENTER);
-        historicalBtn.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        historicalBtn.setAlignmentX(0.5f);
-        mnNewMenu.add(historicalBtn);
+        btnHistory = new JButton("History");
+        btnHistory.setToolTipText("View weather History");
+        btnHistory.setPreferredSize(new Dimension(80, 22));
+        btnHistory.setMinimumSize(new Dimension(80, 22));
+        btnHistory.setMaximumSize(new Dimension(80, 22));
+        btnHistory.setSize(new Dimension(80, 22));
+        btnHistory.setMargin(new Insets(2, 15, 2, 15));
+        btnHistory.addActionListener(this);
+        btnHistory.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnHistory.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        btnHistory.setAlignmentX(0.5f);
+        mnNewMenu.add(btnHistory);
         
         Component verticalStrut_3_1 = Box.createVerticalStrut(20);
         verticalStrut_3_1.setPreferredSize(new Dimension(0, 2));
@@ -254,22 +263,89 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		mnNewMenu.setPopupMenuVisible(true);
 		mnNewMenu.setPopupMenuVisible(false);
 		mnNewMenu.setPopupMenuVisible(true);
+		mnNewMenu.setPopupMenuVisible(false);
+		
 		if(e.getSource()==exitBtn) {
 			System.exit(EXIT_ON_CLOSE);
 		}else if(e.getSource()==btnCredits) {
 			System.out.println("Credits");
 //			frame.getContentPane().hide();
 			frame.setContentPane(panels.get(1));
-		}else if(e.getSource()==homeBtn) {
+		}else if(e.getSource()==btnHome) {
 			System.out.println("Home");
 //			frame.getContentPane().hide();
 			frame.setContentPane(panels.get(0));
-		}else if(e.getSource()==historicalBtn) {
+		}else if(e.getSource()==btnHistory) {
 			System.out.println("History");
 //			frame.getContentPane().hide();
 			frame.setContentPane(panels.get(2));
+		}else if(e.getSource()==btnStats) {
+			System.out.println("Stats");
+//			frame.getContentPane().hide();
+			// Controlli relativi al pannello che c'è in quel momento
+			if(messageFlag1>0) JOptionPane.showMessageDialog(this, "When you enter the statistics, the statistics relating to the screen you are viewing will open, for this reason you can only use the statistics button on the \"Home\" and \"History\" screens");
+			messageFlag1=-1;
+			if(frame.getContentPane()==panels.get(0)||frame.getContentPane()==panels.get(2)) {
+				if(frame.getContentPane()==panels.get(0)) frame.setContentPane(panels.get(8));
+				if(frame.getContentPane()==panels.get(2)) frame.setContentPane(panels.get(9));
+				// Se il frame in cui siamo è storico allora metto le statische storiche altrimenti quelle normali
+			}else {
+				JOptionPane.showMessageDialog(this,"To be able to open the statistics you must be in one of the two \"Home\" or \"History\" screens");
+			}	
+		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(1)) {
+			System.out.println("Giorno 1");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(3));
+		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(2)) {
+			System.out.println("Giorno 2");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(4));
+		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(3)) {
+			System.out.println("Giorno 3");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(5));
+		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(4)) {
+			System.out.println("Giorno 4");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(6));
+		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(5)) {
+			System.out.println("Giorno 5");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(7));
+		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(1)) {
+			System.out.println("Giorno 1");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(3));
+		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(2)) {
+			System.out.println("Giorno 2");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(4));
+		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(3)) {
+			System.out.println("Giorno 3");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(5));
+		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(4)) {
+			System.out.println("Giorno 4");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(6));
+		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(5)) {
+			System.out.println("Giorno 5");
+//			frame.getContentPane().hide();
+			frame.setContentPane(panels.get(7));
 		}
 	}
+	
+	public void hide() {
+		System.out.println("Dentro");
+		frame.hide();
+	}
+	
+	public void show() {
+		System.out.println("Dentro");
+		frame.show();
+	}
 }
+

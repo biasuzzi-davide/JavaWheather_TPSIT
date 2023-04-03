@@ -18,7 +18,7 @@ public class CreditsPane extends JPanel {
 	 */
 	public CreditsPane() {
 		this.setSize(1000, 600);
-		setLayout(new MigLayout("", "[400:400:400][200:200:200][400:400:400]", "[25][30][20][25][25][25][25][25][25][25][25][25][25][25][25][grow]"));
+		setLayout(new MigLayout("", "[400:400:400][200:200:200][400:400:400]", "[25][30][20][25][25][25][25][25][25][25][25][25][25][25][25][85][20]"));
 		
 		JLabel Credits = new JLabel("Credits");
 		Credits.setFont(new Font("Segoe UI", Font.BOLD, 18));
@@ -50,6 +50,9 @@ public class CreditsPane extends JPanel {
 		
 		JLabel lblNewLabel_3 = new JLabel("@biasuzzi-davide & @elparo290");
 		add(lblNewLabel_3, "cell 1 15,alignx center,aligny top");
+		
+		JLabel lblNewLabel_4 = new JLabel("Software Version: Release Candidate");
+		add(lblNewLabel_4, "cell 1 16,alignx center,aligny center");
 		
 
 		ImageIcon imageIcon = new ImageIcon("src/images/sole.png");

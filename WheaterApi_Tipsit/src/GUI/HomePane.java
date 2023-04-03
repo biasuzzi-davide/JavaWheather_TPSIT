@@ -12,7 +12,7 @@ import javax.swing.Icon;
 import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
-public class HistoryPane extends JPanel {
+public class HomePane extends JPanel {
 
 	private JButton seeMore1;
 	private JButton seeMore2;
@@ -23,9 +23,9 @@ public class HistoryPane extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public HistoryPane(Window window) {
+	public HomePane(Window window) {
 		this.setSize(1000, 600);
-		setLayout(new MigLayout("", "[15:15:15][116,grow][80][116,grow][80][116,grow][80][116,grow][80][116,grow][25:25:25]", "[25][30][40][50][20][25][][][100][50][]"));
+		setLayout(new MigLayout("", "[15:15:15][116,grow][80][116,grow][80][116,grow][80][116,grow][80][116,grow][25:25:25]", "[25][30][40][50][20][25][][][100][120,grow][]"));
 		
 		JLabel placeLabel = new JLabel("Treviso, Veneto, Italy");
 		add(placeLabel, "cell 5 0");
@@ -167,6 +167,31 @@ public class HistoryPane extends JPanel {
 		mainText5.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
 		mainText5.setEditable(false);
 		add(mainText5, "cell 9 8,alignx center,aligny top");
+		
+		JTextPane airQuality1 = new JTextPane();
+		airQuality1.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality1.setEditable(false);
+		add(airQuality1, "cell 1 9,alignx center,aligny top");
+		
+		JTextPane airQuality2 = new JTextPane();
+		airQuality2.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality2.setEditable(false);
+		add(airQuality2, "cell 3 9,alignx center,aligny top");
+		
+		JTextPane airQuality3 = new JTextPane();
+		airQuality3.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality3.setEditable(false);
+		add(airQuality3, "cell 5 9,alignx center,aligny top");
+		
+		JTextPane airQuality4 = new JTextPane();
+		airQuality4.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality4.setEditable(false);
+		add(airQuality4, "cell 7 9,alignx center,aligny top");
+		
+		JTextPane airQuality5 = new JTextPane();
+		airQuality5.setText("CO: 23\r\nNO2: 56\r\nPM10: 46\r\nPM25: 89\r\nSO2: 121");
+		airQuality5.setEditable(false);
+		add(airQuality5, "cell 9 9,alignx center,aligny top");
 		
 		seeMore1 = new JButton("See More");
 		seeMore1.addActionListener(window);
