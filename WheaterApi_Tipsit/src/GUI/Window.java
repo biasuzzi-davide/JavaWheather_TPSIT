@@ -70,7 +70,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         messageFlag1 = 1;
     }
 
-    private void initialize() {
+    public void initialize() {
     	FlatDarkLaf.setup();
     	panels=new ArrayList<JPanel>();
     	panels.add(new HomePane(this));
