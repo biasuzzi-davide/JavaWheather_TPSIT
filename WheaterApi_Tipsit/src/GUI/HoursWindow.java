@@ -60,6 +60,7 @@ public class HoursWindow extends JWindow implements WindowListener {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(HashMap<String,String> hm) {
+		System.out.println("Window HoursWindow Created");
 		w.hide();
 		FlatDarkLaf.setup();
 		frame = new JFrame();

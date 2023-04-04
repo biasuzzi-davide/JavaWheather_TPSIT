@@ -36,6 +36,7 @@ import javax.swing.border.SoftBevelBorder;
 import javax.xml.bind.JAXBException;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 
 import Forecast.Method_Forecast;
 import Historical.Method_Historical;
@@ -59,6 +60,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 	Method_Forecast m_forecast; 
 	Method_Historical m_historical; 
 	HashMap<String,String> hm;
+	private JButton searchBtn;
 
 	
 /* Main per il testing */
@@ -96,6 +98,11 @@ public class Window extends JFrame implements ActionListener, WindowListener{
     	panels.add(new SingleDayPane(this,m_forecast,hm,4));
     	panels.add(new StatsPane(m_forecast,m_historical,hm));
     	panels.add(new HistoryStatsPane(m_forecast,m_historical,hm));
+    	panels.add(new SingleHistoryPane(this,m_forecast,hm,0));
+    	panels.add(new SingleHistoryPane(this,m_forecast,hm,1));
+    	panels.add(new SingleHistoryPane(this,m_forecast,hm,2));
+    	panels.add(new SingleHistoryPane(this,m_forecast,hm,3));
+    	panels.add(new SingleHistoryPane(this,m_forecast,hm,4));
     	
         
         frame = new JFrame();
@@ -170,22 +177,6 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         verticalStrut_3_1.setPreferredSize(new Dimension(0, 2));
         mnNewMenu.add(verticalStrut_3_1);
         
-        btnCredits = new JButton("Credits");
-        btnCredits.setToolTipText("View Credits");
-        btnCredits.setMinimumSize(new Dimension(80, 22));
-        btnCredits.setMaximumSize(new Dimension(80, 22));
-        btnCredits.setSize(new Dimension(80, 22));
-        btnCredits.setMargin(new Insets(2, 15, 2, 15));
-        btnCredits.setHorizontalTextPosition(SwingConstants.CENTER);
-        btnCredits.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        btnCredits.setAlignmentX(0.5f);
-        btnCredits.addActionListener(this);
-        mnNewMenu.add(btnCredits);
-        
-        Component verticalStrut_1 = Box.createVerticalStrut(20);
-        verticalStrut_1.setPreferredSize(new Dimension(0, 2));
-        mnNewMenu.add(verticalStrut_1);
-        
         exitBtn = new JButton("Exit");
         exitBtn.setToolTipText("Quit the application");
         exitBtn.setMaximumSize(new Dimension(80, 22));
@@ -198,6 +189,22 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         exitBtn.setAlignmentX(0.5f);
         exitBtn.addActionListener(this);
         mnNewMenu.add(exitBtn);
+        
+        Component verticalStrut_1 = Box.createVerticalStrut(20);
+        verticalStrut_1.setPreferredSize(new Dimension(0, 2));
+        mnNewMenu.add(verticalStrut_1);
+        
+        btnCredits = new JButton("Credits");
+        btnCredits.setToolTipText("View Credits");
+        btnCredits.setMinimumSize(new Dimension(80, 22));
+        btnCredits.setMaximumSize(new Dimension(80, 22));
+        btnCredits.setSize(new Dimension(80, 22));
+        btnCredits.setMargin(new Insets(2, 15, 2, 15));
+        btnCredits.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnCredits.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        btnCredits.setAlignmentX(0.5f);
+        btnCredits.addActionListener(this);
+        mnNewMenu.add(btnCredits);
         
         Component horizontalStrut = Box.createHorizontalStrut(20);
         horizontalStrut.setMaximumSize(new Dimension(30, 32767));
@@ -216,6 +223,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 		txtInsertCity.setHorizontalAlignment(SwingConstants.CENTER);
 		txtInsertCity.setToolTipText("Insert Location");
 		txtInsertCity.setSize(new Dimension(7, 40));
+		txtInsertCity.addActionListener(this);
 		txtInsertCity.setPreferredSize(new Dimension(40, 20));
 		txtInsertCity.setMaximumSize(new Dimension(120, 22));
 		menuBar.add(txtInsertCity);
@@ -224,10 +232,11 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
 		horizontalStrut_1.setMaximumSize(new Dimension(10, 32767));
 		menuBar.add(horizontalStrut_1);
-		JButton btnNewButton_1 = new JButton("Search");
-		btnNewButton_1.setToolTipText("Search the Location");
-		btnNewButton_1.setMaximumSize(new Dimension(65, 22));
-		menuBar.add(btnNewButton_1);
+		searchBtn = new JButton("Search");
+		searchBtn.setToolTipText("Search the Location");
+		searchBtn.setMaximumSize(new Dimension(65, 22));
+		searchBtn.addActionListener(this);
+		menuBar.add(searchBtn);
 //		btnNewButton_1.setPreferredSize(new Dimension(imageIcon.getIconWidth(), imageIcon.getIconHeight()));
     }
 
@@ -309,45 +318,45 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 				JOptionPane.showMessageDialog(this,"To be able to open the statistics you must be in one of the two \"Home\" or \"History\" screens");
 			}	
 		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(1)) {
-			System.out.println("Giorno 1");
 //			frame.getContentPane().hide();
-			frame.setContentPane(panels.get(3));
+			frame.setContentPane(panels.get(10));
 		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(2)) {
-			System.out.println("Giorno 2");
 //			frame.getContentPane().hide();
-			frame.setContentPane(panels.get(4));
+			frame.setContentPane(panels.get(11));
 		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(3)) {
-			System.out.println("Giorno 3");
 //			frame.getContentPane().hide();
-			frame.setContentPane(panels.get(5));
+			frame.setContentPane(panels.get(12));
 		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(4)) {
-			System.out.println("Giorno 4");
 //			frame.getContentPane().hide();
-			frame.setContentPane(panels.get(6));
+			frame.setContentPane(panels.get(13));
 		}else if(e.getSource()==((HistoryPane) panels.get(2)).getSeeMore(5)) {
-			System.out.println("Giorno 5");
 //			frame.getContentPane().hide();
-			frame.setContentPane(panels.get(7));
+			frame.setContentPane(panels.get(14));
 		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(1)) {
-			System.out.println("Giorno 1");
 //			frame.getContentPane().hide();
 			frame.setContentPane(panels.get(3));
 		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(2)) {
-			System.out.println("Giorno 2");
 //			frame.getContentPane().hide();
 			frame.setContentPane(panels.get(4));
 		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(3)) {
-			System.out.println("Giorno 3");
 //			frame.getContentPane().hide();
 			frame.setContentPane(panels.get(5));
 		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(4)) {
-			System.out.println("Giorno 4");
 //			frame.getContentPane().hide();
 			frame.setContentPane(panels.get(6));
 		}else if(e.getSource()==((HomePane) panels.get(0)).getSeeMore(5)) {
-			System.out.println("Giorno 5");
 //			frame.getContentPane().hide();
 			frame.setContentPane(panels.get(7));
+		}
+		if(e.getSource()==searchBtn||e.getSource()==txtInsertCity) {
+			System.out.println(txtInsertCity.getText());
+			txtInsertCity.setText("");
+			try {
+				initialize();
+			} catch (JAXBException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	

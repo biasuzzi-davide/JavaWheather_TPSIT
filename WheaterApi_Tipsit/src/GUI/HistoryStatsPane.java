@@ -23,6 +23,7 @@ public class HistoryStatsPane extends JPanel {
 	 * Create the panel.
 	 */
 	public HistoryStatsPane(Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) {
+		System.out.println("Pane History Stats Created");
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[200][225][80][225][200]", "[25][30][20][25][25][25][25][25][25][25][25][25][25][25][25][25][25][25][25]"));
 		

@@ -30,8 +30,8 @@ public class HomePane extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public HomePane(Window window, Method_Forecast m_forecast, Method_Historical m_historical,
-			HashMap<String, String> hm) {
+	public HomePane(Window window, Method_Forecast m_forecast, Method_Historical m_historical,HashMap<String, String> hm) {
+		System.out.println("Pane Home Created");
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[15:15:15][140,grow][50][140][50][140,grow][50][140,grow][50][140,grow][25:25:25]", "[25][30][40][50][15][25][][][100][120,grow][]"));
 

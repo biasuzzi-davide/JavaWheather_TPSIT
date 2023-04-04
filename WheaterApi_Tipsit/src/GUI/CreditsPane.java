@@ -17,6 +17,7 @@ public class CreditsPane extends JPanel {
 	 * Create the panel.
 	 */
 	public CreditsPane() {
+		System.out.println("Pane CreditsCreated");
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[400:400:400][200:200:200][400:400:400]", "[25][30][20][25][25][25][25][25][25][25][25][25][25][25][25][85][20]"));
 		

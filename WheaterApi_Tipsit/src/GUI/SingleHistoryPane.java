@@ -25,7 +25,7 @@ import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-public class SingleDayPane extends JPanel implements ActionListener{
+public class SingleHistoryPane extends JPanel implements ActionListener{
 
 	private JComboBox comboBox;
 	private Window w;
@@ -36,14 +36,14 @@ public class SingleDayPane extends JPanel implements ActionListener{
 	 * Create the panel.
 	 * @throws JAXBException 
 	 */
-	public SingleDayPane(Window w, Method_Forecast m_forecast,HashMap<String,String> hm2, int day) throws JAXBException {
+	public SingleHistoryPane(Window w, Method_Forecast m_forecast,HashMap<String,String> hm2, int day) throws JAXBException {
 		this.w=w;
 		forecast=m_forecast;
 		String s = hm2.get("date" + day);
-		System.out.println("Pane Single day Created ["+s+"]");
+		System.out.println("Pane History Single day Created ["+s+"]");
 		hm=m_forecast.Day("Treviso", false, s);
 		this.setSize(1000, 600);
-		setLayout(new MigLayout("", "[150][300][150][200][200]", "[45][30][20][25][100][25][20][25][25][25][25][25][25][25][25][]"));
+		setLayout(new MigLayout("", "[150][300][150][200][200]", "[80][30][20][25][100][25][20][25][25][25][25][25][25][25][25][]"));
 		
 		JLabel placeLbl = new JLabel(hm.get("city") + ", " + hm.get("region") + ", " + hm.get("country"));
 		add(placeLbl, "cell 1 0,alignx center,aligny bottom");
@@ -84,29 +84,11 @@ public class SingleDayPane extends JPanel implements ActionListener{
 		JLabel windLbl = new JLabel("Wind Max: "+hm.get("maxWin")+" kmh");
 		add(windLbl, "cell 1 11,alignx center,aligny center");
 		
-		JLabel no2Lbl = new JLabel("No2: "+hm.get("No2"));
-		add(no2Lbl, "flowx,cell 1 12,alignx center,aligny center");
-		
-		JLabel o3Lbl = new JLabel("O3: "+hm.get("O3"));
-		add(o3Lbl, "flowx,cell 1 13,alignx center,aligny center");
-		
-		JLabel pm10Lbl = new JLabel("Pm10: "+hm.get("Pm10"));
-		add(pm10Lbl, "flowx,cell 1 14,alignx center,aligny center");
-		
 		JLabel snowLbl = new JLabel("Snow: "+hm.get("snow")+" cm");
 		add(snowLbl, "cell 1 8,alignx center,aligny center");
 		
 		JLabel humidityLbl = new JLabel("Humidity: "+hm.get("hum")+"%");
 		add(humidityLbl, "cell 1 9,alignx center,aligny center");
-		
-		JLabel coLbl = new JLabel("Co: "+hm.get("Co"));
-		add(coLbl, "cell 1 12,alignx center,aligny center");
-		
-		JLabel so2Lbl = new JLabel("So2: "+hm.get("So2"));
-		add(so2Lbl, "cell 1 13,alignx center,aligny center");
-		
-		JLabel pm25Lbl = new JLabel("Pm25: "+hm.get("Pm25"));
-		add(pm25Lbl, "cell 1 14,alignx center,aligny center");
 		
 		JLabel chaSnoLbl = new JLabel("Chance of snow: "+hm.get("chaSno")+"%");
 		add(chaSnoLbl, "cell 1 10,alignx center,aligny center");
