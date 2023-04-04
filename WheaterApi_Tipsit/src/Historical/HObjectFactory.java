@@ -10,14 +10,6 @@ package Historical;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
-import Historical.HRoot.Forecast;
-import Historical.HRoot.Location;
-import Historical.HRoot.Forecast.Forecastday;
-import Historical.HRoot.Forecast.Forecastday.Astro;
-import Historical.HRoot.Forecast.Forecastday.Day;
-import Historical.HRoot.Forecast.Forecastday.Hour;
-import Historical.HRoot.Forecast.Forecastday.Hour.Condition;
-
 
 /**
  * This object contains factory methods for each 
