@@ -33,6 +33,7 @@ import java.awt.Label;
 import java.awt.Dimension;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.SoftBevelBorder;
+import javax.xml.bind.JAXBException;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
@@ -74,7 +75,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 //        });
 //    }
 
-    public Window(Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) {
+    public Window(Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) throws JAXBException {
     	this.m_forecast=m_forecast;
     	this.m_historical=m_historical;
     	this.hm=hm;
@@ -82,17 +83,17 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         messageFlag1 = 1;
     }
 
-    public void initialize() {
+    public void initialize() throws JAXBException {
     	FlatDarkLaf.setup();
     	panels=new ArrayList<JPanel>();
     	panels.add(new HomePane(this,m_forecast,m_historical,hm));
     	panels.add(new CreditsPane());
     	panels.add(new HistoryPane(this,m_forecast,m_historical,hm));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,0));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,1));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,2));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,3));
-    	panels.add(new SingleDayPane(this,m_forecast,m_historical,hm,4));
+    	panels.add(new SingleDayPane(this,m_forecast,hm,0));
+    	panels.add(new SingleDayPane(this,m_forecast,hm,1));
+    	panels.add(new SingleDayPane(this,m_forecast,hm,2));
+    	panels.add(new SingleDayPane(this,m_forecast,hm,3));
+    	panels.add(new SingleDayPane(this,m_forecast,hm,4));
     	panels.add(new StatsPane(m_forecast,m_historical,hm));
     	panels.add(new HistoryStatsPane(m_forecast,m_historical,hm));
     	

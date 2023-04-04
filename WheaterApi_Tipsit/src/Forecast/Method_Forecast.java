@@ -356,7 +356,7 @@ public class Method_Forecast {
 		return Final;
 	}
 		
-	public String FindDayOfWeek(String date,boolean localtime) {
+	public static String FindDayOfWeek(String date,boolean localtime) {
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    LocalDate localDate;
 	    if(localtime) {

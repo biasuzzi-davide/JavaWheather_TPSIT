@@ -29,20 +29,19 @@ public class SingleDayPane extends JPanel implements ActionListener{
 
 	private JComboBox comboBox;
 	private Window w;
+	private HashMap<String,String> hm;
+	private Method_Forecast forecast;
 
 	/**
 	 * Create the panel.
+	 * @throws JAXBException 
 	 */
-	public SingleDayPane(Window w, Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm, int day) {
+	public SingleDayPane(Window w, Method_Forecast m_forecast,HashMap<String,String> hm2, int day) throws JAXBException {
 		this.w=w;
-		String s = hm.get("date" + day);
-		try {
-			System.out.println(s);
-			hm=m_forecast.Day("Treviso", false, s);
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		forecast=m_forecast;
+		String s = hm2.get("date" + day);
+		System.out.println(s);
+		hm=m_forecast.Day("Treviso", false, s);
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[200][200:200:200][195.00][200][200]", "[85][30][20][25][100][25][25][25][25][25][25][25][25][25][25][25][grow]"));
 		
@@ -53,7 +52,7 @@ public class SingleDayPane extends JPanel implements ActionListener{
 		dayNameLbl.setFont(new Font("Segoe UI", Font.BOLD, 18));
 		add(dayNameLbl, "cell 1 1,alignx center,aligny center");
 		
-		JLabel dayDateLbl = new JLabel(hm.get("date"+day));
+		JLabel dayDateLbl = new JLabel(hm.get("date"));
 		add(dayDateLbl, "cell 1 2,alignx center,aligny center");
 		
 		ImageIcon imageIcon = new ImageIcon("src/images/sunny.png");
@@ -75,14 +74,50 @@ public class SingleDayPane extends JPanel implements ActionListener{
 		add(comboBox, "cell 3 6,alignx center");
 		
 		
-		JLabel temperatureLbl = new JLabel("MAX: "+hm.get("maxTemp")+" °C | MIN: "+hm.get("minTemp"+0)+" °C | AVG: "+hm.get("avgTemp"+0)+" °C");
+		JLabel temperatureLbl = new JLabel("MAX: "+hm.get("maxTemp")+" °C | MIN: "+hm.get("minTemp")+" °C | AVG: "+hm.get("avgTemp")+" °C");
 		add(temperatureLbl, "cell 1 7,alignx center,aligny center");
 		
-		JLabel windLbl = new JLabel("Wind Max: "+hm.get("maxWind")+" kmh");
+		JLabel windLbl = new JLabel("Wind Max: "+hm.get("maxWin")+" kmh");
 		add(windLbl, "cell 1 8,alignx center,aligny center");
 		
-		JLabel humidityLbl = new JLabel("Humidiity: "+hm.get("avgHum")+"%");
-		add(humidityLbl, "cell 1 9,alignx center,aligny center");
+		JLabel precipLbl = new JLabel("Precipitation: "+hm.get("precip")+" mm");
+		add(precipLbl, "cell 1 9,alignx center,aligny center");
+		
+		JLabel snowLbl = new JLabel("Snow: "+hm.get("snow")+" cm");
+		add(snowLbl, "cell 1 10,alignx center,aligny center");
+		
+		JLabel avgVisLbl = new JLabel("Visibility: "+hm.get("avgVis")+" km");
+		add(avgVisLbl, "cell 1 11,alignx center,aligny center");
+		
+		JLabel humidityLbl = new JLabel("Humidity: "+hm.get("hum")+"%");
+		add(humidityLbl, "cell 1 12,alignx center,aligny center");
+		
+		JLabel chaRaiLbl = new JLabel("Chance of rain: "+hm.get("chaRai")+"%");
+		add(chaRaiLbl, "cell 1 13,alignx center,aligny center");
+		
+		JLabel chaSnoLbl = new JLabel("Chance of snow: "+hm.get("chaSno")+"%");
+		add(chaSnoLbl, "cell 1 14,alignx center,aligny center");
+		
+		JLabel condLbl = new JLabel("Condition: "+hm.get("cond"));
+		add(condLbl, "cell 1 15,alignx center,aligny center");
+		
+		JLabel coLbl = new JLabel("Co: "+hm.get("Co"));
+		add(coLbl, "cell 1 16,alignx center,aligny center");
+		
+		JLabel no2Lbl = new JLabel("No2: "+hm.get("No2"));
+		add(no2Lbl, "cell 1 17,alignx center,aligny center");
+		
+		JLabel o3Lbl = new JLabel("O3: "+hm.get("O3"));
+		add(o3Lbl, "cell 1 18,alignx center,aligny center");
+		
+		JLabel pm10Lbl = new JLabel("Pm10: "+hm.get("Pm10"));
+		add(pm10Lbl, "cell 1 19,alignx center,aligny center");
+		
+		JLabel pm25Lbl = new JLabel("Pm25: "+hm.get("Pm25"));
+		add(pm25Lbl, "cell 1 20,alignx center,aligny center");
+		
+		JLabel so2Lbl = new JLabel("So2: "+hm.get("So2"));
+		add(so2Lbl, "cell 1 21,alignx center,aligny center");
 
 	}
 
@@ -90,7 +125,90 @@ public class SingleDayPane extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		 if (e.getSource() == comboBox) {
-			 HoursWindow hw = new HoursWindow(comboBox.getSelectedIndex(),w);
+			 String[] tmp=hm.get("date").split(" ");
+			 String tmp2="";
+			 switch(comboBox.getSelectedIndex()) {
+			 case 0:
+				 tmp2="00:00";
+				 break;
+			 case 1:
+				 tmp2="01:00";
+				 break;
+			 case 2:
+				 tmp2="02:00";
+				 break;
+			 case 3:
+				 tmp2="03:00";
+				 break;
+			 case 4:
+				 tmp2="04:00";
+				 break;
+			 case 5:
+				 tmp2="05:00";
+				 break;
+			 case 6:
+				 tmp2="06:00";
+				 break;
+			 case 7:
+				 tmp2="07:00";
+				 break;
+			 case 8:
+				 tmp2="08:00";
+				 break;
+			 case 9:
+				 tmp2="09:00";
+				 break;
+			 case 10:
+				 tmp2="10:00";
+				 break;
+			 case 11:
+				 tmp2="11:00";
+				 break;
+			 case 12:
+				 tmp2="12:00";
+				 break;
+			 case 13:
+				 tmp2="13:00";
+				 break;
+			 case 14:
+				 tmp2="14:00";
+				 break;
+			 case 15:
+				 tmp2="15:00";
+				 break;
+			 case 16:
+				 tmp2="16:00";
+				 break;
+			 case 17:
+				 tmp2="17:00";
+				 break;
+			 case 18:
+				 tmp2="18:00";
+				 break;
+			 case 19:
+				 tmp2="19:00";
+				 break;
+			 case 20:
+				 tmp2="20:00";
+				 break;
+			 case 21:
+				 tmp2="21:00";
+				 break;
+			 case 22:
+				 tmp2="22:00";
+				 break;
+			 case 23:
+				 tmp2="23:00";
+				 break;
+			 }
+			 String date=tmp[0]+" "+tmp2;
+			 HoursWindow hw = null;
+			try {
+				hw = new HoursWindow(forecast.DayandHour(hm.get("city"), false, date),w);
+			} catch (JAXBException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			 hw.frame.setVisible(true);
 		 }
 	}
