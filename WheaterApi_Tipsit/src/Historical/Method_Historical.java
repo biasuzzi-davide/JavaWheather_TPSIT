@@ -8,6 +8,7 @@ import javax.xml.bind.JAXBException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
@@ -151,18 +152,20 @@ public class Method_Historical {
 		HashMap<String, String> Final = new HashMap<>();
 		boolean find=true;
 		String[] piecesDate = date.split(" ");
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	    Date tmp = dateFormat.parse(piecesDate[0]);
+		String[] piecesDate2 = piecesDate[0].split("-");
 	    LocalDate date1 = LocalDate.of(historical.getForecast().getForecastday().getDate().getYear(), historical.getForecast().getForecastday().getDate().getMonth(), historical.getForecast().getForecastday().getDate().getDay());
-	    LocalDate date2 = LocalDate.of(tmp.getYear(),tmp.getMonth(),tmp.getDay());
+	    LocalDate date2 = LocalDate.of(Integer.parseInt(piecesDate2[0]), Integer.parseInt(piecesDate2[1]), Integer.parseInt(piecesDate2[2]));
+	    LocalDate dateNow= LocalDate.of(TODAY.getYear(), TODAY.getMonth(), TODAY.getDayOfMonth());
 	    int between = (int) ChronoUnit.DAYS.between(date1,date2);
-	    if(date2.isBefore(date1)) {
+	    if(date2.isBefore(date1) || date2.isEqual(dateNow)) {
 		    if(between>6) 
 		    {
+		    	System.out.println("ciao");
 		    	find=false;
 		    }
 	    }else
 	    {
+	    	System.out.println("ciao2");
 	    	find=false;
 	    }
 	    if(!find) {

@@ -94,6 +94,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
     	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date3")),3));
     	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date4")),4));
     	panels.add(new StatsPane(Method_Forecast.Statistic(hm.get("city"), 5, true, false)));
+    	hm=Method_Historical.Past(hm.get("city"), 5, true, false);
     	panels.add(new HistoryStatsPane(Method_Historical.PastStatistic(hm.get("city"), 5, true, false)));
     	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date0")),0));
     	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date1")),1));
@@ -347,16 +348,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 		}
 		if(e.getSource()==searchBtn||e.getSource()==txtInsertCity) {
 			System.out.println(txtInsertCity.getText());
-			try {
-				hm=Method_Forecast.Future(txtInsertCity.getText(), 5, true, false);
-				initialize();
-			} catch (JAXBException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			
 			txtInsertCity.setText("");
 		}
 	}
