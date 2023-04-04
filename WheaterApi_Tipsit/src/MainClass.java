@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.util.HashMap;
 
 import javax.xml.bind.JAXBException;
@@ -9,13 +10,12 @@ import Historical.Method_Historical;
 
 public class MainClass {
 
-	public static void main(String[] args) throws JAXBException {
+	public static void main(String[] args) throws JAXBException, ParseException {
 		// TODO Auto-generated method stub
-		Method_Forecast forecast = new Method_Forecast();
-		Method_Historical historical = new Method_Historical();
+		Root.refresh(Root.getIstance().getLocation().getName());
 		HashMap<String, String> ris = new HashMap<>();
-		ris=forecast.Future("Nervesa della Battaglia", 5, true, false);
-		Window gui = new Window(forecast,historical,ris);
+		ris=Method_Forecast.Future(Root.getIstance().getLocation().getName(), 5, true, false);
+		Window gui = new Window(ris);
 		gui.setVisible(true);
 	}
 }

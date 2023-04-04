@@ -30,7 +30,7 @@ public class HistoryPane extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public HistoryPane(Window window, Method_Forecast m_forecast, Method_Historical m_historical,HashMap<String, String> hm) {
+	public HistoryPane(Window window,HashMap<String, String> hm) {
 		System.out.println("Pane History Created");
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[15:15:15][140,grow][50][140][50][140,grow][50][140,grow][50][140,grow][25:25:25]", "[25][30][40][50][15][25][][][100][120,grow][]"));
@@ -40,25 +40,25 @@ public class HistoryPane extends JPanel {
 
 		add(placeLabel, "cell 5 0");
 
-		JLabel label_day1 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 0), true));
+		JLabel label_day1 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 0), true));
 		label_day1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day1.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_day1.setHorizontalAlignment(SwingConstants.CENTER);
 		add(label_day1, "cell 1 1,alignx center,aligny center");
 
-		JLabel label_day2 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 1), true));
+		JLabel label_day2 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 1), true));
 		label_day2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day2.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_day2.setHorizontalAlignment(SwingConstants.CENTER);
 		add(label_day2, "cell 3 1,alignx center,aligny center");
 
-		JLabel label_day3 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 2), true));
+		JLabel label_day3 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 2), true));
 		label_day3.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_day3.setHorizontalTextPosition(SwingConstants.CENTER);
 		add(label_day3, "cell 5 1,alignx center,aligny center");
 
-		JLabel label_day4 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 3), true));
+		JLabel label_day4 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 3), true));
 		label_day4.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day4.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_day4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -95,7 +95,7 @@ public class HistoryPane extends JPanel {
 		newimg = image.getScaledInstance(80, 60, java.awt.Image.SCALE_SMOOTH);
 		cloudy = new ImageIcon(newimg);
 
-		JLabel label_day5 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 4), true));
+		JLabel label_day5 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 4), true));
 		label_day5.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day5.setHorizontalAlignment(SwingConstants.CENTER);
 		label_day5.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -181,39 +181,34 @@ public class HistoryPane extends JPanel {
 		JTextPane mainText1 = new JTextPane();
 		mainText1.setEditable(false);
 		//mainText1.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
-		mainText1.setText("Rain Chanche: "+hm.get("chaRai"+0)+"\r\n"
-					+ "Humidity: "+hm.get("avgHum"+0)+"\r\n"
+		mainText1.setText("Humidity: "+hm.get("avgHum"+0)+"\r\n"
 					+ "Visibility: "+hm.get("avgVis"+0)+" km\r\n"
-					+ "Max Wind: "+hm.get("maxWind"+0)+" kmh\r\n");
+					+ "Max Wind: "+hm.get("maxWin"+0)+" kmh\r\n");
 		add(mainText1, "cell 1 8,alignx center,aligny center");
 
 		JTextPane mainText2 = new JTextPane();
 		mainText2.setEditable(false);
-		mainText2.setText("Rain Chanche: "+hm.get("chaRai"+1)+"\r\n"
-				+ "Humidity: "+hm.get("avgHum"+1)+"\r\n"
+		mainText2.setText("Humidity: "+hm.get("avgHum"+1)+"\r\n"
 				+ "Visibility: "+hm.get("avgVis"+1)+" km\r\n"
-				+ "Max Wind: "+hm.get("maxWind"+1)+" kmh\r\n");
+				+ "Max Wind: "+hm.get("maxWin"+1)+" kmh\r\n");
 		add(mainText2, "cell 3 8,alignx center,aligny center");
 
 		JTextPane mainText3 = new JTextPane();
-		mainText3.setText("Rain Chanche: "+hm.get("chaRai"+2)+"\r\n"
-				+ "Humidity: "+hm.get("avgHum"+2)+"\r\n"
+		mainText3.setText("Humidity: "+hm.get("avgHum"+2)+"\r\n"
 				+ "Visibility: "+hm.get("avgVis"+2)+" km\r\n"
-				+ "Max Wind: "+hm.get("maxWind"+2)+" kmh\r\n");		mainText3.setEditable(false);
+				+ "Max Wind: "+hm.get("maxWin"+2)+" kmh\r\n");		mainText3.setEditable(false);
 		add(mainText3, "cell 5 8,alignx center,aligny center");
 
 		JTextPane mainText4 = new JTextPane();
-		mainText4.setText("Rain Chanche: "+hm.get("chaRai"+3)+"\r\n"
-				+ "Humidity: "+hm.get("avgHum"+3)+"\r\n"
+		mainText4.setText("Humidity: "+hm.get("avgHum"+3)+"\r\n"
 				+ "Visibility: "+hm.get("avgVis"+3)+" km\r\n"
-				+ "Max Wind: "+hm.get("maxWind"+3)+" kmh\r\n");		mainText4.setEditable(false);
+				+ "Max Wind: "+hm.get("maxWin"+3)+" kmh\r\n");		mainText4.setEditable(false);
 		add(mainText4, "cell 7 8,alignx center,aligny center");
 
 		JTextPane mainText5 = new JTextPane();
-		mainText5.setText("Rain Chanche: "+hm.get("chaRai"+4)+"\r\n"
-				+ "Humidity: "+hm.get("avgHum"+4)+"\r\n"
+		mainText5.setText("Humidity: "+hm.get("avgHum"+4)+"\r\n"
 				+ "Visibility: "+hm.get("avgVis"+4)+" km\r\n"
-				+ "Max Wind: "+hm.get("maxWind"+4)+" kmh\r\n");		mainText5.setEditable(false);
+				+ "Max Wind: "+hm.get("maxWin"+4)+" kmh\r\n");		mainText5.setEditable(false);
 		add(mainText5, "cell 9 8,alignx center,aligny center");
 		
 				seeMore1 = new JButton("See More");

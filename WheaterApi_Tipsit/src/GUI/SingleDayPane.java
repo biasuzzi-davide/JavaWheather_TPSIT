@@ -30,25 +30,22 @@ public class SingleDayPane extends JPanel implements ActionListener{
 	private JComboBox comboBox;
 	private Window w;
 	private HashMap<String,String> hm;
-	private Method_Forecast forecast;
-
+	private int day;
+	
 	/**
 	 * Create the panel.
 	 * @throws JAXBException 
 	 */
-	public SingleDayPane(Window w, Method_Forecast m_forecast,HashMap<String,String> hm2, int day) throws JAXBException {
+	public SingleDayPane(Window w, HashMap<String,String> hm2, int day) throws JAXBException {
 		this.w=w;
-		forecast=m_forecast;
-		String s = hm2.get("date" + day);
-		System.out.println("Pane Single day Created ["+s+"]");
-		hm=m_forecast.Day("Treviso", false, s);
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[150][300][150][200][200]", "[45][30][20][25][100][25][20][25][25][25][25][25][25][25][25][]"));
+		hm=hm2;
+		this.day=day;
 		
 		JLabel placeLbl = new JLabel(hm.get("city") + ", " + hm.get("region") + ", " + hm.get("country"));
 		add(placeLbl, "cell 1 0,alignx center,aligny bottom");
-		
-		JLabel dayNameLbl = new JLabel(m_forecast.FindDayOfWeek(s, true));
+		JLabel dayNameLbl = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date"), true));
 		dayNameLbl.setFont(new Font("Segoe UI", Font.BOLD, 18));
 		add(dayNameLbl, "cell 1 1,alignx center,aligny center");
 		
@@ -201,7 +198,7 @@ public class SingleDayPane extends JPanel implements ActionListener{
 			 String date=tmp[0]+" "+tmp2;
 			 HoursWindow hw = null;
 			try {
-				hw = new HoursWindow(forecast.DayandHour(hm.get("city"), false, date),w);
+				hw = new HoursWindow(Method_Forecast.DayandHour(hm.get("city"), false, date, day),w);
 			} catch (JAXBException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

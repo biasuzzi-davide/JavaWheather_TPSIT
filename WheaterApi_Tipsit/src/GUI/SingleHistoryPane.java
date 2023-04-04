@@ -13,6 +13,7 @@ import Historical.Method_Historical;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -30,25 +31,22 @@ public class SingleHistoryPane extends JPanel implements ActionListener{
 	private JComboBox comboBox;
 	private Window w;
 	private HashMap<String,String> hm;
-	private Method_Forecast forecast;
 
 	/**
 	 * Create the panel.
 	 * @throws JAXBException 
+	 * @throws ParseException 
 	 */
-	public SingleHistoryPane(Window w, Method_Forecast m_forecast,HashMap<String,String> hm2, int day) throws JAXBException {
+	public SingleHistoryPane(Window w,HashMap<String,String> hm2, int day) throws JAXBException, ParseException {
 		this.w=w;
-		forecast=m_forecast;
-		String s = hm2.get("date" + day);
-		System.out.println("Pane History Single day Created ["+s+"]");
-		hm=m_forecast.Day("Treviso", false, s);
+		hm=hm2;
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[150][300][150][200][200]", "[80][30][20][25][100][25][20][25][25][25][25][25][25][25][25][]"));
 		
 		JLabel placeLbl = new JLabel(hm.get("city") + ", " + hm.get("region") + ", " + hm.get("country"));
 		add(placeLbl, "cell 1 0,alignx center,aligny bottom");
 		
-		JLabel dayNameLbl = new JLabel(m_forecast.FindDayOfWeek(s, true));
+		JLabel dayNameLbl = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date"), true));
 		dayNameLbl.setFont(new Font("Segoe UI", Font.BOLD, 18));
 		add(dayNameLbl, "cell 1 1,alignx center,aligny center");
 		
@@ -183,8 +181,11 @@ public class SingleHistoryPane extends JPanel implements ActionListener{
 			 String date=tmp[0]+" "+tmp2;
 			 HoursWindow hw = null;
 			try {
-				hw = new HoursWindow(forecast.DayandHour(hm.get("city"), false, date),w);
+				hw = new HoursWindow(Method_Historical.PastDayandHour(hm.get("city"), false, date),w);
 			} catch (JAXBException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

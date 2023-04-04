@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.*;
@@ -38,8 +39,8 @@ import javax.xml.bind.JAXBException;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
-import Forecast.Method_Forecast;
-import Historical.Method_Historical;
+import Forecast.*;
+import Historical.*;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
@@ -57,10 +58,8 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 	private ArrayList<JPanel> panels;
 	private JMenu mnNewMenu;
 	private int messageFlag1;
-	Method_Forecast m_forecast; 
-	Method_Historical m_historical; 
-	HashMap<String,String> hm;
 	private JButton searchBtn;
+	HashMap<String, String> hm = new HashMap<>();
 
 	
 /* Main per il testing */
@@ -77,32 +76,30 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 //        });
 //    }
 
-    public Window(Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) throws JAXBException {
-    	this.m_forecast=m_forecast;
-    	this.m_historical=m_historical;
-    	this.hm=hm;
-        initialize();
+    public Window(HashMap<String, String> hm) throws JAXBException, ParseException {
+        this.hm=hm;
+    	initialize();
         messageFlag1 = 1;
     }
 
-    public void initialize() throws JAXBException {
+    public void initialize() throws JAXBException, ParseException {
     	FlatDarkLaf.setup();
     	panels=new ArrayList<JPanel>();
-    	panels.add(new HomePane(this,m_forecast,m_historical,hm));
+    	panels.add(new HomePane(this,Method_Forecast.Future(hm.get("city"), 5, true, false)));
     	panels.add(new CreditsPane());
-    	panels.add(new HistoryPane(this,m_forecast,m_historical,hm));
-    	panels.add(new SingleDayPane(this,m_forecast,hm,0));
-    	panels.add(new SingleDayPane(this,m_forecast,hm,1));
-    	panels.add(new SingleDayPane(this,m_forecast,hm,2));
-    	panels.add(new SingleDayPane(this,m_forecast,hm,3));
-    	panels.add(new SingleDayPane(this,m_forecast,hm,4));
-    	panels.add(new StatsPane(m_forecast,m_historical,hm));
-    	panels.add(new HistoryStatsPane(m_forecast,m_historical,hm));
-    	panels.add(new SingleHistoryPane(this,m_forecast,hm,0));
-    	panels.add(new SingleHistoryPane(this,m_forecast,hm,1));
-    	panels.add(new SingleHistoryPane(this,m_forecast,hm,2));
-    	panels.add(new SingleHistoryPane(this,m_forecast,hm,3));
-    	panels.add(new SingleHistoryPane(this,m_forecast,hm,4));
+    	panels.add(new HistoryPane(this, Method_Historical.Past(hm.get("city"), 5, true, false)));
+    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date0")),0));
+    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date1")),1));
+    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date2")),2));
+    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date3")),3));
+    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date4")),4));
+    	panels.add(new StatsPane(Method_Forecast.Statistic(hm.get("city"), 5, true, false)));
+    	panels.add(new HistoryStatsPane(Method_Historical.PastStatistic(hm.get("city"), 5, true, false)));
+    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date0")),0));
+    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date1")),1));
+    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date2")),2));
+    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date3")),3));
+    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date4")),4));
     	
         
         frame = new JFrame();
@@ -350,13 +347,17 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 		}
 		if(e.getSource()==searchBtn||e.getSource()==txtInsertCity) {
 			System.out.println(txtInsertCity.getText());
-			txtInsertCity.setText("");
 			try {
+				hm=Method_Forecast.Future(txtInsertCity.getText(), 5, true, false);
 				initialize();
 			} catch (JAXBException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+			txtInsertCity.setText("");
 		}
 	}
 	

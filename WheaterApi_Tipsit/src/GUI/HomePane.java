@@ -34,7 +34,7 @@ public class HomePane extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public HomePane(Window window, Method_Forecast m_forecast, Method_Historical m_historical,HashMap<String, String> hm) {
+	public HomePane(Window window,HashMap<String, String> hm) {
 		System.out.println("Pane Home Created");
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[15:15:15][140,grow][50][140][50][140,grow][50][140,grow][50][140,grow][25:25:25]", "[25][30][40][50][15][25][][][100][120,grow][]"));
@@ -44,25 +44,25 @@ public class HomePane extends JPanel {
 
 		add(placeLabel, "cell 5 0");
 
-		JLabel label_day1 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 0), true));
+		JLabel label_day1 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 0), true));
 		label_day1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day1.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_day1.setHorizontalAlignment(SwingConstants.CENTER);
 		add(label_day1, "cell 1 1,alignx center,aligny center");
 
-		JLabel label_day2 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 1), true));
+		JLabel label_day2 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 1), true));
 		label_day2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day2.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_day2.setHorizontalAlignment(SwingConstants.CENTER);
 		add(label_day2, "cell 3 1,alignx center,aligny center");
 
-		JLabel label_day3 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 2), true));
+		JLabel label_day3 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 2), true));
 		label_day3.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_day3.setHorizontalTextPosition(SwingConstants.CENTER);
 		add(label_day3, "cell 5 1,alignx center,aligny center");
 
-		JLabel label_day4 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 3), true));
+		JLabel label_day4 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 3), true));
 		label_day4.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day4.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_day4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -115,7 +115,7 @@ public class HomePane extends JPanel {
 		newimg = image.getScaledInstance(80, 60, java.awt.Image.SCALE_SMOOTH);
 		cloudy = new ImageIcon(newimg);
 
-		JLabel label_day5 = new JLabel(m_forecast.FindDayOfWeek(hm.get("date" + 4), true));
+		JLabel label_day5 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 4), true));
 		label_day5.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		label_day5.setHorizontalAlignment(SwingConstants.CENTER);
 		label_day5.setHorizontalTextPosition(SwingConstants.CENTER);

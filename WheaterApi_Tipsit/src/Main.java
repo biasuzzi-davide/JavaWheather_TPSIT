@@ -134,7 +134,7 @@ public class Main {
 					}
 					break;
 				case 2:
-					ris=forecast.DayandHour(city, americanUnit, date); 
+					ris=forecast.DayandHour(city, americanUnit, date,4); 
 					System.out.println(ris.get("city"));
 					System.out.println(ris.get("region"));
 					System.out.println(ris.get("country"));

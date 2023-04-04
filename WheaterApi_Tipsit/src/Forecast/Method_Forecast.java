@@ -11,9 +11,7 @@ import java.time.DayOfWeek;
 
 public class Method_Forecast {
 	
-	public Method_Forecast() {}
-	
-	public HashMap<String, String> Future(String city,int howMuchDay, boolean today, boolean AmericanUnit) throws JAXBException {
+	public static HashMap<String, String> Future(String city,int howMuchDay, boolean today, boolean AmericanUnit) throws JAXBException {
 		Root forecast;
 		if(!Root.getIstance().getLocation().getName().equals(city)) {
 			forecast = Root.refresh(city);
@@ -42,7 +40,7 @@ public class Method_Forecast {
 	    	Final.put("avgHum"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAvghumidity()*100.00)/100.00+"");
 	    	Final.put("chaRai"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"");
 	    	Final.put("cond"+i, forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText()+"");
-	    	Final.put("codCond", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getCode()+"");
+	    	Final.put("icon"+i, forecast.getForecast().getForecastday().get(i).getDay().getCondition().getIcon()+"");
 	    	if(i<4) {
 	    		Final.put("Co"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
 	    		Final.put("No2"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
@@ -56,7 +54,7 @@ public class Method_Forecast {
 	    return Final;
 	}
 	
-	public HashMap<String, String> DayandHour(String city, Boolean AmericanUnit,String date) throws JAXBException {
+	public static HashMap<String, String> DayandHour(String city, Boolean AmericanUnit,String date,int day) throws JAXBException {
 		Root forecast;
 		if(!Root.getIstance().getLocation().getName().equals(city)) {
 			forecast = Root.refresh(city);
@@ -100,48 +98,17 @@ public class Method_Forecast {
 	    	return Final;
 	    }
 	    
-	    boolean find3=false;
-		boolean find4=false;
-	    int r=0;
-	    for(r = 0;
-	    	r<forecast.getForecast().getForecastday().size();
-	    	r++) 
-		{
-			String[] piecesForecast = forecast.getForecast().getForecastday().get(r).getDate().toString().split(" ");
-			if(piecesDate[0].equals(piecesForecast[0]))
-			{
-				find3=true;
-				break;
-			}
-		}
-	    int t=0;
-	    if(find3) {
-		    for(t = 0;
-		    	t<forecast.getForecast().getForecastday().get(r).getHour().size();
-		    	t++) 
-			{
-				String[] piecesForecast = forecast.getForecast().getForecastday().get(r).getHour().get(t).getTime().split(" ");
-				String[] pieceForecast = piecesForecast[1].split(":");
-				String[] pieceDate = piecesDate[1].split(":");
-				if(pieceDate[0].equals(pieceForecast[0]))
-				{
-					find4=true;
-					break;
-				}
-			}
-	    }
-	    if(!find3 || !find4) {
-	    	Final.put("err", "Day or Hour not valid, Retry.");
-	    	return Final;
-	    }
+		
 	    
 	    
-    	Final.put("Co", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
-    	Final.put("No2", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
-    	Final.put("O3", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
-    	Final.put("Pm10", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
-    	Final.put("Pm25", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
-    	Final.put("So2", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
+	    if(day<4) {
+	    	Final.put("Co", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
+	    	Final.put("No2", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
+	    	Final.put("O3", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Pm10", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Pm25", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
+	    	Final.put("So2", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
+	    }
 	    
 	    Final.put("city", forecast.getLocation().getName());
 	    Final.put("region", forecast.getLocation().getRegion());
@@ -153,7 +120,7 @@ public class Method_Forecast {
 	    	Final.put("temp", forecast.getForecast().getForecastday().get(i).getHour().get(j).getTempC()+"");
 	    }
 	    Final.put("cond", forecast.getForecast().getForecastday().get(i).getHour().get(j).getCondition().getText()+"");
-	    Final.put("codCond", forecast.getForecast().getForecastday().get(i).getHour().get(j).getCondition().getCode()+"");
+	    Final.put("icon", forecast.getForecast().getForecastday().get(i).getHour().get(j).getCondition().getIcon()+"");
 	    if(AmericanUnit) {
 	    	Final.put("winSpe", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getWindMph().doubleValue()*100.00)/100.00+"");
 	    }else {
@@ -176,7 +143,7 @@ public class Method_Forecast {
 	    return Final;
 	}
 
-	public HashMap<String, String> Day(String city, Boolean AmericanUnit,String date) throws JAXBException {
+	public static HashMap<String, String> Day(String city, Boolean AmericanUnit,String date) throws JAXBException {
 		Root forecast;
 		if(!Root.getIstance().getLocation().getName().equals(city)) {
 			forecast = Root.refresh(city);
@@ -204,35 +171,13 @@ public class Method_Forecast {
 	    	return Final;
 	    }
 	    
-		boolean find2=false;
-	    
-	    int j=0;
-	    for(j = 0;
-	    	j<forecast.getForecast().getForecastday().size() && j<=2;
-	    	j++) 
-		{
-			String[] piecesForecast = forecast.getForecast().getForecastday().get(j).getDate().toString().split(" ");
-			if(piecesDate[0].equals(piecesForecast[0]))
-			{
-				find2=true;
-				break;
-			}
-		}
-	    if(!find2)
-	    {
-	    	Final.put("err", "Day not valid, Retry.");
-	    	return Final;
-	    }
-	    if(j<=2) {
-	    	Final.put("Co", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
-	    	Final.put("No2", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
-	    	Final.put("O3", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
-	    	Final.put("Pm10", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
-	    	Final.put("Pm25", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
-	    	Final.put("So2", Math.round(forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
-	    }else {
-	    	Final.put("err", "we don't have air quality data on this date");
-	    	return Final;
+	    if(i<=2) {
+	    	Final.put("Co", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
+	    	Final.put("No2", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
+	    	Final.put("O3", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Pm10", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Pm25", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
+	    	Final.put("So2", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
 	    }
 	    
 	    Final.put("city", forecast.getLocation().getName());
@@ -260,12 +205,12 @@ public class Method_Forecast {
 	    Final.put("chaRai", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"");
 	    Final.put("chaSno", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfSnow()*100.00)/100.00+"");
 	    Final.put("cond", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText());
-	    Final.put("codCond", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getCode()+"");
+	    Final.put("icon", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getIcon()+"");
 	    
 	    return Final;
 	}
 	
-	public HashMap<String, String> Statistic(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
+	public static HashMap<String, String> Statistic(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
 		Root forecast;
 		if(!Root.getIstance().getLocation().getName().equals(city)) {
 			forecast = Root.refresh(city);

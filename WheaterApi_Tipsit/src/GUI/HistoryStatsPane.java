@@ -5,8 +5,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import Forecast.Method_Forecast;
-import Historical.Method_Historical;
+import Historical.*;
 
 import java.awt.Label;
 import java.util.HashMap;
@@ -22,7 +21,7 @@ public class HistoryStatsPane extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public HistoryStatsPane(Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) {
+	public HistoryStatsPane(HashMap<String,String> hm) {
 		System.out.println("Pane History Stats Created");
 		this.setSize(1000, 600);
 		setLayout(new MigLayout("", "[200][225][80][225][200]", "[25][30][20][25][25][25][25][25][25][25][25][25][25][25][25][25][25][25][25]"));
@@ -31,49 +30,49 @@ public class HistoryStatsPane extends JPanel {
 		Stats.setFont(new Font("Segoe UI", Font.BOLD, 18));
 		add(Stats, "cell 2 0,alignx center,aligny center");
 		
-		JLabel placeLabel = new JLabel("Treviso, Veneto, Italy");
+		JLabel placeLabel = new JLabel(hm.get("city")+", "+hm.get("region")+", "+hm.get("country"));
 		add(placeLabel, "cell 2 1,alignx center,aligny center");
 		
-		JLabel lblNewLabel = new JLabel("Maximum Temperature:");
+		JLabel lblNewLabel = new JLabel("Maximum Temperature: ");
 		add(lblNewLabel, "cell 1 3,alignx right");
 		
-		JLabel maxTempLbl = new JLabel("18°C");
+		JLabel maxTempLbl = new JLabel(hm.get("maxTemp")+"°C");
 		add(maxTempLbl, "cell 3 3");
 		
 		JLabel lblNewLabel_1 = new JLabel("Minimum Temperature: ");
 		add(lblNewLabel_1, "cell 1 4,alignx right");
 		
-		JLabel minTempLbl = new JLabel("18°C");
+		JLabel minTempLbl = new JLabel(hm.get("minTemp")+"°C");
 		add(minTempLbl, "cell 3 4");
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Average Temperature:");
+		JLabel lblNewLabel_1_1 = new JLabel("Average Temperature: ");
 		add(lblNewLabel_1_1, "cell 1 5,alignx right");
 		
-		JLabel avgTempLbl = new JLabel("18°C");
+		JLabel avgTempLbl = new JLabel(hm.get("avgTemp")+"°C");
 		add(avgTempLbl, "cell 3 5");
 		
-		JLabel lblNewLabel_2 = new JLabel("Maximum Speed Wind:");
+		JLabel lblNewLabel_2 = new JLabel("Maximum Speed Wind: ");
 		add(lblNewLabel_2, "cell 1 6,alignx right");
 		
-		JLabel maxSpeedWind = new JLabel("2.45 km/h");
+		JLabel maxSpeedWind = new JLabel(hm.get("winSpe")+" km/h");
 		add(maxSpeedWind, "cell 3 6");
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Precipitations: ");
 		add(lblNewLabel_2_1, "cell 1 7,alignx right");
 		
-		JLabel precLbl = new JLabel("22 mm");
+		JLabel precLbl = new JLabel(hm.get("precip")+" mm");
 		add(precLbl, "cell 3 7");
 		
-		JLabel lblNewLabel_2_1_2 = new JLabel("Average Visibility:");
+		JLabel lblNewLabel_2_1_2 = new JLabel("Average Visibility: ");
 		add(lblNewLabel_2_1_2, "cell 1 8,alignx right");
 		
-		JLabel visLbl = new JLabel("2 km");
+		JLabel visLbl = new JLabel(hm.get("avgVis")+" km");
 		add(visLbl, "cell 3 8");
 		
-		JLabel lblNewLabel_3 = new JLabel("Average Humidity:");
+		JLabel lblNewLabel_3 = new JLabel("Average Humidity: ");
 		add(lblNewLabel_3, "cell 1 9,alignx right");
 		
-		JLabel avgHumLbl = new JLabel("28%");
+		JLabel avgHumLbl = new JLabel(hm.get("avgHum")+"%");
 		add(avgHumLbl, "cell 3 9");
 		
 

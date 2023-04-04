@@ -29,7 +29,7 @@ public class OldHSTPN extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public OldHSTPN(Window window, Method_Forecast m_forecast, Method_Historical m_historical, HashMap<String,String> hm) {
+	public OldHSTPN(Window window, Method_Forecast m_forecast, Method_Forecast m_historical, HashMap<String,String> hm) {
 		System.out.println("HistoryPane Created");
 		
 		this.setSize(1000, 600);

@@ -13,9 +13,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Method_Historical {
 	
-	public Method_Historical() {}
-	
-	public HashMap<String, String> Past(String city, int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
+	public static HashMap<String, String> Past(String city, int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
 		LocalDate TODAY = LocalDate.now();
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    String dateFormatted = TODAY.format(formatter);
@@ -55,7 +53,7 @@ public class Method_Historical {
 		    }
 	    	Final.put("avgHum"+i, Math.round(historical.getForecast().getForecastday().getDay().getAvghumidity()*100.00)/100.00+"");
 	    	Final.put("cond"+i, historical.getForecast().getForecastday().getDay().getCondition().getText()+"");
-	    	Final.put("codCond"+i, historical.getForecast().getForecastday().getDay().getCondition().getCode()+"");
+	    	Final.put("icon"+i, historical.getForecast().getForecastday().getDay().getCondition().getIcon()+"");
 	    	LocalDate dateModify = LocalDate.parse(historical.getForecast().getForecastday().getDate().toString() , DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	        LocalDate dateModified = dateModify.minusDays(1);
 	        dateModified.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -66,7 +64,7 @@ public class Method_Historical {
 	    return Final;
 	}
 	
-	public HashMap<String, String> PastDayandHour(String city, Boolean AmericanUnit,String date) throws JAXBException, ParseException {
+	public static HashMap<String, String> PastDayandHour(String city, Boolean AmericanUnit,String date) throws JAXBException, ParseException {
 		LocalDate TODAY = LocalDate.now();
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    String dateFormatted = TODAY.format(formatter);
@@ -122,7 +120,7 @@ public class Method_Historical {
 	    	Final.put("temp", historical.getForecast().getForecastday().getHour().get(j).getTempC()+"");
 	    }
 	    Final.put("cond", historical.getForecast().getForecastday().getHour().get(j).getCondition().getText()+"");
-	    Final.put("codCond", historical.getForecast().getForecastday().getHour().get(j).getCondition().getCode()+"");
+	    Final.put("icon", historical.getForecast().getForecastday().getHour().get(j).getCondition().getIcon()+"");
 	    if(AmericanUnit) {
 	    	Final.put("winSpee", Math.round(historical.getForecast().getForecastday().getHour().get(j).getWindMph().doubleValue()*100.00)/100.00+"");
 	    }else {
@@ -145,7 +143,7 @@ public class Method_Historical {
 	    return Final;
 	}
 
-	public HashMap<String, String> PastDay(String city, Boolean AmericanUnit,String date) throws JAXBException, ParseException {
+	public static HashMap<String, String> PastDay(String city, Boolean AmericanUnit,String date) throws JAXBException, ParseException {
 		LocalDate TODAY = LocalDate.now();
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    String dateFormatted = TODAY.format(formatter);
@@ -195,12 +193,12 @@ public class Method_Historical {
 	    }
 	    Final.put("avgHum", Math.round(historical.getForecast().getForecastday().getDay().getAvghumidity()*100.00)/100.00+"");
 	    Final.put("cond", historical.getForecast().getForecastday().getDay().getCondition().getText());
-	    Final.put("codCond", historical.getForecast().getForecastday().getDay().getCondition().getCode()+"");
+	    Final.put("icon", historical.getForecast().getForecastday().getDay().getCondition().getIcon()+"");
 	    
 	    return Final;
 	}
 	
-	public HashMap<String, String> PastStatistic(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
+	public static HashMap<String, String> PastStatistic(String city,int howMuchDay, boolean today, Boolean AmericanUnit) throws JAXBException {
 		LocalDate TODAY = LocalDate.now();
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    String dateFormatted = TODAY.format(formatter);
