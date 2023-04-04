@@ -9,16 +9,20 @@ import Forecast.Method_Forecast;
 import Historical.Method_Historical;
 
 import java.awt.Label;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
 import java.awt.Image;
+
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
-
+import java.net.*;
 public class HomePane extends JPanel {
 
 	private JButton seeMore1;
@@ -64,7 +68,23 @@ public class HomePane extends JPanel {
 		label_day4.setHorizontalAlignment(SwingConstants.CENTER);
 		add(label_day4, "cell 7 1,alignx center,aligny center");
 
-		ImageIcon sunny = new ImageIcon("src/images/sunny.png");
+		URL url=null;
+		try {
+			url = new URL("http://cdn.weatherapi.com/weather/64x64/day/113.png");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BufferedImage c=null;
+		try {
+			c = ImageIO.read(url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//ImageIcon sunny = new ImageIcon("src/images/sunny.png");
+		ImageIcon sunny = new ImageIcon(c);
 		ImageIcon snowing = new ImageIcon("src/images/snowing.png");
 		ImageIcon raining = new ImageIcon("src/images/raining.png");
 		ImageIcon partlySnowing = new ImageIcon("src/images/partlySnowy.png");
