@@ -41,7 +41,7 @@ public class Method_Forecast {
 	    	Final.put("chaRai"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfRain()*100.00)/100.00+"");
 	    	Final.put("cond"+i, forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText()+"");
 	    	Final.put("icon"+i, forecast.getForecast().getForecastday().get(i).getDay().getCondition().getIcon()+"");
-	    	if(i<4) {
+	    	if(i<3) {
 	    		Final.put("Co"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
 	    		Final.put("No2"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
 	    		Final.put("O3"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"");

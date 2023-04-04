@@ -84,6 +84,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 
     public void initialize() throws JAXBException, ParseException {
     	FlatDarkLaf.setup();
+    	hm=Method_Forecast.Future(hm.get("city"), 5, true, false);
     	panels=new ArrayList<JPanel>();
     	panels.add(new HomePane(this,Method_Forecast.Future(hm.get("city"), 5, true, false)));
     	panels.add(new CreditsPane());
@@ -348,8 +349,46 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 		}
 		if(e.getSource()==searchBtn||e.getSource()==txtInsertCity) {
 			System.out.println(txtInsertCity.getText());
-			
+			String city = txtInsertCity.getText();
 			txtInsertCity.setText("");
+		
+			JPanel panel = panels.get(0);
+			panel.removeAll();
+		    try {
+		    	panels.clear();
+		    	panels = new ArrayList<JPanel>();
+			    HashMap<String, String> hmTmp = Method_Forecast.Future(city, 5, true, false);
+			    panels.add(new HomePane(this, hmTmp));
+			    panels.add(new CreditsPane());
+			    panels.add(new HistoryPane(this, Method_Historical.Past(city, 5, true, false)));
+			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date0")), 0));
+			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date1")), 1));
+			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date2")), 2));
+			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date3")), 3));
+			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date4")), 4));
+			    panels.add(new StatsPane(Method_Forecast.Statistic(city, 5, true, false)));
+			    hmTmp = Method_Historical.Past(city, 5, true, false);
+			    panels.add(new HistoryStatsPane(Method_Historical.PastStatistic(city, 5, true, false)));
+			    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date0")), 0));
+			    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date1")), 1));
+			    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date2")), 2));
+			    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date3")), 3));
+				panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date4")), 4));
+			} catch (JAXBException | ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+		    for (JPanel panelTmp : panels) {
+		        getContentPane().add(panelTmp);
+		    }
+
+		    panels.get(0).setEnabled(false);
+		    panels.get(0).revalidate();
+		    panels.get(0).repaint();
+			this.revalidate();
+			this.repaint();
+			frame.setContentPane(panels.get(0));
 		}
 	}
 	
