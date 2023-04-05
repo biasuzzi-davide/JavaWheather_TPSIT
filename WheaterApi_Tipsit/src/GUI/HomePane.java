@@ -37,7 +37,7 @@ public class HomePane extends JPanel {
 	public HomePane(Window window,HashMap<String, String> hm) {
 		System.out.println("Pane Home Created");
 		this.setSize(1000, 600);
-		setLayout(new MigLayout("", "[15:15:15][140,grow][50][140][50][140,grow][50][140,grow][50][140,grow][25:25:25]", "[25][30][40][50][15][25][][][100][120,grow][]"));
+		setLayout(new MigLayout("", "[15:15:15][140,grow][50][140][50][140,grow][50][140,grow][50][140,grow][25:25:25]", "[25][30][40][50][15][25][][][100][160][]"));
 
 		// JLabel placeLabel = new JLabel("Treviso, Veneto, Italy");
 		JLabel placeLabel = new JLabel(hm.get("city") + ", " + hm.get("region") + ", " + hm.get("country"));
