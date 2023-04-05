@@ -101,7 +101,7 @@ public class Method_Forecast {
 		
 	    
 	    
-	    if(day<4) {
+	    if(day<3) {
 	    	Final.put("Co", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
 	    	Final.put("No2", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
 	    	Final.put("O3", Math.round(forecast.getForecast().getForecastday().get(i).getHour().get(j).getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
