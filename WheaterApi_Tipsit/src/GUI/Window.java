@@ -60,6 +60,8 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 	private int messageFlag1;
 	private JButton searchBtn;
 	HashMap<String, String> hm = new HashMap<>();
+	private Component verticalStrut_2;
+	private JToggleButton darkThemeBtn;
 
 	
 /* Main per il testing */
@@ -205,6 +207,24 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         btnCredits.addActionListener(this);
         mnNewMenu.add(btnCredits);
         
+        verticalStrut_2 = Box.createVerticalStrut(20);
+        verticalStrut_2.setPreferredSize(new Dimension(0, 2));
+        mnNewMenu.add(verticalStrut_2);
+        
+        darkThemeBtn = new JToggleButton("Dark Theme");
+        darkThemeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        darkThemeBtn.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        darkThemeBtn.setMargin(new Insets(0, 0, 0, 0));
+        darkThemeBtn.setPreferredSize(new Dimension(80, 22));
+        darkThemeBtn.setSize(new Dimension(80, 22));
+        darkThemeBtn.setMinimumSize(new Dimension(80, 22));
+        darkThemeBtn.setMaximumSize(new Dimension(80, 22));
+        darkThemeBtn.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        darkThemeBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+        darkThemeBtn.setSelected(true);
+        darkThemeBtn.addActionListener(this);
+        mnNewMenu.add(darkThemeBtn);
+        
         Component horizontalStrut = Box.createHorizontalStrut(20);
         horizontalStrut.setMaximumSize(new Dimension(30, 32767));
         horizontalStrut.setPreferredSize(new Dimension(30, 0));
@@ -347,6 +367,17 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 //			frame.getContentPane().hide();
 			frame.setContentPane(panels.get(7));
 		}
+		if(e.getSource()==darkThemeBtn) {
+			if (darkThemeBtn.isSelected()) {
+				FlatDarkLaf.setup();}
+			else { FlatLightLaf.setup();}
+			this.revalidate();
+			this.repaint();
+			SwingUtilities.updateComponentTreeUI(frame);
+			for(int i=0; i<panels.size(); i++) {
+				SwingUtilities.updateComponentTreeUI(panels.get(i));
+			}
+		}
 		if(e.getSource()==searchBtn||e.getSource()==txtInsertCity) {
 			System.out.println(txtInsertCity.getText());
 			String city = txtInsertCity.getText();
@@ -398,6 +429,10 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 	
 	public void show() {
 		frame.show();
+	}
+	
+	public boolean isDarkThemeActive() {
+		return darkThemeBtn.isSelected();
 	}
 }
 

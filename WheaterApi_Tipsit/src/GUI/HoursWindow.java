@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 
 import Forecast.Method_Forecast;
 import Historical.Method_Historical;
@@ -69,7 +70,7 @@ public class HoursWindow extends JWindow implements WindowListener {
 	private void initialize(HashMap<String,String> hm) {
 		System.out.println("Window HoursWindow Created");
 		w.hide();
-		FlatDarkLaf.setup();
+		if(w.isDarkThemeActive()) FlatDarkLaf.setup(); else FlatLightLaf.setup();
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 500, 600);
