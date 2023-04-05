@@ -14,13 +14,20 @@ import java.awt.BorderLayout;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 
 import javax.swing.JTextPane;
 import javax.swing.JWindow;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -67,7 +74,7 @@ public class HoursWindow extends JWindow implements WindowListener {
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 500, 600);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[125][250,grow][125]", "[][][][][][][][][][][][][][][][grow][]"));
+		frame.getContentPane().setLayout(new MigLayout("", "[125][250,grow][125]", "[][][][][][][][][][][][][][][1][50][80][]"));
 		
 		
 		JLabel placeLbl = new JLabel(hm.get("city")+", "+hm.get("region")+", "+hm.get("country"));
@@ -138,7 +145,30 @@ public class HoursWindow extends JWindow implements WindowListener {
 				frame.dispose();
 			}
 		});
-		frame.getContentPane().add(exitBtn, "cell 1 16,alignx center,aligny center");
+		
+		URL url=null;
+		try {
+			url = new URL("http:"+hm.get("icon"));
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BufferedImage bf=null;
+		try {
+			bf = ImageIO.read(url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+        ImageIcon icon = new ImageIcon(bf);
+
+        Image image = icon.getImage();
+		Image newimg = image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH);
+		icon = new ImageIcon(newimg);
+		
+		JLabel iconLbl = new JLabel(icon);
+		frame.getContentPane().add(iconLbl, "cell 1 16,alignx center,aligny center");
+		frame.getContentPane().add(exitBtn, "cell 1 17,alignx center,aligny center");
 	}
 
 	@Override

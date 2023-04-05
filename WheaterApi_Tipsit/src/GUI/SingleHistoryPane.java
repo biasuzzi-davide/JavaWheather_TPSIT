@@ -13,6 +13,10 @@ import Historical.Method_Historical;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.HashMap;
 
@@ -24,6 +28,7 @@ import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 public class SingleHistoryPane extends JPanel implements ActionListener{
@@ -53,11 +58,27 @@ public class SingleHistoryPane extends JPanel implements ActionListener{
 		JLabel dayDateLbl = new JLabel(hm.get("date"));
 		add(dayDateLbl, "cell 1 2,alignx center,aligny center");
 		
-		ImageIcon imageIcon = new ImageIcon("src/images/sunny.png");
-		Image image = imageIcon.getImage();
-		Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
-		imageIcon = new ImageIcon(newimg);
-		JLabel iconLabel = new JLabel(imageIcon);
+		URL url=null;
+		try {
+			url = new URL("http:"+hm.get("icon"));
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BufferedImage bf=null;
+		try {
+			bf = ImageIO.read(url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+        ImageIcon icon = new ImageIcon(bf);
+
+        Image image = icon.getImage();
+		Image newimg = image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH);
+		icon = new ImageIcon(newimg);
+		
+		JLabel iconLabel = new JLabel(icon);
 		add(iconLabel, "cell 1 4,alignx center,aligny center");
 		
 		JLabel lblNewLabel = new JLabel("Select Day Hour");

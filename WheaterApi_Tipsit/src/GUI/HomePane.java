@@ -68,52 +68,55 @@ public class HomePane extends JPanel {
 		label_day4.setHorizontalAlignment(SwingConstants.CENTER);
 		add(label_day4, "cell 7 1,alignx center,aligny center");
 
-		URL url=null;
+		URL url1=null, url2=null, url3=null, url4=null, url5=null;
 		try {
-			url = new URL("http://cdn.weatherapi.com/weather/64x64/day/113.png");
+			url1 = new URL("http:"+hm.get("icon"+0));
+			url2 = new URL("http:"+hm.get("icon"+1));
+			url3 = new URL("http:"+hm.get("icon"+2));
+			url4 = new URL("http:"+hm.get("icon"+3));
+			url5 = new URL("http:"+hm.get("icon"+4));
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		BufferedImage c=null;
+		BufferedImage bf1=null, bf2=null, bf3=null, bf4=null, bf5=null;
 		try {
-			c = ImageIO.read(url);
+			bf1 = ImageIO.read(url1);
+			bf2 = ImageIO.read(url2);
+			bf3 = ImageIO.read(url3);
+			bf4 = ImageIO.read(url4);
+			bf5 = ImageIO.read(url5);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		//ImageIcon sunny = new ImageIcon("src/images/sunny.png");
-		ImageIcon sunny = new ImageIcon(c);
-		ImageIcon snowing = new ImageIcon("src/images/snowing.png");
-		ImageIcon raining = new ImageIcon("src/images/raining.png");
-		ImageIcon partlySnowing = new ImageIcon("src/images/partlySnowy.png");
-		ImageIcon partlyCloudy = new ImageIcon("src/images/partlyCloudy.png");
-		ImageIcon cloudy = new ImageIcon("src/images/cloudy.png");
+		ImageIcon d1 = new ImageIcon(bf1);
+		ImageIcon d2 = new ImageIcon(bf2);
+		ImageIcon d3 = new ImageIcon(bf3);
+		ImageIcon d4 = new ImageIcon(bf4);
+		ImageIcon d5 = new ImageIcon(bf5);
 		
-		Image image = sunny.getImage();
+		Image image = d1.getImage();
 		Image newimg = image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH);
-		sunny = new ImageIcon(newimg);
+		d1 = new ImageIcon(newimg);
 		
-		image = snowing.getImage();
+		image = d2.getImage();
 		newimg = image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH);
-		snowing = new ImageIcon(newimg);
+		d2 = new ImageIcon(newimg);
 		
-		image = raining.getImage();
+		image = d3.getImage();
 		newimg = image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH);
-		raining = new ImageIcon(newimg);
+		d3 = new ImageIcon(newimg);
 		
-		image = partlySnowing.getImage();
-		newimg = image.getScaledInstance(84, 80, java.awt.Image.SCALE_SMOOTH);
-		partlySnowing = new ImageIcon(newimg);
+		image = d4.getImage();
+		newimg = image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH);
+		d4 = new ImageIcon(newimg);
 		
-		image = partlyCloudy.getImage();
-		newimg = image.getScaledInstance(80, 60, java.awt.Image.SCALE_SMOOTH);
-		partlyCloudy = new ImageIcon(newimg);
-		
-		image = cloudy.getImage();
-		newimg = image.getScaledInstance(80, 60, java.awt.Image.SCALE_SMOOTH);
-		cloudy = new ImageIcon(newimg);
+		image = d5.getImage();
+		newimg = image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH);
+		d5 = new ImageIcon(newimg);
 
 		JLabel label_day5 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 4), true));
 		label_day5.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -136,21 +139,21 @@ public class HomePane extends JPanel {
 		JLabel day5day = new JLabel(hm.get("date"+4));
 		add(day5day, "cell 9 2,alignx center,aligny top");
 
-		JLabel iconLabel_day1 = new JLabel(sunny);
+		JLabel iconLabel_day1 = new JLabel(d1);
 //		iconLabel.setMinimumSize(new Dimension(200, 200));
 //		iconLabel.setMaximumSize(new Dimension(200, 200));
 		add(iconLabel_day1, "cell 1 3,alignx center,aligny center");
 
-		JLabel iconLabel_day2 = new JLabel(cloudy);
+		JLabel iconLabel_day2 = new JLabel(d2);
 		add(iconLabel_day2, "cell 3 3,alignx center,aligny center");
 
-		JLabel iconLabel_day3 = new JLabel(snowing);
+		JLabel iconLabel_day3 = new JLabel(d3);
 		add(iconLabel_day3, "cell 5 3,alignx center,aligny center");
 
-		JLabel iconLabel_day4 = new JLabel(partlyCloudy);
+		JLabel iconLabel_day4 = new JLabel(d4);
 		add(iconLabel_day4, "cell 7 3,alignx center,aligny center");
 
-		JLabel iconLabel_day5 = new JLabel(raining);
+		JLabel iconLabel_day5 = new JLabel(d5);
 		add(iconLabel_day5, "cell 9 3,alignx center,aligny center");
 
 		JLabel labelWh_day1 = new JLabel(hm.get("cond"+0));
