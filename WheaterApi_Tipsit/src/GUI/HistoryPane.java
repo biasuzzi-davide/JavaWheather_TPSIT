@@ -178,27 +178,27 @@ public class HistoryPane extends JPanel {
 		labelWh_day5.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		add(labelWh_day5, "cell 9 5,alignx center,aligny center");
 
-		JLabel lblTemp_day1 = new JLabel("Temperature: "+hm.get("avgTemp"+0));
+		JLabel lblTemp_day1 = new JLabel("Temperature: "+hm.get("avgTemp"+0)+" °C");
 		lblTemp_day1.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day1.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day1, "cell 1 6,alignx center,aligny center");
 
-		JLabel lblTemp_day2 = new JLabel("Temperature: "+hm.get("avgTemp"+1));
+		JLabel lblTemp_day2 = new JLabel("Temperature: "+hm.get("avgTemp"+1)+" °C");
 		lblTemp_day2.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day2.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day2, "cell 3 6,alignx center,aligny center");
 
-		JLabel lblTemp_day3 = new JLabel("Temperature: "+hm.get("avgTemp"+2));
+		JLabel lblTemp_day3 = new JLabel("Temperature: "+hm.get("avgTemp"+2)+" °C");
 		lblTemp_day3.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day3.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day3, "cell 5 6,alignx center,aligny center");
 
-		JLabel lblTemp_day4 = new JLabel("Temperature: "+hm.get("avgTemp"+3));
+		JLabel lblTemp_day4 = new JLabel("Temperature: "+hm.get("avgTemp"+3)+" °C");
 		lblTemp_day4.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day4.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day4, "cell 7 6,growx,aligny center");
 
-		JLabel lblTemp_day5 = new JLabel("Temperature: "+hm.get("avgTemp"+4));
+		JLabel lblTemp_day5 = new JLabel("Temperature: "+hm.get("avgTemp"+4)+" °C");
 		lblTemp_day5.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTemp_day5.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblTemp_day5, "cell 9 6,growx");
@@ -206,7 +206,7 @@ public class HistoryPane extends JPanel {
 		JTextPane mainText1 = new JTextPane();
 		mainText1.setEditable(false);
 		//mainText1.setText("Rain Chanche: 14%\r\nHumidity: 20%\r\nVisibility: 2.3 km\r\nMax Wind: 29 kmh\r\n");
-		mainText1.setText("Humidity: "+hm.get("avgHum"+0)+"\r\n"
+		mainText1.setText("Humidity: "+hm.get("avgHum"+0)+" %\r\n"
 					+ "Visibility: "+hm.get("avgVis"+0)+" km\r\n"
 					+ "Max Wind: "+hm.get("maxWin"+0)+" kmh\r\n");
 		add(mainText1, "cell 1 8,alignx center,aligny center");

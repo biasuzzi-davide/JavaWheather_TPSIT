@@ -44,7 +44,7 @@ public class SingleDayPane extends JPanel implements ActionListener{
 	public SingleDayPane(Window w, HashMap<String,String> hm2, int day) throws JAXBException {
 		this.w=w;
 		this.setSize(1000, 600);
-		setLayout(new MigLayout("", "[150][300][150][200][200]", "[45][30][20][25][100][25][20][25][25][25][25][25][25][25][25][]"));
+		setLayout(new MigLayout("", "[150][300][150][200][200]", "[45][30][20][25][100][25][20][25][25][25][][25][25][25][25][25][]"));
 		hm=hm2;
 		this.day=day;
 		
@@ -96,20 +96,23 @@ public class SingleDayPane extends JPanel implements ActionListener{
 		JLabel avgVisLbl = new JLabel("Visibility: "+hm.get("avgVis")+" km");
 		add(avgVisLbl, "flowx,cell 1 9,alignx center,aligny center");
 		
+		JLabel sun_moon_lbl = new JLabel("Sunrise: "+hm.get("sunrise")+" | Sunset: "+hm.get("sunset")+" | Moonset: "+hm.get("moonset"));
+		add(sun_moon_lbl, "cell 1 10");
+		
 		JLabel chaRaiLbl = new JLabel("Chance of rain: "+hm.get("chaRai")+"%");
-		add(chaRaiLbl, "flowx,cell 1 10,alignx center,aligny center");
+		add(chaRaiLbl, "flowx,cell 1 11,alignx center,aligny center");
 		
 		JLabel windLbl = new JLabel("Wind Max: "+hm.get("maxWin")+" kmh");
-		add(windLbl, "cell 1 11,alignx center,aligny center");
+		add(windLbl, "cell 1 12,alignx center,aligny center");
 		
 		JLabel no2Lbl = new JLabel("No2: "+hm.get("No2"));
-		add(no2Lbl, "flowx,cell 1 12,alignx center,aligny center");
+		add(no2Lbl, "flowx,cell 1 13,alignx center,aligny center");
 		
 		JLabel o3Lbl = new JLabel("O3: "+hm.get("O3"));
-		add(o3Lbl, "flowx,cell 1 13,alignx center,aligny center");
+		add(o3Lbl, "flowx,cell 1 14,alignx center,aligny center");
 		
 		JLabel pm10Lbl = new JLabel("Pm10: "+hm.get("Pm10"));
-		add(pm10Lbl, "flowx,cell 1 14,alignx center,aligny center");
+		add(pm10Lbl, "flowx,cell 1 15,alignx center,aligny center");
 		
 		JLabel snowLbl = new JLabel("Snow: "+hm.get("snow")+" cm");
 		add(snowLbl, "cell 1 8,alignx center,aligny center");
@@ -118,16 +121,16 @@ public class SingleDayPane extends JPanel implements ActionListener{
 		add(humidityLbl, "cell 1 9,alignx center,aligny center");
 		
 		JLabel coLbl = new JLabel("Co: "+hm.get("Co"));
-		add(coLbl, "cell 1 12,alignx center,aligny center");
+		add(coLbl, "cell 1 13,alignx center,aligny center");
 		
 		JLabel so2Lbl = new JLabel("So2: "+hm.get("So2"));
-		add(so2Lbl, "cell 1 13,alignx center,aligny center");
+		add(so2Lbl, "cell 1 14,alignx center,aligny center");
 		
 		JLabel pm25Lbl = new JLabel("Pm25: "+hm.get("Pm25"));
-		add(pm25Lbl, "cell 1 14,alignx center,aligny center");
+		add(pm25Lbl, "cell 1 15,alignx center,aligny center");
 		
 		JLabel chaSnoLbl = new JLabel("Chance of snow: "+hm.get("chaSno")+"%");
-		add(chaSnoLbl, "cell 1 10,alignx center,aligny center");
+		add(chaSnoLbl, "cell 1 11,alignx center,aligny center");
 		
 		comboBox = new JComboBox();
 		comboBox.addActionListener(this);

@@ -36,19 +36,19 @@ public class HistoryStatsPane extends JPanel {
 		JLabel lblNewLabel = new JLabel("Maximum Temperature: ");
 		add(lblNewLabel, "cell 1 3,alignx right");
 		
-		JLabel maxTempLbl = new JLabel(hm.get("maxTemp")+"°C");
+		JLabel maxTempLbl = new JLabel(hm.get("maxTemp")+" °C");
 		add(maxTempLbl, "cell 3 3");
 		
 		JLabel lblNewLabel_1 = new JLabel("Minimum Temperature: ");
 		add(lblNewLabel_1, "cell 1 4,alignx right");
 		
-		JLabel minTempLbl = new JLabel(hm.get("minTemp")+"°C");
+		JLabel minTempLbl = new JLabel(hm.get("minTemp")+" °C");
 		add(minTempLbl, "cell 3 4");
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Average Temperature: ");
 		add(lblNewLabel_1_1, "cell 1 5,alignx right");
 		
-		JLabel avgTempLbl = new JLabel(hm.get("avgTemp")+"°C");
+		JLabel avgTempLbl = new JLabel(hm.get("avgTemp")+" °C");
 		add(avgTempLbl, "cell 3 5");
 		
 		JLabel lblNewLabel_2 = new JLabel("Maximum Speed Wind: ");
@@ -69,7 +69,7 @@ public class HistoryStatsPane extends JPanel {
 		JLabel visLbl = new JLabel(hm.get("avgVis")+" km");
 		add(visLbl, "cell 3 8");
 		
-		JLabel lblNewLabel_3 = new JLabel("Average Humidity: ");
+		JLabel lblNewLabel_3 = new JLabel("Average Humidity: "+" %");
 		add(lblNewLabel_3, "cell 1 9,alignx right");
 		
 		JLabel avgHumLbl = new JLabel(hm.get("avgHum")+"%");

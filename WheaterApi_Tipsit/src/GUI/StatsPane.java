@@ -34,6 +34,12 @@ public class StatsPane extends JPanel {
 		JLabel placeLabel = new JLabel(hm.get("city")+", "+hm.get("region")+", "+hm.get("country"));
 		add(placeLabel, "cell 2 1,alignx center,aligny center");
 		
+		JLabel lblNewLabel_10 = new JLabel("Hours of Light");
+		add(lblNewLabel_10, "cell 1 2,alignx right,aligny center");
+		
+		JLabel lblNewLabel_11 = new JLabel(hm.get("hoursOfLight"));
+		add(lblNewLabel_11, "cell 3 2");
+		
 		JLabel lblNewLabel = new JLabel("Maximum Temperature:");
 		add(lblNewLabel, "cell 1 3,alignx right");
 		

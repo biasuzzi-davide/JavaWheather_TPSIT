@@ -100,11 +100,11 @@ public class HoursWindow extends JWindow implements WindowListener {
 		conditionLbl.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		frame.getContentPane().add(conditionLbl, "cell 1 6,alignx center,aligny center");
 		
-		JLabel feelTempLbl = new JLabel("Feel Temperature: "+hm.get("feeTemp"));
+		JLabel feelTempLbl = new JLabel("Feel Temperature: "+hm.get("feeTemp")+" °C");
 		feelTempLbl.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		frame.getContentPane().add(feelTempLbl, "cell 1 7,alignx center,aligny center");
 		
-		JLabel tempLbl = new JLabel("Temperature: "+hm.get("temp"));
+		JLabel tempLbl = new JLabel("Temperature: "+hm.get("temp")+" °C");
 		tempLbl.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		frame.getContentPane().add(tempLbl, "cell 1 8,alignx center,aligny center");
 		
@@ -112,30 +112,30 @@ public class HoursWindow extends JWindow implements WindowListener {
 		windSpeedLbl.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		frame.getContentPane().add(windSpeedLbl, "cell 1 9,alignx center,aligny center");
 		
-		JLabel windDirectionLbl = new JLabel("Wind Direction:  "+hm.get("winDir"));
+		JLabel windDirectionLbl = new JLabel("Wind Direction: "+hm.get("winDir"));
 		windDirectionLbl.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		frame.getContentPane().add(windDirectionLbl, "cell 1 10,alignx center,aligny center");
 		
-		JLabel lblRainMm = new JLabel("Rain MM: "+hm.get("precip")+"mm");
+		JLabel lblRainMm = new JLabel("Rain MM: "+hm.get("precip")+" mm");
 		lblRainMm.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		frame.getContentPane().add(lblRainMm, "cell 1 11,alignx center,aligny center");
 		
-		JLabel humidityLbl = new JLabel("Humidity: "+hm.get("hum")+"%");
+		JLabel humidityLbl = new JLabel("Humidity: "+hm.get("hum")+" %");
 		humidityLbl.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		frame.getContentPane().add(humidityLbl, "cell 1 12,alignx center,aligny center");
 		
-		JLabel cloudsLbl = new JLabel("Clouds: "+hm.get("cloud"));
+		JLabel cloudsLbl = new JLabel("Clouds: "+hm.get("cloud")+" %");
 		cloudsLbl.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		frame.getContentPane().add(cloudsLbl, "cell 1 13,alignx center,aligny center");
 		
 		JTextPane airQuality = new JTextPane();
 		airQuality.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		airQuality.setText("CO: "+hm.get("Co")+"\r\n"
-				+ "NO2: "+hm.get("No2")+"\r\n"
-				+ "O3: "+hm.get("O3")+"\r\n"
-				+ "PM10: "+hm.get("Pm10")+"\r\n"
-				+ "PM25: "+hm.get("Pm25")+"\r\n"
-				+ "SO2: "+hm.get("So2")+"");
+		airQuality.setText("CO: "+hm.get("Co")+" µg/m3 \r\n"
+				+ "NO2: "+hm.get("No2")+" µg/m3 \r\n"
+				+ "O3: "+hm.get("O3")+" µg/m3 \r\n"
+				+ "PM10: "+hm.get("Pm10")+" µg/m3 \r\n"
+				+ "PM25: "+hm.get("Pm25")+" µg/m3 \r\n"
+				+ "SO2: "+hm.get("So2")+" µg/m3");
 		airQuality.setEditable(false);
 		frame.getContentPane().add(airQuality, "cell 1 15,alignx center,aligny top");
 		

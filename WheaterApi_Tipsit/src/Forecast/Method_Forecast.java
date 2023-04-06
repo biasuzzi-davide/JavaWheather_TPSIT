@@ -298,7 +298,7 @@ public class Method_Forecast {
 	    if (hours > 0) {
 	        result += hours + " hours";
 	        if (remainingMinutes > 0) {
-	            result += " e ";
+	            result += " and ";
 	        }
 	    }
 
