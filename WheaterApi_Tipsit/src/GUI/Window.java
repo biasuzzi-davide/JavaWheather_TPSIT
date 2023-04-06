@@ -178,18 +178,19 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         verticalStrut_3_1.setPreferredSize(new Dimension(0, 2));
         mnNewMenu.add(verticalStrut_3_1);
         
-        exitBtn = new JButton("Exit");
-        exitBtn.setToolTipText("Quit the application");
-        exitBtn.setMaximumSize(new Dimension(80, 22));
-        exitBtn.setMinimumSize(new Dimension(80, 22));
-        exitBtn.setPreferredSize(new Dimension(80, 22));
-        exitBtn.setSize(new Dimension(80, 22));
-        exitBtn.setMargin(new Insets(2, 15, 2, 15));
-        exitBtn.setHorizontalTextPosition(SwingConstants.CENTER);
-        exitBtn.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        exitBtn.setAlignmentX(0.5f);
-        exitBtn.addActionListener(this);
-        mnNewMenu.add(exitBtn);
+        darkThemeBtn = new JToggleButton("Dark Theme");
+        darkThemeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        darkThemeBtn.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        darkThemeBtn.setMargin(new Insets(0, 0, 0, 0));
+        darkThemeBtn.setPreferredSize(new Dimension(80, 22));
+        darkThemeBtn.setSize(new Dimension(80, 22));
+        darkThemeBtn.setMinimumSize(new Dimension(80, 22));
+        darkThemeBtn.setMaximumSize(new Dimension(80, 22));
+        darkThemeBtn.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        darkThemeBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+        darkThemeBtn.setSelected(true);
+        darkThemeBtn.addActionListener(this);
+        mnNewMenu.add(darkThemeBtn);
         
         Component verticalStrut_1 = Box.createVerticalStrut(20);
         verticalStrut_1.setPreferredSize(new Dimension(0, 2));
@@ -211,19 +212,18 @@ public class Window extends JFrame implements ActionListener, WindowListener{
         verticalStrut_2.setPreferredSize(new Dimension(0, 2));
         mnNewMenu.add(verticalStrut_2);
         
-        darkThemeBtn = new JToggleButton("Dark Theme");
-        darkThemeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        darkThemeBtn.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-        darkThemeBtn.setMargin(new Insets(0, 0, 0, 0));
-        darkThemeBtn.setPreferredSize(new Dimension(80, 22));
-        darkThemeBtn.setSize(new Dimension(80, 22));
-        darkThemeBtn.setMinimumSize(new Dimension(80, 22));
-        darkThemeBtn.setMaximumSize(new Dimension(80, 22));
-        darkThemeBtn.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        darkThemeBtn.setHorizontalTextPosition(SwingConstants.CENTER);
-        darkThemeBtn.setSelected(true);
-        darkThemeBtn.addActionListener(this);
-        mnNewMenu.add(darkThemeBtn);
+        exitBtn = new JButton("Exit");
+        exitBtn.setToolTipText("Quit the application");
+        exitBtn.setMaximumSize(new Dimension(80, 22));
+        exitBtn.setMinimumSize(new Dimension(80, 22));
+        exitBtn.setPreferredSize(new Dimension(80, 22));
+        exitBtn.setSize(new Dimension(80, 22));
+        exitBtn.setMargin(new Insets(2, 15, 2, 15));
+        exitBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+        exitBtn.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        exitBtn.setAlignmentX(0.5f);
+        exitBtn.addActionListener(this);
+        mnNewMenu.add(exitBtn);
         
         Component horizontalStrut = Box.createHorizontalStrut(20);
         horizontalStrut.setMaximumSize(new Dimension(30, 32767));
@@ -408,6 +408,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 			} catch (JAXBException | ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(this, "Errore");
 			}
 
 		    for (JPanel panelTmp : panels) {
