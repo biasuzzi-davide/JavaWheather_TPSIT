@@ -243,10 +243,10 @@ public class Method_Forecast {
 		for(i =(today ? 0 : 1);
     	i<forecast.getForecast().getForecastday().size() && i<howMuchDay;
     	i++) {
-			hoursOfLight+=(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[0])*60+
-			(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[1])))-
-			(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[0])+60+
-			(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[1])/60));
+			hoursOfLight+=((Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunset()).split(" "))[0].split(":")[0])+12)*60+
+			(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunset()).split(" "))[0].split(":")[1])))-
+			((Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[0])*60)+
+			(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[1])));
 			if(AmericanUnit) {
 				MaxTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMaxtempF().doubleValue();
 				MinTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMintempF().doubleValue();
