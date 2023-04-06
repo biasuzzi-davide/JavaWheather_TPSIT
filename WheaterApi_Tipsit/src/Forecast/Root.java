@@ -330,7 +330,10 @@ public class Root {
     	JAXBContext context = JAXBContext.newInstance(Root.class);
 	    Unmarshaller unmarshaller = context.createUnmarshaller();
 	    RequestToServer Server=new RequestToServer();
-		Server.Request(Server.UrlForecast(city));
+	    String err="";
+		err=Server.Request(Server.UrlForecast(city));
+		if(err==null)
+			return null;
 		Root forecast=(Root) unmarshaller.unmarshal(new File("src/Forecast/Forecast.xml"));
 		return forecast;
     }

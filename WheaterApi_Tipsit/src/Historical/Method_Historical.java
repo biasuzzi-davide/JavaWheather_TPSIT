@@ -1,14 +1,11 @@
 package Historical;
 
-import java.util.Date;
 import java.util.HashMap;
 
 import javax.xml.bind.JAXBException;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
@@ -74,12 +71,12 @@ public class Method_Historical {
 		boolean find1=true;
 		boolean find2=true;
 		String[] piecesDate = date.split(" ");
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	    Date tmp = dateFormat.parse(piecesDate[0]);
-	    LocalDate data1 = LocalDate.of(historical.getForecast().getForecastday().getDate().getYear(), historical.getForecast().getForecastday().getDate().getMonth(), historical.getForecast().getForecastday().getDate().getDay());
-	    LocalDate data2 = LocalDate.of(tmp.getYear(),tmp.getMonth(),tmp.getDay());
-	    int between = (int) ChronoUnit.DAYS.between(data1,data2);
-	    if(data2.isBefore(data1)) {
+		String[] piecesDate2 = piecesDate[0].split("-");
+	    LocalDate date1 = LocalDate.of(historical.getForecast().getForecastday().getDate().getYear(), historical.getForecast().getForecastday().getDate().getMonth(), historical.getForecast().getForecastday().getDate().getDay());
+	    LocalDate date2 = LocalDate.of(Integer.parseInt(piecesDate2[0]), Integer.parseInt(piecesDate2[1]), Integer.parseInt(piecesDate2[2]));
+	    LocalDate dateNow= LocalDate.of(TODAY.getYear(), TODAY.getMonth(), TODAY.getDayOfMonth());
+	    int between = (int) ChronoUnit.DAYS.between(date1,date2);
+	    if(date2.isBefore(date1) || date2.isEqual(dateNow)) {
 		    if(between>6) 
 		    {
 		    	find1=false;
@@ -160,12 +157,10 @@ public class Method_Historical {
 	    if(date2.isBefore(date1) || date2.isEqual(dateNow)) {
 		    if(between>6) 
 		    {
-		    	System.out.println("ciao");
 		    	find=false;
 		    }
 	    }else
 	    {
-	    	System.out.println("ciao2");
 	    	find=false;
 	    }
 	    if(!find) {

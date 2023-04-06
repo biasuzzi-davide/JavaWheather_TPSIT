@@ -1,7 +1,5 @@
 package GUI;
 
-import java.awt.EventQueue;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -24,14 +22,10 @@ import javax.swing.border.AbstractBorder;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Component;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Cursor;
-import java.awt.Label;
-import java.awt.Dimension;
+
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.xml.bind.JAXBException;
@@ -44,7 +38,6 @@ import Historical.*;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
-import java.awt.Color;
 
 public class Window extends JFrame implements ActionListener, WindowListener{
 
@@ -382,45 +375,54 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 			System.out.println(txtInsertCity.getText());
 			String city = txtInsertCity.getText();
 			txtInsertCity.setText("");
-		
-			JPanel panel = panels.get(0);
-			panel.removeAll();
-		    try {
-		    	panels.clear();
-		    	panels = new ArrayList<JPanel>();
-			    HashMap<String, String> hmTmp = Method_Forecast.Future(city, 5, true, false);
-			    panels.add(new HomePane(this, hmTmp));
-			    panels.add(new CreditsPane());
-			    panels.add(new HistoryPane(this, Method_Historical.Past(city, 5, true, false)));
-			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date0")), 0));
-			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date1")), 1));
-			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date2")), 2));
-			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date3")), 3));
-			    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date4")), 4));
-			    panels.add(new StatsPane(Method_Forecast.Statistic(city, 5, true, false)));
-			    hmTmp = Method_Historical.Past(city, 5, true, false);
-			    panels.add(new HistoryStatsPane(Method_Historical.PastStatistic(city, 5, true, false)));
-			    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date0")), 0));
-			    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date1")), 1));
-			    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date2")), 2));
-			    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date3")), 3));
-				panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date4")), 4));
-			} catch (JAXBException | ParseException e1) {
+			try {
+				if(Method_Forecast.Future(city, 5, true, false)==null) {
+					System.out.println("City not valid");
+				}else {
+					HashMap<String, String> hmTmp = null;
+					JPanel panel = panels.get(0);
+					panel.removeAll();
+				    try {
+				    	panels.clear();
+				    	panels = new ArrayList<JPanel>();
+					    hmTmp = Method_Forecast.Future(city, 5, true, false);
+					    panels.add(new HomePane(this, hmTmp));
+					    panels.add(new CreditsPane());
+					    panels.add(new HistoryPane(this, Method_Historical.Past(city, 5, true, false)));
+					    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date0")), 0));
+					    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date1")), 1));
+					    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date2")), 2));
+					    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date3")), 3));
+					    panels.add(new SingleDayPane(this, Method_Forecast.Day(city, false, hmTmp.get("date4")), 4));
+					    panels.add(new StatsPane(Method_Forecast.Statistic(city, 5, true, false)));
+					    hmTmp = Method_Historical.Past(city, 5, true, false);
+					    panels.add(new HistoryStatsPane(Method_Historical.PastStatistic(city, 5, true, false)));
+					    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date0")), 0));
+					    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date1")), 1));
+					    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date2")), 2));
+					    panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date3")), 3));
+						panels.add(new SingleHistoryPane(this, Method_Historical.PastDay(city, false, hmTmp.get("date4")), 4));
+					} catch (JAXBException | ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						JOptionPane.showMessageDialog(this, "Errore");
+					}
+
+				    for (JPanel panelTmp : panels) {
+				        getContentPane().add(panelTmp);
+				    }
+
+				    panels.get(0).setEnabled(false);
+				    panels.get(0).revalidate();
+				    panels.get(0).repaint();
+					this.revalidate();
+					this.repaint();
+					frame.setContentPane(panels.get(0));
+				}
+			} catch (HeadlessException | JAXBException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-				JOptionPane.showMessageDialog(this, "Errore");
 			}
-
-		    for (JPanel panelTmp : panels) {
-		        getContentPane().add(panelTmp);
-		    }
-
-		    panels.get(0).setEnabled(false);
-		    panels.get(0).revalidate();
-		    panels.get(0).repaint();
-			this.revalidate();
-			this.repaint();
-			frame.setContentPane(panels.get(0));
 		}
 	}
 	

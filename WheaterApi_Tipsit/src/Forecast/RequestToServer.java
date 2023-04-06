@@ -28,7 +28,7 @@ package Forecast;
 	    	return "http://api.weatherapi.com/v1/forecast.xml?key=4dcd56b9af624eaaa11132617231503&q="+replaceSpaces(city)+"&days=5&aqi=yes&alerts=yes";
 	    }
 	    
-	    public void Request(String Url) {
+	    public String Request(String Url) {
 	    	try {
 	            // Create the URL of API and open one connection HTTP
 	            URL url = new URL(Url);
@@ -48,7 +48,8 @@ package Forecast;
 	            //System.out.println(response.toString())
 	            new XmlFromString(response.toString());
 	        } catch (Exception e) {
-	            System.err.println("Error during request to XML: " + e.getMessage());
+	            return null;
 	        }
+			return Url;
 	    }
 }

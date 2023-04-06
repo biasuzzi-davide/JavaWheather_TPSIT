@@ -15,6 +15,8 @@ public class Method_Forecast {
 		Root forecast;
 		if(!Root.getIstance().getLocation().getName().equals(city)) {
 			forecast = Root.refresh(city);
+			if(forecast==null)
+				return null;
 		}else {
 			forecast = Root.getIstance();
 		}		
@@ -206,6 +208,9 @@ public class Method_Forecast {
 	    Final.put("chaSno", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getDailyChanceOfSnow()*100.00)/100.00+"");
 	    Final.put("cond", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText());
 	    Final.put("icon", forecast.getForecast().getForecastday().get(i).getDay().getCondition().getIcon()+"");
+	    Final.put("sunrise", forecast.getForecast().getForecastday().get(i).getAstro().getSunrise());
+	    Final.put("sunset", forecast.getForecast().getForecastday().get(i).getAstro().getSunset());
+	    Final.put("moonset", forecast.getForecast().getForecastday().get(i).getAstro().getMoonset());
 	    
 	    return Final;
 	}
@@ -228,6 +233,7 @@ public class Method_Forecast {
 		double AvgHum = 0.0;
 		double PerChaRai = 0.0;
 		double PerChaSno = 0.0;
+		int hoursOfLight=0;
 		int i;
 		
 		Final.put("city", forecast.getLocation().getName());
@@ -237,6 +243,10 @@ public class Method_Forecast {
 		for(i =(today ? 0 : 1);
     	i<forecast.getForecast().getForecastday().size() && i<howMuchDay;
     	i++) {
+			hoursOfLight+=(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[0])*60+
+			(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[1])))-
+			(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[0])+60+
+			(Integer.parseInt(((forecast.getForecast().getForecastday().get(i).getAstro().getSunrise()).split(" "))[0].split(":")[1])/60));
 			if(AmericanUnit) {
 				MaxTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMaxtempF().doubleValue();
 				MinTemp+=forecast.getForecast().getForecastday().get(i).getDay().getMintempF().doubleValue();
@@ -280,7 +290,23 @@ public class Method_Forecast {
 			So2+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getSo2().doubleValue();
 		}
 		
+		int hours = hoursOfLight / 60;
+	    int remainingMinutes = hoursOfLight % 60;
+
+	    String result = "";
+
+	    if (hours > 0) {
+	        result += hours + " hours";
+	        if (remainingMinutes > 0) {
+	            result += " e ";
+	        }
+	    }
+
+	    if (remainingMinutes > 0) {
+	        result += remainingMinutes + " minutes";
+	    }
 		
+		Final.put("hoursOfLight", result);
 		Final.put("day", howMuchDay+"");
 		Final.put("Co", Math.round(Co/(i-(today ? 0 : 1))*100.00)/100.00+"");
 		Final.put("No2", Math.round(No2/(i-(today ? 0 : 1))*100.00)/100.00+"");

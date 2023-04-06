@@ -6,7 +6,6 @@ import javax.xml.bind.JAXBException;
 import GUI.*;
 import Forecast.Method_Forecast;
 import Forecast.Root;
-import Historical.Method_Historical;
 
 public class MainClass {
 

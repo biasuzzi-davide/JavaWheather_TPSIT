@@ -1,11 +1,9 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.xml.bind.JAXBException;
 
 import Forecast.Method_Forecast;
 import Forecast.Root;
-import Historical.HRequestToServer;
 import Historical.Method_Historical;
 
 import java.text.ParseException;
@@ -23,8 +21,6 @@ public class Main {
 		String city = Root.refresh().getLocation().getName();
 		Root.refresh(Root.refresh().getLocation().getName());
 		String last = city;
-		Method_Forecast forecast = new Method_Forecast();
-		Method_Historical historical = new Method_Historical();
 		HashMap<String, String> ris = new HashMap<>();
 		
 		while(!city.equals("0")){
@@ -54,7 +50,7 @@ public class Main {
 				int howMuchDay=0; // 2,5,7
 				boolean today=true; // 2,5,7
 				String date=""; // 3,4,8,9,11
-				boolean localtime=true; //11
+				boolean localtime = false; //11
 				
 				switch(tmp2) {
 				case 1:
@@ -119,7 +115,7 @@ public class Main {
 				
 				switch(tmp2) {
 				case 1:
-					ris=forecast.Future(city, howMuchDay, today, americanUnit); 
+					ris=Method_Forecast.Future(city, howMuchDay, today, americanUnit); 
 					System.out.println(ris.get("city"));
 					System.out.println(ris.get("region"));
 					System.out.println(ris.get("country"));
@@ -134,7 +130,7 @@ public class Main {
 					}
 					break;
 				case 2:
-					ris=forecast.DayandHour(city, americanUnit, date,4); 
+					ris=Method_Forecast.DayandHour(city, americanUnit, date,4); 
 					System.out.println(ris.get("city"));
 					System.out.println(ris.get("region"));
 					System.out.println(ris.get("country"));
@@ -155,7 +151,7 @@ public class Main {
 					System.out.println(ris.get("So2"));
 					break;
 				case 3:
-					ris=forecast.Day(city, americanUnit, date); 
+					ris=Method_Forecast.Day(city, americanUnit, date); 
 					System.out.println(ris.get("city"));
 					System.out.println(ris.get("region"));
 					System.out.println(ris.get("country"));
@@ -176,9 +172,12 @@ public class Main {
 					System.out.println(ris.get("Pm10"));
 					System.out.println(ris.get("Pm25"));
 					System.out.println(ris.get("So2"));
+					System.out.println(ris.get("sunset"));
+					System.out.println(ris.get("sunrise"));
+					System.out.println(ris.get("moonset"));
 					break;
 				case 4:
-					ris=forecast.Statistic(city, howMuchDay,today, americanUnit); 
+					ris=Method_Forecast.Statistic(city, howMuchDay,today, americanUnit); 
 					System.out.println(ris.get("city"));
 					System.out.println(ris.get("region"));
 					System.out.println(ris.get("country"));
@@ -198,12 +197,13 @@ public class Main {
 					System.out.println(ris.get("Pm10"));
 					System.out.println(ris.get("Pm25"));
 					System.out.println(ris.get("So2"));
+					System.out.println(ris.get("hoursOfLight"));
 					break;
 				case 5:
-					System.out.println(forecast.FindDayOfWeek(date,true)); 
+					System.out.println(Method_Forecast.FindDayOfWeek(date,localtime)); 
 					break;
 				case 6:
-					ris=historical.Past(city, howMuchDay, today, americanUnit); 
+					ris=Method_Historical.Past(city, howMuchDay, today, americanUnit); 
 					System.out.println(ris.get("city"));
 					System.out.println(ris.get("region"));
 					System.out.println(ris.get("country"));
@@ -220,7 +220,7 @@ public class Main {
 					}
 					break;
 				case 7:
-					ris=historical.PastDayandHour(city, americanUnit, date); 
+					ris=Method_Historical.PastDayandHour(city, americanUnit, date); 
 					System.out.println(ris.get("city"));
 					System.out.println(ris.get("region"));
 					System.out.println(ris.get("country"));
@@ -235,7 +235,7 @@ public class Main {
 					System.out.println(ris.get("feeTemp"));
 					break;
 				case 8:
-					ris=historical.PastDay(city, americanUnit, date); 
+					ris=Method_Historical.PastDay(city, americanUnit, date); 
 					System.out.println(ris.get("city"));
 					System.out.println(ris.get("region"));
 					System.out.println(ris.get("country"));
@@ -249,7 +249,7 @@ public class Main {
 					System.out.println(ris.get("cond"));
 					break;
 				case 9:
-					ris=historical.PastStatistic(city, howMuchDay, today, americanUnit); 
+					ris=Method_Historical.PastStatistic(city, howMuchDay, today, americanUnit); 
 					System.out.println(ris.get("city"));
 					System.out.println(ris.get("region"));
 					System.out.println(ris.get("country"));
