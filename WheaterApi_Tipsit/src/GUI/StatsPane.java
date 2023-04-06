@@ -85,55 +85,55 @@ public class StatsPane extends JPanel {
 		JLabel lblNewLabel_3 = new JLabel("Average Humidity:");
 		add(lblNewLabel_3, "cell 1 10,alignx right");
 		
-		JLabel avgHumLbl = new JLabel(hm.get("avgHum")+"%");
+		JLabel avgHumLbl = new JLabel("null %");
 		add(avgHumLbl, "cell 3 10");
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Chanche of Rain:");
 		add(lblNewLabel_3_1, "cell 1 11,alignx right");
 		
-		JLabel chaRaiLbl = new JLabel(hm.get("chaRai")+"%");
+		JLabel chaRaiLbl = new JLabel("null %");
 		add(chaRaiLbl, "cell 3 11");
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Chanche of Snow:");
 		add(lblNewLabel_3_1_1, "cell 1 12,alignx right");
 		
-		JLabel ChaSnoLbl = new JLabel(hm.get("chaSno")+"%");
+		JLabel ChaSnoLbl = new JLabel("null %");
 		add(ChaSnoLbl, "cell 3 12");
 		
 		JLabel lblNewLabel_4 = new JLabel("Co:");
 		add(lblNewLabel_4, "cell 1 13,alignx right");
 		
-		JLabel coLbl = new JLabel(hm.get("Co"));
+		JLabel coLbl = new JLabel(hm.get("Co")+" µg/m3");
 		add(coLbl, "cell 3 13");
 		
 		JLabel lblNewLabel_5 = new JLabel("No2:");
 		add(lblNewLabel_5, "cell 1 14,alignx right");
 		
-		JLabel no2Lbl = new JLabel(hm.get("No2"));
+		JLabel no2Lbl = new JLabel(hm.get("No2")+" µg/m3");
 		add(no2Lbl, "cell 3 14");
 		
 		JLabel lblNewLabel_6 = new JLabel("O3:");
 		add(lblNewLabel_6, "cell 1 15,alignx right");
 		
-		JLabel o3Lbl = new JLabel(hm.get("O3"));
+		JLabel o3Lbl = new JLabel(hm.get("O3")+" µg/m3");
 		add(o3Lbl, "cell 3 15");
 		
 		JLabel lblNewLabel_7 = new JLabel("Pm10:");
 		add(lblNewLabel_7, "cell 1 16,alignx right");
 		
-		JLabel pm10Lbl = new JLabel(hm.get("Pm10"));
+		JLabel pm10Lbl = new JLabel(hm.get("Pm10")+" µg/m3");
 		add(pm10Lbl, "cell 3 16");
 		
 		JLabel lblNewLabel_8 = new JLabel("Pm25:");
 		add(lblNewLabel_8, "cell 1 17,alignx right");
 		
-		JLabel pm25Lbl = new JLabel(hm.get("Pm25"));
+		JLabel pm25Lbl = new JLabel(hm.get("Pm25")+" µg/m3");
 		add(pm25Lbl, "cell 3 17");
 		
 		JLabel lblNewLabel_9 = new JLabel("So2");
 		add(lblNewLabel_9, "cell 1 18,alignx right");
 		
-		JLabel so2Lbl = new JLabel(hm.get("So2"));
+		JLabel so2Lbl = new JLabel(hm.get("So2")+" µg/m3");
 		add(so2Lbl, "cell 3 18");
 		
 
