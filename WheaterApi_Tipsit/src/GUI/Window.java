@@ -377,7 +377,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 			txtInsertCity.setText("");
 			try {
 				if(Method_Forecast.Future(city, 5, true, false)==null) {
-					System.out.println("City not valid");
+					JOptionPane.showMessageDialog(this, "The city that you entered isn't valid!");
 				}else {
 					HashMap<String, String> hmTmp = null;
 					JPanel panel = panels.get(0);
