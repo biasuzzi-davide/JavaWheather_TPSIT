@@ -120,9 +120,9 @@ public class Method_Historical {
 	    Final.put("cond", historical.getForecast().getForecastday().getHour().get(j).getCondition().getText()+"");
 	    Final.put("icon", historical.getForecast().getForecastday().getHour().get(j).getCondition().getIcon()+"");
 	    if(AmericanUnit) {
-	    	Final.put("winSpee", Math.round(historical.getForecast().getForecastday().getHour().get(j).getWindMph().doubleValue()*100.00)/100.00+"");
+	    	Final.put("winSpe", Math.round(historical.getForecast().getForecastday().getHour().get(j).getWindMph().doubleValue()*100.00)/100.00+"");
 	    }else {
-	    	Final.put("winSpee", historical.getForecast().getForecastday().getHour().get(j).getWindKph()+"");
+	    	Final.put("winSpe", historical.getForecast().getForecastday().getHour().get(j).getWindKph()+"");
 	    }
 	    Final.put("winDir", historical.getForecast().getForecastday().getHour().get(j).getWindDir()+"");
 	    if(AmericanUnit) {
