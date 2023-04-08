@@ -13,13 +13,9 @@ public class Method_Forecast {
 	
 	public static HashMap<String, String> Future(String city,int howMuchDay, boolean today, boolean AmericanUnit) throws JAXBException {
 		Root forecast;
-		if(!Root.getIstance().getLocation().getName().equals(city)) {
-			forecast = Root.refresh(city);
-			if(forecast==null)
-				return null;
-		}else {
-			forecast = Root.getIstance();
-		}		
+		forecast = Root.refresh(city);
+		if(forecast==null)
+			return null;
         HashMap<String, String> Final = new HashMap<>();
 
         Final.put("city", forecast.getLocation().getName().toString());
