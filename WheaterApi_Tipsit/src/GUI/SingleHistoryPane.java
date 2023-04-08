@@ -97,20 +97,11 @@ public class SingleHistoryPane extends JPanel implements ActionListener{
 		JLabel avgVisLbl = new JLabel("Visibility: "+hm.get("avgVis")+" km");
 		add(avgVisLbl, "flowx,cell 1 9,alignx center,aligny center");
 		
-		JLabel chaRaiLbl = new JLabel("Chance of rain: "+hm.get("chaRai")+"%");
-		add(chaRaiLbl, "flowx,cell 1 10,alignx center,aligny center");
-		
 		JLabel windLbl = new JLabel("Wind Max: "+hm.get("maxWin")+" kmh");
 		add(windLbl, "cell 1 11,alignx center,aligny center");
 		
-		JLabel snowLbl = new JLabel("Snow: "+hm.get("snow")+" cm");
-		add(snowLbl, "cell 1 8,alignx center,aligny center");
-		
-		JLabel humidityLbl = new JLabel("Humidity: "+hm.get("hum")+"%");
+		JLabel humidityLbl = new JLabel("Humidity: "+hm.get("avgHum")+"%");
 		add(humidityLbl, "cell 1 9,alignx center,aligny center");
-		
-		JLabel chaSnoLbl = new JLabel("Chance of snow: "+hm.get("chaSno")+"%");
-		add(chaSnoLbl, "cell 1 10,alignx center,aligny center");
 		
 		comboBox = new JComboBox();
 		comboBox.addActionListener(this);
