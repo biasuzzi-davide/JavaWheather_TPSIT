@@ -40,12 +40,12 @@ public class Method_Forecast {
 	    	Final.put("cond"+i, forecast.getForecast().getForecastday().get(i).getDay().getCondition().getText()+"");
 	    	Final.put("icon"+i, forecast.getForecast().getForecastday().get(i).getDay().getCondition().getIcon()+"");
 	    	if(i<3) {
-	    		Final.put("Co"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
-	    		Final.put("No2"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
-	    		Final.put("O3"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
-	    		Final.put("Pm10"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
-	    		Final.put("Pm25"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
-	    		Final.put("So2"+i, Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
+	    		Final.put("Co"+i, forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
+	    		Final.put("No2"+i, forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
+	    		Final.put("O3"+i, forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
+	    		Final.put("Pm10"+i, forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
+	    		Final.put("Pm25"+i, forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
+	    		Final.put("So2"+i, forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
 	    	}
 	    }
 	    
@@ -170,12 +170,12 @@ public class Method_Forecast {
 	    }
 	    
 	    if(i<=2) {
-	    	Final.put("Co", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
-	    	Final.put("No2", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
-	    	Final.put("O3", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
-	    	Final.put("Pm10", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
-	    	Final.put("Pm25", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
-	    	Final.put("So2", Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Co", forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getCo().doubleValue()*100.00)/100.00+"");
+	    	Final.put("No2", forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getNo2().doubleValue()*100.00)/100.00+"");
+	    	Final.put("O3", forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getO3().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Pm10", forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm10().doubleValue()*100.00)/100.00+"");
+	    	Final.put("Pm25", forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getPm25().doubleValue()*100.00)/100.00+"");
+	    	Final.put("So2", forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2()==null ? null : Math.round(forecast.getForecast().getForecastday().get(i).getDay().getAirQuality().getSo2().doubleValue()*100.00)/100.00+"");
 	    }
 	    
 	    Final.put("city", forecast.getLocation().getName());
@@ -278,12 +278,12 @@ public class Method_Forecast {
 		for(j =(today ? 0 : 1);
     	j<=2 && j<howMuchDay;
     	j++) {
-			Co+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getCo().doubleValue();
-			No2+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getNo2().doubleValue();
-			O3+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getO3().doubleValue();
-			Pm10+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm10().doubleValue();
-			Pm25+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm25().doubleValue();
-			So2+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getSo2().doubleValue();
+			Co+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getCo()==null ? 0 : forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getCo().doubleValue();
+			No2+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getNo2()==null ? 0 : forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getNo2().doubleValue();
+			O3+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getO3()==null ? 0 : forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getO3().doubleValue();
+			Pm10+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm10()==null ? 0 : forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm10().doubleValue();
+			Pm25+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm25()==null ? 0 : forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getPm25().doubleValue();
+			So2+=forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getSo2()==null ? 0 : forecast.getForecast().getForecastday().get(j).getDay().getAirQuality().getSo2().doubleValue();
 		}
 		
 		int hours = hoursOfLight / 60;
