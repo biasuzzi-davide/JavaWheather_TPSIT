@@ -84,9 +84,9 @@ public class Window extends JFrame implements ActionListener, WindowListener{
     	panels.add(new HomePane(this,Method_Forecast.Future(hm.get("city"), 5, true, false)));
     	panels.add(new CreditsPane());
     	panels.add(new HistoryPane(this, Method_Historical.Past(hm.get("city"), 5, true, false)));
-    	//panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date0")),0));
-    	//panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date1")),1));
-    	//panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date2")),2));
+    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date0")),0));
+    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date1")),1));
+    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date2")),2));
     	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date3")),3));
     	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date4")),4));
     	panels.add(new StatsPane(Method_Forecast.Statistic(hm.get("city"), 5, true, false)));
