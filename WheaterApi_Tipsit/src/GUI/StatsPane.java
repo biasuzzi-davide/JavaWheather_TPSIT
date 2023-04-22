@@ -85,19 +85,19 @@ public class StatsPane extends JPanel {
 		JLabel lblNewLabel_3 = new JLabel("Average Humidity:");
 		add(lblNewLabel_3, "cell 1 10,alignx right");
 		
-		JLabel avgHumLbl = new JLabel("null %");
+		JLabel avgHumLbl = new JLabel(hm.get("avgHum")+"%");
 		add(avgHumLbl, "cell 3 10");
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Chanche of Rain:");
 		add(lblNewLabel_3_1, "cell 1 11,alignx right");
 		
-		JLabel chaRaiLbl = new JLabel("null %");
+		JLabel chaRaiLbl = new JLabel(hm.get("chaRai")+"%");
 		add(chaRaiLbl, "cell 3 11");
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Chanche of Snow:");
 		add(lblNewLabel_3_1_1, "cell 1 12,alignx right");
 		
-		JLabel ChaSnoLbl = new JLabel("null %");
+		JLabel ChaSnoLbl = new JLabel(hm.get("chaSno")+"%");
 		add(ChaSnoLbl, "cell 3 12");
 		
 		JLabel lblNewLabel_4 = new JLabel("Co:");

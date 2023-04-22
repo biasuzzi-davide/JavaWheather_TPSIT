@@ -72,7 +72,7 @@ public class HistoryStatsPane extends JPanel {
 		JLabel lblNewLabel_3 = new JLabel("Average Humidity: "+" %");
 		add(lblNewLabel_3, "cell 1 9,alignx right");
 		
-		JLabel avgHumLbl = new JLabel("null %");
+		JLabel avgHumLbl = new JLabel(hm.get("avgHum")+"5");
 		add(avgHumLbl, "cell 3 9");
 		
 
