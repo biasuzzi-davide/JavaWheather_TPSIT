@@ -79,25 +79,45 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 
     public void initialize() throws JAXBException, ParseException {
     	FlatDarkLaf.setup();
-    	hm=Method_Forecast.Future(hm.get("city"), 5, true, false);
-    	panels=new ArrayList<JPanel>();
-    	panels.add(new HomePane(this,Method_Forecast.Future(hm.get("city"), 5, true, false)));
-    	panels.add(new CreditsPane());
-    	panels.add(new HistoryPane(this, Method_Historical.Past(hm.get("city"), 5, true, false)));
-    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date0")),0));
-    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date1")),1));
-    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date2")),2));
-    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date3")),3));
-    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date4")),4));
-    	panels.add(new StatsPane(Method_Forecast.Statistic(hm.get("city"), 5, true, false)));
-    	hm=Method_Historical.Past(hm.get("city"), 5, true, false);
-    	panels.add(new HistoryStatsPane(Method_Historical.PastStatistic(hm.get("city"), 5, true, false)));
-    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date0")),0));
-    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date1")),1));
-    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date2")),2));
-    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date3")),3));
-    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date4")),4));
-    	
+    	try {
+	    	hm=Method_Forecast.Future(hm.get("city"), 5, true, false);
+	    	panels=new ArrayList<JPanel>();
+	    	panels.add(new HomePane(this,Method_Forecast.Future(hm.get("city"), 5, true, false)));
+	    	panels.add(new CreditsPane());
+	    	panels.add(new HistoryPane(this, Method_Historical.Past(hm.get("city"), 5, true, false)));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date0")),0));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date1")),1));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date2")),2));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date3")),3));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date4")),4));
+	    	panels.add(new StatsPane(Method_Forecast.Statistic(hm.get("city"), 5, true, false)));
+	    	hm=Method_Historical.Past(hm.get("city"), 5, true, false);
+	    	panels.add(new HistoryStatsPane(Method_Historical.PastStatistic(hm.get("city"), 5, true, false)));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date0")),0));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date1")),1));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date2")),2));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date3")),3));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date4")),4));
+    	}catch(Exception e) {
+    		hm=Method_Forecast.Future(hm.get("city"), 5, true, false);
+	    	panels=new ArrayList<JPanel>();
+	    	panels.add(new HomePane(this,Method_Forecast.Future(hm.get("city"), 5, true, false)));
+	    	panels.add(new CreditsPane());
+	    	panels.add(new HistoryPane(this, Method_Historical.Past(hm.get("city"), 5, true, false)));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date0")),0));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date1")),1));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date2")),2));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date3")),3));
+	    	panels.add(new SingleDayPane(this,Method_Forecast.Day(hm.get("city"), false, hm.get("date4")),4));
+	    	panels.add(new StatsPane(Method_Forecast.Statistic(hm.get("city"), 5, true, false)));
+	    	hm=Method_Historical.Past(hm.get("city"), 5, true, false);
+	    	panels.add(new HistoryStatsPane(Method_Historical.PastStatistic(hm.get("city"), 5, true, false)));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date0")),0));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date1")),1));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date2")),2));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date3")),3));
+	    	panels.add(new SingleHistoryPane(this,Method_Historical.PastDay(hm.get("city"), false, hm.get("date4")),4));
+    	}
         
         frame = new JFrame();
         frame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
