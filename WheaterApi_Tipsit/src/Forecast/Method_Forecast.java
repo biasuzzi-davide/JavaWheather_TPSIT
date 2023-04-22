@@ -143,11 +143,7 @@ public class Method_Forecast {
 
 	public static HashMap<String, String> Day(String city, Boolean AmericanUnit,String date) throws JAXBException {
 		Root forecast;
-		if(!Root.getIstance().getLocation().getName().equals(city)) {
-			forecast = Root.refresh(city);
-		}else {
-			forecast = Root.getIstance();
-		}	
+		forecast = Root.refresh(city);
 		HashMap<String, String> Final = new HashMap<>();
 	    String[] piecesDate = date.split(" ");
 		boolean find=false;
