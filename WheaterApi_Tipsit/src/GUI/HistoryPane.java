@@ -44,7 +44,7 @@ public class HistoryPane extends JPanel {
 		// JLabel placeLabel = new JLabel("Treviso, Veneto, Italy");
 		JLabel placeLabel = new JLabel(hm.get("city") + ", " + hm.get("region") + ", " + hm.get("country"));
 
-		add(placeLabel, "cell 5 0");
+		add(placeLabel, "cell 5 0,alignx center,aligny center");
 
 		JLabel label_day1 = new JLabel(Method_Forecast.FindDayOfWeek(hm.get("date" + 0), true));
 		label_day1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
