@@ -17,4 +17,4 @@ public class MainClass {
 		Window gui = new Window(ris);
 		gui.setVisible(true);
 	}
-}
+}                                       
